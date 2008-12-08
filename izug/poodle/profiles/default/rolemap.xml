@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+
+    <permission name="izug.poodle: Add Meeting poll" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+    </permission>
+  </permissions>
+</rolemap>
