@@ -39,7 +39,7 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     DataGridField(
         name='dates',
         widget=DataGridWidget(
-            columns= {"date": Column("Date (TT. MM. JJJJ)"), "duration": Column("Duration")},
+            columns= {"date": Column("Date (TT. MM. JJJJ)"), "duration": Column("Time / Duration")},
             label='Dates',
             label_msgid='izugpoodle_label_users',
             i18n_domain='izugpoodle',
@@ -68,11 +68,55 @@ schemata.finalizeATCTSchema(PoodleSchema, moveDiscussion=False)
 class Poodle(base.ATCTContent):
     """ A 'doodle'-like content type that helps finding a date for a meeting """
     implements(IPoodle)
+    
     security = ClassSecurityInfo()
     
     portal_type = "Meeting poll"
     schema = PoodleSchema
     
+    #data format:
+    #data = { "dates": ["1.1.", "1.2"],
+    #         "user1": {"1.1.": True, "1.2": False},
+    #         "user2": {"1.1.": None, "1.2": None}, }
+    
+    _poodledata = {}
+    
+    security.declarePublic("getPoodleData")    
+    def getPoodleData(self):
+        return self._poodledata
+        
+    def updatePoodleData(self):
+        self.updateDates()
+        self.updateUsers()
+        
+    security.declarePrivate("updateDates")
+    def updateDates(self):
+        dates = self.getDates()
+        self._poodledata["dates"] = [i['date'] for i in dates]
+        
+    security.declarePrivate("updateUsers")    
+    def updateUsers(self):
+        users = self.getUsers()
+        dates = [i['date'] for i in self.getDates()]
+        for user in users:
+            if user not in self._poodledata.keys():
+                # add user to data and fill dates with None
+                userdates = {}
+                [userdates.setdefault(date) for date in dates]
+                self._poodledata[user] = userdates                    
+            else:
+                # check if the dates are correct
+                userdates = self._poodledata[user]
+                for date in dates:
+                    if date not in userdates.keys():
+                        # a new date
+                        userdates[date] = None
+        # check if we need to remove any users from poodledata
+        for user in self._poodledata.keys():
+            if user not in users:
+                del(self._poodledata[user])
+                
+            
     security.declarePrivate("getPossibleUsers")
     def getPossibleUsers(self):
         pas, mtool = getToolByName(self, "acl_users"), getToolByName(self, "portal_membership") 
@@ -84,6 +128,12 @@ class Poodle(base.ATCTContent):
             user = mtool.getMemberById(userid) 
             result.append((userid, user.getProperty('fullname')))
         return result
-        
+            
+    def setDatesForUser(user, dates):
+        if user not in self.getUsers() or len(self.poodledata[user]) > 0: 
+            return False # user not allowed to vote or already voted
+        self.poodledata[user] = dates
+        return 
+    
     
 atapi.registerType(Poodle, PROJECTNAME)

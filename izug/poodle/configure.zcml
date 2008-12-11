@@ -22,6 +22,11 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+    <subscriber
+      for=".interfaces.IPoodle
+           Products.Archetypes.interfaces.IObjectEditedEvent"
+      handler=".eventhandlers.testEvent" />
+
     <!-- -*- extra stuff goes here -*- -->
 
 </configure>
