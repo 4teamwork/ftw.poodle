@@ -40,28 +40,33 @@
               Description
           </p>
       </tal:block>
-
 <pre tal:content="context/getPoodleData"/>
       <table class="listing" 
-             tal:define="users context/getUsers;
+             tal:define="poodledata context/getPoodleData;
+                         users context/getUsers;
                          dates context/getDates">
           <tr>
               <th></th>
               <th tal:repeat="date dates" tal:content="string:${date/date} - ${date/duration}"/>
           </tr>
           <tr tal:repeat="user users">
-
+              <tal:block define="currentUser python:view.isCurrentUser(user)">
                   <td tal:content="python:view.getUserFullname(user)"/>
                   <td tal:repeat="date dates">
-	<pre tal:content="user"/>
-	<pre tal:content="view/getCurrentUser"/>
-                      <tal:if condition="python: user==view.getCurrentUser()">
-                          <input type="checkbox" name="asdf"/>asdfas
+                      <tal:if condition="currentUser">
+                          <input type="checkbox" name="asdf"/>
                       </tal:if>
-                      <tal:if condition="not:python: user==view.getCurrentUser()">√
+                      <tal:if condition="not:currentUser">
+                           <span tal:condition="python: poodledata[user][date.get('date')] == True"
+                                 tal:content="string:√"/>
+                           <span tal:condition="python: poodledata[user][date.get('date')] == False"
+                                 tal:content="string:x"/>
+                           <span tal:condition="python: poodledata[user][date.get('date')] == None"
+                                 tal:content="string:n"/>
+
                       </tal:if>
                   </td>
-       
+              </tal:block>
           </tr>
       </table>
 

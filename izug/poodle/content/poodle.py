@@ -19,7 +19,7 @@ from Products.DataGridField.Column import Column
 
 from izug.poodle.datagridextension.CalendarColumn import CalendarColumn
 from izug.poodle import poodleMessageFactory as _
-from izug.poodle.interfaces import IPoodle
+from izug.poodle.interfaces import IPoodle, IPoodleConfig
 from izug.poodle.config import PROJECTNAME
 
 PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
@@ -73,50 +73,7 @@ class Poodle(base.ATCTContent):
     
     portal_type = "Meeting poll"
     schema = PoodleSchema
-    
-    #data format:
-    #data = { "dates": ["1.1.", "1.2"],
-    #         "user1": {"1.1.": True, "1.2": False},
-    #         "user2": {"1.1.": None, "1.2": None}, }
-    
-    _poodledata = {}
-    
-    security.declarePublic("getPoodleData")    
-    def getPoodleData(self):
-        return self._poodledata
-        
-    def updatePoodleData(self):
-        self.updateDates()
-        self.updateUsers()
-        
-    security.declarePrivate("updateDates")
-    def updateDates(self):
-        dates = self.getDates()
-        self._poodledata["dates"] = [i['date'] for i in dates]
-        
-    security.declarePrivate("updateUsers")    
-    def updateUsers(self):
-        users = self.getUsers()
-        dates = [i['date'] for i in self.getDates()]
-        for user in users:
-            if user not in self._poodledata.keys():
-                # add user to data and fill dates with None
-                userdates = {}
-                [userdates.setdefault(date) for date in dates]
-                self._poodledata[user] = userdates                    
-            else:
-                # check if the dates are correct
-                userdates = self._poodledata[user]
-                for date in dates:
-                    if date not in userdates.keys():
-                        # a new date
-                        userdates[date] = None
-        # check if we need to remove any users from poodledata
-        for user in self._poodledata.keys():
-            if user not in users:
-                del(self._poodledata[user])
-                
-            
+
     security.declarePrivate("getPossibleUsers")
     def getPossibleUsers(self):
         pas, mtool = getToolByName(self, "acl_users"), getToolByName(self, "portal_membership") 
@@ -129,11 +86,68 @@ class Poodle(base.ATCTContent):
             result.append((userid, user.getProperty('fullname')))
         return result
             
-    def setDatesForUser(user, dates):
-        if user not in self.getUsers() or len(self.poodledata[user]) > 0: 
-            return False # user not allowed to vote or already voted
-        self.poodledata[user] = dates
-        return 
+#    def setDatesForUser(user, dates):
+#        if user not in self.getUsers() or len(self.poodledata[user]) > 0: 
+#            return False # user not allowed to vote or already voted
+#        self.poodledata[user] = dates
+#        return 
+    def getPoodleData(self):
+        if IPoodle.providedBy(self):
+            return IPoodleConfig(self).getPoodleData()
+        return {}
+    
+    def setPoodleData(self, data):
+        if IPoodle.providedBy(self):
+            IPoodleConfig(self).setPoodleData(data)
+
+        
+    def updatePoodleData(self):
+        poodledata = self.getPoodleData()
+        poodledata = self.updateDates(poodledata)
+        poodledata = self.updateUsers(poodledata)
+        self.setPoodleData(poodledata)
+        self.updateSharing()
+        
+    def updateSharing(self):
+        """ 
+        Allow the selected Users to view the object
+        """
+        #import pdb; pdb.set_trace()
+        users = self.getUsers()
+        wanted_roles = [u'Reader',]
+        for user in users:
+            self.manage_setLocalRoles(user, wanted_roles)
+        self.reindexObjectSecurity()
+        # XXX: remove users?
+
+    def updateDates(self, poodledata):
+        dates = self.getDates()
+        poodledata["dates"] = [i['date'] for i in dates]
+        return poodledata
+        
+    def updateUsers(self, poodledata):
+        users = self.getUsers()
+        dates = [i['date'] for i in self.getDates()]
+        for user in users:
+            if user not in poodledata.keys():
+                # add user to data and fill dates with None
+                userdates = {}
+                [userdates.setdefault(date) for date in dates]
+                poodledata[user] = userdates                    
+            else:
+                # check if the dates are correct
+                userdates = poodledata[user]
+                for date in dates:
+                    if date not in userdates.keys():
+                        # a new date
+                        userdates[date] = None
+        # check if we need to remove any users from poodledata
+        for user in poodledata.keys():
+            if user != 'dates' and user not in users:
+                del(poodledata[user])
+        return poodledata
+                
+            
     
     
 atapi.registerType(Poodle, PROJECTNAME)

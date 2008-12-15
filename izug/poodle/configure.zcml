@@ -27,6 +27,11 @@
            Products.Archetypes.interfaces.IObjectEditedEvent"
       handler=".eventhandlers.testEvent" />
 
+    <adapter
+      provides=".interfaces.IPoodleConfig"
+      for=".interfaces.IPoodle"
+      factory=".poodle_config.PoodleConfig" />
+    
     <!-- -*- extra stuff goes here -*- -->
 
 </configure>
