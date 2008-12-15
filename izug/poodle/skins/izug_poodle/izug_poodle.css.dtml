@@ -10,4 +10,7 @@ div.poodle_view td.positive {
 div.poodle_view td.negative {
 	background-color: #FFAAAA;
 }
+div.poodle_view table.legend {
+	float: right;
+}
 /* </dtml-with> */

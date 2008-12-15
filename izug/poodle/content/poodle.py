@@ -77,9 +77,9 @@ class Poodle(base.ATCTContent):
     def getPossibleUsers(self):
         pas, mtool = getToolByName(self, "acl_users"), getToolByName(self, "portal_membership") 
         result = []
-        userids = [u['userid'] for u in pas.searchUsers()]
+        userids = []
+        [userids.append(u['userid']) for u in pas.searchUsers() if u['userid'] not in userids]
         userids.sort()
-        
         for userid in userids:
             user = mtool.getMemberById(userid) 
             result.append((userid, user.getProperty('fullname')))
