@@ -1,0 +1,13 @@
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+div.poodle_view td.not_voted {
+	background-color: #AAAAAA;
+}
+div.poodle_view td.positive {
+	background-color: #AAFFAA;
+}
+div.poodle_view td.negative {
+	background-color: #FFAAAA;
+}
+/* </dtml-with> */

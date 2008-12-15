@@ -112,7 +112,6 @@ class Poodle(base.ATCTContent):
         """ 
         Allow the selected Users to view the object
         """
-        #import pdb; pdb.set_trace()
         users = self.getUsers()
         wanted_roles = [u'Reader',]
         for user in users:
@@ -146,8 +145,16 @@ class Poodle(base.ATCTContent):
             if user != 'dates' and user not in users:
                 del(poodledata[user])
         return poodledata
-                
-            
+    
+    def saveUserData(self, userid, dates):
+        poodledata = self.getPoodleData()
+        if userid in poodledata.keys():
+            for date in poodledata["dates"]:
+                if date in dates:
+                    poodledata[userid][date] = True
+                else: 
+                    poodledata[userid][date] = False
+        self.setPoodleData(poodledata)
     
     
 atapi.registerType(Poodle, PROJECTNAME)

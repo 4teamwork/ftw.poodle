@@ -8,7 +8,7 @@
 
 <body>
 
-<div metal:fill-slot="main" class="poodle_view">
+<div metal:fill-slot="main" class="poodle_view" tal:define="dummy view/saveData">
     <metal:main-macro define-macro="main">
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -40,35 +40,51 @@
               Description
           </p>
       </tal:block>
-<pre tal:content="context/getPoodleData"/>
-      <table class="listing" 
-             tal:define="poodledata context/getPoodleData;
-                         users context/getUsers;
-                         dates context/getDates">
-          <tr>
-              <th></th>
-              <th tal:repeat="date dates" tal:content="string:${date/date} - ${date/duration}"/>
-          </tr>
-          <tr tal:repeat="user users">
-              <tal:block define="currentUser python:view.isCurrentUser(user)">
-                  <td tal:content="python:view.getUserFullname(user)"/>
-                  <td tal:repeat="date dates">
-                      <tal:if condition="currentUser">
-                          <input type="checkbox" name="asdf"/>
-                      </tal:if>
-                      <tal:if condition="not:currentUser">
-                           <span tal:condition="python: poodledata[user][date.get('date')] == True"
-                                 tal:content="string:√"/>
-                           <span tal:condition="python: poodledata[user][date.get('date')] == False"
-                                 tal:content="string:x"/>
-                           <span tal:condition="python: poodledata[user][date.get('date')] == None"
-                                 tal:content="string:n"/>
-
-                      </tal:if>
-                  </td>
-              </tal:block>
-          </tr>
-      </table>
+      <form action="" method="post">
+          <table class="listing" 
+                 tal:define="poodledata context/getPoodleData;
+                             users context/getUsers;
+                             dates context/getDates">
+              <tr>
+                  <th></th>
+                  <th tal:repeat="date dates" tal:content="string:${date/date} - ${date/duration}"/>
+              </tr>
+              <tr tal:repeat="user users">
+                  <tal:block define="currentUser python:view.isCurrentUser(user)">
+                      <td tal:content="python:view.getUserFullname(user)"/>
+                      <tal:block repeat="date dates">
+	                      <td tal:define="userdata python: poodledata[user][date.get('date')];
+	                                      cssclass python: view.getCssClass(userdata);
+                                          inputid python: view.getInputId(user, date)"
+                              tal:attributes="class cssclass">
+                              <tal:if condition="currentUser">
+                                  <input type="checkbox"
+                                         checked="checked"
+                                         tal:condition="userdata"
+                                         tal:attributes="name inputid;
+                                                         value python:date['date'];"/>
+                                  <input type="checkbox"
+                                         tal:condition="not:userdata"
+                                         tal:attributes="name inputid;
+                                                         value python:date['date'];"/>
+                              </tal:if>
+                              <tal:if condition="not:currentUser">
+                                   <span tal:condition="python: userdata == True"
+                                         tal:content="string:√"/>
+                                   <span tal:condition="python: userdata == False"
+                                         tal:content="string:x"/>
+                                   <span tal:condition="python: userdata == None"
+                                         tal:content="string:n"/>
+                              
+                              </tal:if>
+                          </td>
+                      </tal:block>
+                  </tal:block>
+              </tr>
+          </table>
+          <input class="context" type="submit" value="Speichern" name="form.button.Save"/>
+          <input class="standalone" type="submit" value="Abbrechen" name="form.button.Cancel"/>
+      </form>
 
   </metal:main-macro>
 </div>
