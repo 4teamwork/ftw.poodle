@@ -98,8 +98,8 @@
                   </tal:block>
               </tr>
           </table>
-          <input class="context" type="submit" value="Speichern" name="form.button.Save"/>
-          <input class="standalone" type="submit" value="Abbrechen" name="form.button.Cancel"/>
+          <input class="context" type="submit" value="Save" i18n:attributes="value izugpoodle_title_save;" name="form.button.Save"/>
+          <input class="standalone" type="submit" value="Cancel"  i18n:attributes="value izugpoodle_title_cancel;" name="form.button.Cancel"/>
       </form>
 
   </metal:main-macro>

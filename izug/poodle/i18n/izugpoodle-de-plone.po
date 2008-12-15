@@ -12,40 +12,13 @@ msgstr ""
 "Language-Code: de\n"
 "Language-Name: Deutsch\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: izugpoodle\n"
+"Domain: plone\n"
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
-msgid "izugpoodle_label_users"
-msgstr "Benutzer"
-
-msgid "izugpoodle_label_dates"
-msgstr "Datum"
-
-msgid "izugpoodle_label_legend"
-msgstr "Legende"
-
-msgid "izugpoodle_label_notfilledout"
-msgstr "nicht ausgefüllt"
-
-msgid "izugpoodle_label_positive"
-msgstr "Positiv"
-
-msgid "izugpoodle_label_negative"
-msgstr "Negativ"
-
-msgid "izugpoodle_title_cancel"
-msgstr "Abbrechen"
-
-msgid "izugpoodle_title_save"
-msgstr "Speichern"
-
-msgid "izugpoodle_desc_duration"
-msgstr "Zeit / Dauer"
-
-msgid "izugpoodle_desc_date"
-msgstr "Datum (TT. MM. JJJJ)"
-
 msgid "izugpoodle_type_name"
+msgstr "Meetingumfrage"
+
+msgid "Meeting poll"
 msgstr "Meetingumfrage"
 
 msgid "izugpoodle_type_description"

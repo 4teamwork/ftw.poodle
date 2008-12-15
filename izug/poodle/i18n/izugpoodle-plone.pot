@@ -9,37 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: zope/app/locales/extract.py\n"
-"Domain: izugpoodle\n"
-
-msgid "izugpoodle_label_users"
-msgstr ""
-
-msgid "izugpoodle_label_dates"
-msgstr ""
-
-msgid "izugpoodle_label_legend"
-msgstr ""
-
-msgid "izugpoodle_label_notfilledout"
-msgstr ""
-
-msgid "izugpoodle_label_positive"
-msgstr ""
-
-msgid "izugpoodle_label_negative"
-msgstr ""
-
-msgid "izugpoodle_title_cancel"
-msgstr ""
-
-msgid "izugpoodle_title_save"
-msgstr ""
-
-msgid "izugpoodle_desc_duration"
-msgstr ""
-
-msgid "izugpoodle_desc_date"
-msgstr ""
+"Domain: plone\n"
 
 msgid "izugpoodle_type_name"
 msgstr ""
