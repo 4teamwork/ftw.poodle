@@ -1,4 +1,4 @@
-def testEvent(object, event):
+def update(object, event):
     """
     event handler for poodle that is called when a poodle object is saved. 
     """

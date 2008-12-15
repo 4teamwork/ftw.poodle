@@ -12,7 +12,6 @@ from Products.ATContentTypes.content import schemata
 from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 
-from Products.AddRemoveWidget import AddRemoveWidget
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
 
@@ -26,7 +25,7 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     atapi.LinesField(
         name='users',
         vocabulary="getPossibleUsers",
-        widget=AddRemoveWidget
+        widget=atapi.InAndOutWidget
         (
             label="Users",
             label_msgid='izugpoodle_label_users',

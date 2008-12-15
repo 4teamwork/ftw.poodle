@@ -25,7 +25,7 @@
     <subscriber
       for=".interfaces.IPoodle
            Products.Archetypes.interfaces.IObjectEditedEvent"
-      handler=".eventhandlers.testEvent" />
+      handler=".eventhandlers.update" />
 
     <adapter
       provides=".interfaces.IPoodleConfig"

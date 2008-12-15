@@ -36,7 +36,10 @@ class PoodleView(BrowserView):
             portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
             user = portal_state.member()
             form = self.context.REQUEST.form
-            self.context.saveUserData(user.id, form.values())
+            values = form.values()
+            if values == ['']:
+                return
+            self.context.saveUserData(user.id, values)
             #{'form.button.Save': 'Speichern', 'hamu2.12.2008': '2.12.2008', 'hamu13.7.82': '13.7.82'}
         
         
