@@ -40,7 +40,7 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         widget=DataGridWidget(
             columns= {"date": Column("Date (TT. MM. JJJJ)"), "duration": Column("Time / Duration")},
             label='Dates',
-            label_msgid='izugpoodle_label_users',
+            label_msgid='izugpoodle_label_dates',
             i18n_domain='izugpoodle',
         ),
         columns= ("date", "duration")

@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="izugpoodle">
 
 <body>
 
@@ -24,23 +24,25 @@
           </tal:block>
       </h1>
 
-      <div tal:replace="structure provider:plone.belowcontenttitle" />
-
       <table class="legend">
-	       <tr><th colspan="2">Legend</th></tr>
+	       <tr><th colspan="2" i18n:translate="izugpoodle_label_legend">Legend</th></tr>
            <tr>
                <td class="not_voted">&nbsp;</td>
-               <td i18n:translate="izug_poodle_label_notfilledout">Didn't vote yet</td>
+               <td i18n:translate="izugpoodle_label_notfilledout">Didn't vote yet</td>
            </tr>
            <tr>
                <td class="positive">&nbsp;</td>
-               <td i18n:translate="izug_poodle_label_positive">Positive vote</td>
+               <td i18n:translate="izugpoodle_label_positive">Positive vote</td>
            </tr>
            <tr>
                <td class="negative">&nbsp;</td>
-               <td i18n:translate="izug_poodle_label_negative">Negative vote</td>
+               <td i18n:translate="izugpoodle_label_negative">Negative vote</td>
            </tr>
       </table>
+
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+
       <p class="documentDescription" tal:condition="exists:here/widget">
           <metal:field use-macro="python:here.widget('description', mode='view')">
               Description
@@ -86,9 +88,9 @@
                                    <span tal:condition="python: userdata == True"
                                          tal:content="string:√"/>
                                    <span tal:condition="python: userdata == False"
-                                         tal:content="string:x"/>
+                                         tal:content="string:"/>
                                    <span tal:condition="python: userdata == None"
-                                         tal:content="string:n"/>
+                                         tal:content="string:"/>
                               
                               </tal:if>
                           </td>

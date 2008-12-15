@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Mon Dec  15 17:17:15 2008\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+"Domain: izugpoodle\n"
+
+msgid "izugpoodle_label_users"
+msgstr ""
+
+msgid "izugpoodle_label_dates"
+msgstr ""
+
+msgid "izugpoodle_label_legend"
+msgstr ""
+
+msgid "izugpoodle_label_notfilledout"
+msgstr ""
+
+msgid "izugpoodle_label_positive"
+msgstr ""
+
+msgid "izugpoodle_label_negative"
+msgstr ""
