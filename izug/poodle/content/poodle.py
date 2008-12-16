@@ -189,5 +189,20 @@ class Poodle(base.ATCTContent):
                                  envelope_from, subject=subject,
                                  subtype='plain', charset=encoding,
                                  debug=False, From=send_from_address)    
-    
+
+    security.declarePrivate("getStats") 
+    def getStats(self):
+        data = self.getPoodleData()
+        dates = data.get('dates')
+        users = [u for u in data.keys() if u != 'dates']
+        result = {}
+        for date in dates:
+            result[date] = 0
+        for user in users:
+            for date in data[user]: 
+                if date == True: result[date] += 1
+            
+        return result
+            
+        
 atapi.registerType(Poodle, PROJECTNAME)

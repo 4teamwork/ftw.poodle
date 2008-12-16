@@ -27,15 +27,15 @@
       <table class="legend">
 	       <tr><th colspan="2" i18n:translate="izugpoodle_label_legend">Legend</th></tr>
            <tr>
-               <td class="not_voted">&nbsp;</td>
+               <td class="not_voted">&nbsp;&nbsp;</td>
                <td i18n:translate="izugpoodle_label_notfilledout">Didn't vote yet</td>
            </tr>
            <tr>
-               <td class="positive">&nbsp;</td>
+               <td class="positive">&nbsp;&nbsp;</td>
                <td i18n:translate="izugpoodle_label_positive">Positive vote</td>
            </tr>
            <tr>
-               <td class="negative">&nbsp;</td>
+               <td class="negative">&nbsp;&nbsp;</td>
                <td i18n:translate="izugpoodle_label_negative">Negative vote</td>
            </tr>
       </table>
