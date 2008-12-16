@@ -92,16 +92,19 @@ class Poodle(base.ATCTContent):
 #            return False # user not allowed to vote or already voted
 #        self.poodledata[user] = dates
 #        return 
+
+    security.declarePrivate("getPoodleData")
     def getPoodleData(self):
         if IPoodle.providedBy(self):
             return IPoodleConfig(self).getPoodleData()
         return {}
     
+    security.declarePrivate("setPoodleData")
     def setPoodleData(self, data):
         if IPoodle.providedBy(self):
             IPoodleConfig(self).setPoodleData(data)
 
-        
+    security.declarePrivate("updatePoodleData")        
     def updatePoodleData(self):
         poodledata = self.getPoodleData()
         poodledata = self.updateDates(poodledata)
@@ -109,6 +112,7 @@ class Poodle(base.ATCTContent):
         self.setPoodleData(poodledata)
         self.updateSharing()
         
+    security.declarePrivate("updateSharing")
     def updateSharing(self):
         """ 
         Allow the selected Users to view the object
@@ -120,11 +124,13 @@ class Poodle(base.ATCTContent):
         self.reindexObjectSecurity()
         # XXX: remove users?
 
+    security.declarePrivate("updateDates")
     def updateDates(self, poodledata):
         dates = self.getDates()
         poodledata["dates"] = [i['date'] for i in dates]
         return poodledata
         
+    security.declarePrivate("updateUsers")
     def updateUsers(self, poodledata):
         users = self.getUsers()
         dates = [i['date'] for i in self.getDates()]
@@ -147,6 +153,7 @@ class Poodle(base.ATCTContent):
                 del(poodledata[user])
         return poodledata
     
+    security.declarePrivate("saveUserData")
     def saveUserData(self, userid, dates):
         poodledata = self.getPoodleData()
         if userid in poodledata.keys():
@@ -156,6 +163,31 @@ class Poodle(base.ATCTContent):
                 else: 
                     poodledata[userid][date] = False
         self.setPoodleData(poodledata)
-    
+
+    security.declarePrivate("sendNotification")    
+    def sendNotification(self, user):
+        """Sends a notification after someone filled out the meeting poll"""
+        mtool = getToolByName(self, "portal_membership") 
+        portal = getToolByName(self, 'portal_url').getPortalObject()
+        site_properties = getToolByName(self, 'portal_properties').site_properties
+        
+        host = getToolByName(self, "MailHost")
+        creator = self.Creator() # send a mail to the creator of the poll
+        send_to_address = mtool.getMemberById(creator).getProperty('email')
+        if send_to_address == '': send_to_address = site_properties.email_from_address
+        send_from_address = site_properties.email_from_address
+        # XXX: translation not working!
+        #subject = u"%s %s" % (_(u"izugpoodle_mail_subject", default="Update on meeting poll at"), self.absolute_url())
+        subject = u"%s %s" % ("Update der Sitzungsumfrage unter", self.absolute_url())
+
+        template = getattr(self, 'poodle_notification')
+        encoding = portal.getProperty('email_charset')
+        envelope_from = send_from_address
+        # Cook from template
+        message = template(self,  username=user, url=self.absolute_url())
+        result = host.secureSend(message, send_to_address,
+                                 envelope_from, subject=subject,
+                                 subtype='plain', charset=encoding,
+                                 debug=False, From=send_from_address)    
     
 atapi.registerType(Poodle, PROJECTNAME)

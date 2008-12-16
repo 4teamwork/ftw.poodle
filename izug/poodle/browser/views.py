@@ -40,7 +40,7 @@ class PoodleView(BrowserView):
             if values == ['']:
                 return
             self.context.saveUserData(user.id, values)
-            self.sendNotification(user)
+            self.context.sendNotification(self.getUserFullname(user.id))
             
         
     def sendNotification(self, user):
@@ -55,7 +55,7 @@ class PoodleView(BrowserView):
         if send_to_address == '': send_to_address = site_properties.email_from_address
         send_from_address = site_properties.email_from_address
         subject = u"%s %s" % (_(u"izugpoodle_mail_subject", default="Update on meeting poll at"), self.context.absolute_url())
-#        import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
         template = getattr(self.context, 'poodle_notification')
         encoding = portal.getProperty('email_charset')
         envelope_from = send_from_address

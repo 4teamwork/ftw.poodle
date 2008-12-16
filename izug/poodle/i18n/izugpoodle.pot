@@ -47,4 +47,10 @@ msgstr ""
 msgid "izugpoodle_type_description"
 msgstr ""
 
+# default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}
+msgid "poodle_mailtemplate_body"
+msgstr ""
 
+# default: "Update on meeting poll at"
+msgid "izugpoodle_mail_subject"
+msgstr ""
