@@ -27,6 +27,11 @@
            Products.Archetypes.interfaces.IObjectEditedEvent"
       handler=".eventhandlers.update" />
 
+    <subscriber
+      for=".interfaces.IPoodle
+           Products.Archetypes.interfaces.IObjectInitializedEvent"
+      handler=".eventhandlers.update" />
+
     <adapter
       provides=".interfaces.IPoodleConfig"
       for=".interfaces.IPoodle"
