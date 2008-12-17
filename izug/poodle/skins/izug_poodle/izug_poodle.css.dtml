@@ -12,5 +12,9 @@ div.poodle_view td.negative {
 }
 div.poodle_view table.legend {
 	float: right;
+	width: auto;
+}
+div.poodle_view table.legend td {
+	padding: 0 0.4em;
 }
 /* </dtml-with> */

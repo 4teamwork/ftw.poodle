@@ -85,7 +85,9 @@ class Poodle(base.ATCTContent):
         for userid in userids:
             user = mtool.getMemberById(userid) 
             if user:
-                result.append((userid, user.getProperty('fullname')))
+                fullname = user.getProperty('fullname')
+                if fullname and len(fullname) > 0:
+                    result.append((userid, fullname))
         return result
             
 #    def setDatesForUser(user, dates):
