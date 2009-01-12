@@ -24,7 +24,7 @@
           </tal:block>
       </h1>
 
-      <table class="legend">
+      <table class="legend" metal:define-macro="poodle_legend">
 	       <tr><th colspan="2" i18n:translate="izugpoodle_label_legend">Legend</th></tr>
            <tr>
                <td class="not_voted">&nbsp;&nbsp;</td>
@@ -57,7 +57,7 @@
           </p>
       </tal:block>
       <form action="" method="post">
-          <table class="listing" 
+          <table class="listing" metal:define-macro="poodle_listingy"
                  tal:define="poodledata context/getPoodleData;
                              users context/getUsers;
                              dates context/getDates">
