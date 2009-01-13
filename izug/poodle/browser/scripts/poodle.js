@@ -18,6 +18,7 @@ function sendPoodleForm(){
 function abordPoodleForm(){
     jq("[@name=form.button.Cancel]").bind("click", function(e){
                 base_href = jq('base')[0].href;
+
                 jq.post(base_href+'/izug_poodle_table',function(data){
                     jq('#poodltablewrapper').html(data)
                 });
