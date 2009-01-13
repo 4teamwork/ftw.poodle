@@ -1,0 +1,51 @@
+<div id="poodltablewrapper">
+  <table id="poodltable" class="listing" metal:define-macro="poodle_listingy"
+         tal:define="poodledata context/getPoodleData;
+                     users context/getUsers;
+                     dates context/getDates">
+      <tr>
+          <th></th>
+          <th tal:repeat="date dates" tal:content="string:${date/date} - ${date/duration}"/>
+      </tr>
+      <tr tal:repeat="user users">
+          <tal:block define="currentUser python:view.isCurrentUser(user)">
+              <td tal:content="python:view.getUserFullname(user)"/>
+              <tal:block repeat="date dates">
+                  <td tal:define="userdata python: poodledata[user][date.get('date')];
+                                  cssclass python: view.getCssClass(userdata);
+                                  inputid python: view.getInputId(user, date)"
+                      tal:attributes="class cssclass">
+                      <tal:if condition="currentUser">
+                          <input type="checkbox"
+                                 checked="checked"
+                                 tal:condition="userdata"
+                                 tal:attributes="name inputid;
+                                                 value python:date['date'];"/>
+                          <input type="checkbox"
+                                 tal:condition="not:userdata"
+                                 tal:attributes="name inputid;
+                                                 value python:date['date'];"/>
+                      </tal:if>
+                      <tal:if condition="not:currentUser">
+                           <span tal:condition="python: userdata == True"
+                                 tal:content="string:√"/>
+                           <span tal:condition="python: userdata == False"
+                                 tal:content="string:"/>
+                           <span tal:condition="python: userdata == None"
+                                 tal:content="string:"/>
+                      
+                      </tal:if>
+                  </td>
+              </tal:block>
+          </tal:block>
+      </tr>
+      <tr>
+            <td i18n:translate="">
+                Results
+            </td>
+            <td tal:replace="structure python:view.poodleResults(data=poodledata)"> 
+                poodle results
+            </td>
+  </table>
+</div>
+

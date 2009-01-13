@@ -15,32 +15,22 @@ from plone.memoize import ram
 def _get_poodle_results_key(method, self, data):
     return str(data)
 
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile,PageTemplateFile
+
 class PoodleView(BrowserView):
-    
-    def isCurrentUser(self, userid):
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        user = portal_state.member()
-        return user.id == userid
-    
+
+
     def getUserFullname(self, userid):
         mtool = getToolByName(self.context, "portal_membership") 
         return mtool.getMemberById(userid).getProperty('fullname')
-    
-    def getCssClass(self, data):
-        if data == None: return "not_voted"
-        elif data == True: return "positive"
-        elif data == False: return "negative"
 
-    def getInputId(self, user, date):
-        date = date['date']
-        return queryUtility(IURLNormalizer).normalize(user + date)
-    
     def saveData(self):
         if hasattr(self.context.REQUEST, 'form'):
             portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
             user = portal_state.member()
             form = self.context.REQUEST.form
             values = form.values()
+            print values
             if values == ['']:
                 return
             self.context.saveUserData(user.id, values)
@@ -72,6 +62,32 @@ class PoodleView(BrowserView):
 
             #{'form.button.Save': 'Speichern', 'hamu2.12.2008': '2.12.2008', 'hamu13.7.82': '13.7.82'}
         
+        
+
+    def renderTable(self):
+        view = getMultiAdapter((self.context, self.request), name=u'izug_poodle_table')
+        return view()
+
+
+class PoodleTableView(BrowserView):
+
+    def isCurrentUser(self, userid):
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        user = portal_state.member()
+        return user.id == userid
+
+    def getUserFullname(self, userid):
+        mtool = getToolByName(self.context, "portal_membership") 
+        return mtool.getMemberById(userid).getProperty('fullname')
+
+    def getCssClass(self, data):
+        if data == None: return "not_voted"
+        elif data == True: return "positive"
+        elif data == False: return "negative"
+
+    def getInputId(self, user, date):
+        date = date['date']
+        return queryUtility(IURLNormalizer).normalize(user + date)
 
     @ram.cache(_get_poodle_results_key)
     def poodleResults(self,data=False):
@@ -101,4 +117,10 @@ class PoodleView(BrowserView):
                 v = "<b>%s</b>" % v
             html_data += "<td>%s</td>" % v
         return html_data
+
+class JQSubmitData(BrowserView):
+    def __call__(self):
+        izug_poodle_view = getMultiAdapter((self.context, self.request), name=u'izug_poodle_view')
+        izug_poodle_view.saveData()
+        return 1
         
