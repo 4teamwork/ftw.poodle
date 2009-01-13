@@ -61,7 +61,7 @@
             <div tal:replace="structure view/renderTable">renders poodle table</div>
             
           <input class="context allowMultiSubmit" type="submit" value="Save" i18n:attributes="value izugpoodle_title_save;" name="form.button.Save"/>
-          <input class="standalone" type="submit" value="Cancel"  i18n:attributes="value izugpoodle_title_cancel;" name="form.button.Cancel"/>
+          <input class="standalone allowMultiSubmit" type="submit" value="Cancel"  i18n:attributes="value izugpoodle_title_cancel;" name="form.button.Cancel"/>
         </form>
       <div tal:replace="structure provider:plone.belowcontentbody" />
   </metal:main-macro>
