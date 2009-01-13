@@ -97,6 +97,13 @@
                       </tal:block>
                   </tal:block>
               </tr>
+              <tr>
+                    <td i18n:translate="">
+                        Results
+                    </td>
+                    <td tal:replace="structure python:view.poodleResults(data=poodledata)"> 
+                        poodle results
+                    </td>
           </table>
           <input class="context" type="submit" value="Save" i18n:attributes="value izugpoodle_title_save;" name="form.button.Save"/>
           <input class="standalone" type="submit" value="Cancel"  i18n:attributes="value izugpoodle_title_cancel;" name="form.button.Cancel"/>

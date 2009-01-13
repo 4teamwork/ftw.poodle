@@ -10,6 +10,10 @@ from plone.i18n.normalizer.interfaces import IURLNormalizer
 from izug.poodle import poodleMessageFactory as _
 from izug.poodle.interfaces import IPoodle, IPoodleConfig
 
+from plone.memoize import ram
+
+def _get_poodle_results_key(method, self, data):
+    return str(data)
 
 class PoodleView(BrowserView):
     
@@ -68,5 +72,33 @@ class PoodleView(BrowserView):
 
             #{'form.button.Save': 'Speichern', 'hamu2.12.2008': '2.12.2008', 'hamu13.7.82': '13.7.82'}
         
+
+    @ram.cache(_get_poodle_results_key)
+    def poodleResults(self,data=False):
+        context = self.context.aq_inner
+        if not data:
+            data = context.getPoodleData()
         
+        dates = data['dates']
+        #remove last entry
+        data_date_only = data.values()[:-1]
+        counted = []
+        for base_d in dates:
+            counter = 0
+            for d in data_date_only:
+                if d[base_d]:
+                    counter += 1
+            counted.append(counter)
+                    
+        #get highest value
+        heightest = counted
+        heightest.sort()
+        heightest.reverse()
+        h_value = heightest[:1] and heightest[:1][0] or 0
+        html_data = ''
+        for v in counted:
+            if v == h_value:
+                v = "<b>%s</b>" % v
+            html_data += "<td>%s</td>" % v
+        return html_data
         
