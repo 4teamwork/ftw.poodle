@@ -14,7 +14,7 @@
         />
         
     <browser:page
-        for="..interfaces.IPoodle"
+        for="*"
         name="izug_poodle_table"
         class=".views.PoodleTableView"
         permission="zope.Public"

@@ -63,8 +63,8 @@ class PoodleView(BrowserView):
         
         
 
-    def renderTable(self):
-        view = getMultiAdapter((self.context, self.request), name=u'izug_poodle_table')
+    def renderTable(self, context):
+        view = getMultiAdapter((context, self.context.request), name=u'izug_poodle_table')
         return view()
 
 
@@ -95,9 +95,11 @@ class PoodleTableView(BrowserView):
             data = context.getPoodleData()
         
         dates = data['dates']
-        #remove last entry
-        data_date_only = data.values()[:-1]
+        #remove the dates entry from list
+        data_date_only = data.values()
+        data_date_only.remove(dates)
         counted = []
+        
         for base_d in dates:
             counter = 0
             for d in data_date_only:
@@ -116,6 +118,7 @@ class PoodleTableView(BrowserView):
                 v = "<b>%s</b>" % v
             html_data += "<td>%s</td>" % v
         return html_data
+
 
 class JQSubmitData(BrowserView):
     def __call__(self):
