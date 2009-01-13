@@ -30,7 +30,6 @@ class PoodleView(BrowserView):
             user = portal_state.member()
             form = self.context.REQUEST.form
             values = form.values()
-            print values
             if values == ['']:
                 return
             self.context.saveUserData(user.id, values)
@@ -121,6 +120,31 @@ class PoodleTableView(BrowserView):
 class JQSubmitData(BrowserView):
     def __call__(self):
         izug_poodle_view = getMultiAdapter((self.context, self.request), name=u'izug_poodle_view')
-        izug_poodle_view.saveData()
+        
+        #woke up archetype 10times
+        #izug_poodle_view.saveData()
+
+
+        # copied together, now we just once call the at object
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        userid = portal_state.member().id
+        form = self.context.REQUEST.form
+        dates = form.values()
+        
+        if dates == ['']:
+            return 1
+
+        poodledata = self.context.getPoodleData()
+        if userid in poodledata.keys():
+            for date in poodledata["dates"]:
+                if date in dates:
+                    poodledata[userid][date] = True
+                else: 
+                    poodledata[userid][date] = False
+        #self.setPoodleData(poodledata)
+        if IPoodle.providedBy(self):
+            IPoodleConfig(self).setPoodleData(data)
+        
+        
         return 1
         
