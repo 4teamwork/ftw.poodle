@@ -150,14 +150,26 @@ class JQSubmitData(BrowserView):
         self.context.updatePoodleData()
             
         
-        #send mail - XXX: send async by jquery (takes a lot of time)
-        izug_poodle_view.sendNotification(user)
+        # use izug.notification if available
+        #XXX refactor me (use sendNotification)
+        try:
+            from izug.notification.base import utils
+            mtool = getToolByName(self.context, "portal_membership") 
+            template = getattr(self.context, 'poodle_notification')
+            creator = self.context.Creator()
+            body = template(self,  username=user.getProperty('fullname'), url=self.context.absolute_url())
+            to = mtool.getMemberById(creator).getProperty('email')
+            utils.send_notification(to_list=[to], cc_list=[], object=object, message=body) 
+            
+        except ImportError:
+            #use old notifyer
+            izug_poodle_view.sendNotification(user)
         
         #create journal entry
         journal_view = queryMultiAdapter((self.context, self.context.REQUEST), name="journal_action")
         if journal_view is None:
             return 1
-        comment = 'Der Benutzer %s hat an der Umfrage (%s) teilgenommen' % (user.get('fullname', ''),self.context.Title())
+        comment = 'Der Benutzer %s hat an der Umfrage (%s) teilgenommen' % (user.getProperty('fullname'),self.context.Title())
         journal_view.addJournalEntry(self.context,comment)
         
         return 1
