@@ -1,5 +1,5 @@
 function sendPoodleForm(){
-    jq("[@name=form.button.Save]").bind("click", function(e){
+    jq("#poodleForm [@name=form.button.Save]").bind("click", function(e){
             infos = jq(".poodle_view form").serializeArray();
             base_href = jq('base')[0].href;
             jq.post(base_href+'/jq_submit_data', infos, function(callback){

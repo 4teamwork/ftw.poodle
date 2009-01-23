@@ -2,7 +2,7 @@ from Products.Five.browser import BrowserView
 
 from AccessControl import getSecurityManager  
 from Products.CMFCore.utils import getToolByName  
-from zope.component import getMultiAdapter  
+from zope.component import getMultiAdapter, queryMultiAdapter 
 from zope.component import queryUtility
 
 from plone.i18n.normalizer.interfaces import IURLNormalizer
@@ -48,7 +48,6 @@ class PoodleView(BrowserView):
         if send_to_address == '': send_to_address = site_properties.email_from_address
         send_from_address = site_properties.email_from_address
         subject = u"%s %s" % (_(u"izugpoodle_mail_subject", default="Update on meeting poll at"), self.context.absolute_url())
-        import pdb; pdb.set_trace()
         template = getattr(self.context, 'poodle_notification')
         encoding = portal.getProperty('email_charset')
         envelope_from = send_from_address
@@ -108,7 +107,7 @@ class PoodleTableView(BrowserView):
             counted.append(counter)
                     
         #get highest value
-        heightest = counted
+        heightest = counted[:]
         heightest.sort()
         heightest.reverse()
         h_value = heightest[:1] and heightest[:1][0] or 0
@@ -126,11 +125,11 @@ class JQSubmitData(BrowserView):
         
         #woke up archetype 10times
         #izug_poodle_view.saveData()
-
-
+        
         # copied together, now we just once call the at object
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        userid = portal_state.member().id
+        user = portal_state.member()
+        userid = user.id
         form = self.context.REQUEST.form
         dates = form.values()
         
@@ -147,7 +146,19 @@ class JQSubmitData(BrowserView):
         #self.setPoodleData(poodledata)
         if IPoodle.providedBy(self):
             IPoodleConfig(self).setPoodleData(data)
+        #XXX - use zope dict
+        self.context.updatePoodleData()
+            
         
+        #send mail - XXX: send async by jquery (takes a lot of time)
+        izug_poodle_view.sendNotification(user)
+        
+        #create journal entry
+        journal_view = queryMultiAdapter((self.context, self.context.REQUEST), name="journal_action")
+        if journal_view is None:
+            return 1
+        comment = 'Der Benutzer %s hat an der Umfrage (%s) teilgenommen' % (user.get('fullname', ''),self.context.Title())
+        journal_view.addJournalEntry(self.context,comment)
         
         return 1
         
