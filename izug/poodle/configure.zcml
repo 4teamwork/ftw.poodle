@@ -16,7 +16,7 @@
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
       name="default"
-      title="iZug meeting poll"
+      title="izug.poodle"
       directory="profiles/default"
       description="A product to make polls to find out when to have a meeting"
       provides="Products.GenericSetup.interfaces.EXTENSION"
