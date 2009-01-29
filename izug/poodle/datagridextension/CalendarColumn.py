@@ -29,7 +29,6 @@ class CalendarColumn(Column):
         
         @return new values which are constructed by processing data
         """
-        import pdb; pdb.set_trace()
         newValue = []
         
         for row in value:
