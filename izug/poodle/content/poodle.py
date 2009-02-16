@@ -86,7 +86,6 @@ class Poodle(base.ATCTContent):
             return (atapi.DisplayList())
         users = a_util.getAssignableUsers(self,'Contributor')
         results = []
-        import pdb;pdb.set_trace()
         for u in users:
             user = pas_tool.getUserById(u[0])
             results.append((u[0], user.getProperty('fullname','')))
