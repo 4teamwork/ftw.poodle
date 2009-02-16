@@ -10,6 +10,7 @@ from plone.i18n.normalizer.interfaces import IURLNormalizer
 
 from izug.poodle import poodleMessageFactory as _
 from izug.poodle.interfaces import IPoodle, IPoodleConfig
+from DateTime import DateTime
 
 from plone.memoize import ram
 
@@ -193,3 +194,45 @@ class JQSubmitData(BrowserView):
         
         return 1
         
+class ConvertToMeeting(BrowserView):
+    def __call__(self):
+        at_tool = getToolByName(self.context,'archetype_tool')
+        req = self.context.REQUEST
+        uid = req.get('poodle_uid',None)
+        if uid:
+            poodle = at_tool.getObject(uid)
+        else:
+            poodle = self.context.aq_inner
+
+        obj = self.context
+        
+        #set date inforamtion
+        start_date = None
+        end_date = None
+        start_time, end_time = req.get('date_time',None).split('-')
+        try:
+            start_date = DateTime('%s %s' % (req.get('date_from',None),start_time.strip()))
+            end_date = DateTime('%s %s' % (req.get('date_from',None),end_time.strip()))
+            obj.setStart_date(start_date)
+            obj.setEnd_date(end_date)
+        except:
+            return ""
+
+
+        users = poodle.getUsers()
+        newattendees = []
+        for u in users:
+            newattendees.append(dict(
+                                    contact=u,
+                                    present='',
+                                    excused='',
+                                    ))
+                                    
+        obj.setAttendees(tuple(newattendees))
+
+        #set type to meeting
+        obj.setMeeting_type(('meeting_dates',))
+        obj.processForm()
+        #set date/time
+        return 'done'
+

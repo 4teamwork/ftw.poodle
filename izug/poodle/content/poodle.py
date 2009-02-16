@@ -14,7 +14,8 @@ from Products.CMFCore.utils import getToolByName
 
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
-
+from zope.component import getMultiAdapter, queryMultiAdapter, queryUtility
+from izug.arbeitsraum.interfaces import IArbeitsraumUtils
 
 from izug.poodle.datagridextension.CalendarColumn import CalendarColumn
 from izug.poodle import poodleMessageFactory as _
@@ -77,18 +78,19 @@ class Poodle(base.ATCTContent):
 
     security.declarePrivate("getPossibleUsers")
     def getPossibleUsers(self):
-        pas, mtool = getToolByName(self, "acl_users"), getToolByName(self, "portal_membership") 
-        result = []
-        userids = []
-        [userids.append(u['userid']) for u in pas.searchUsers() if u['userid'] not in userids]
-        userids.sort()
-        for userid in userids:
-            user = mtool.getMemberById(userid) 
-            if user:
-                fullname = user.getProperty('fullname')
-                if fullname and len(fullname) > 0:
-                    result.append((userid, fullname))
-        return result
+        """Collect users with a given role and return them in a list.
+        """
+        pas_tool = getToolByName(self, 'acl_users')
+        a_util = queryUtility(IArbeitsraumUtils,name="arbeitsraum-utils")
+        if not a_util:
+            return (atapi.DisplayList())
+        users = a_util.getAssignableUsers(self,'Contributor')
+        results = []
+        import pdb;pdb.set_trace()
+        for u in users:
+            user = pas_tool.getUserById(u[0])
+            results.append((u[0], user.getProperty('fullname','')))
+        return results
             
 #    def setDatesForUser(user, dates):
 #        if user not in self.getUsers() or len(self.poodledata[user]) > 0: 

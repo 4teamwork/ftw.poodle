@@ -20,4 +20,9 @@ div.poodle_view table.legend {
 div.poodle_view table.legend td {
 	padding: 0 0.4em;
 }
+
+.DefineMeetingRow th.buttonContainer {
+    text-align:center;
+}
+
 /* </dtml-with> */

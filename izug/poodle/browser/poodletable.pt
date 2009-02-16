@@ -52,9 +52,14 @@
             </td>
       </tr>
       <tr class="DefineMeetingRow">
-        <th i18n:translate="">Define meeting date</th>
-        <th tal:repeat="date dates">
-            <input type="checkbox" name="meeting_date" tal:attributes="value date" />
+        <th>&nbsp;</th>
+        <th class="buttonContainer" tal:repeat="date dates">
+            <form action="" name="subform">
+                <input type="submit" name="subform.submit.button" value="Termin w&auml;hlen" />
+                <input type="text" name="date_from" tal:attributes="value date/date" style="display:none"/>
+                <input type="text" name="date_time" tal:attributes="value date/duration" style="display:none"/>
+                <input type="text" name="poodle_uid" tal:attributes="value context/UID" style="display:none"/>
+            </form>
         </th>
       
       </tr>

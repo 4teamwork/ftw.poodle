@@ -28,7 +28,12 @@
         permission="zope.Public"
         />
 
-
+    <browser:page
+        for="*"
+        name="convert_to_meeting"
+        class=".views.ConvertToMeeting"
+        permission="zope.Public"
+        />
 
 
     <browser:resourceDirectory
