@@ -17,5 +17,15 @@ class PoodleConfig(object):
     def setPoodleData(self, data):
         if data:
             self.annotations['poodledata'] = data
+            
+
+    def getMeetingDate(self.context):
+        return self.annotations.get('meetingdate','')
+    def setMeetingDate(self,data):
+        if data:
+            self.annotatations['meetingdate'] = data
+    
+    meeting_date = property(getMeetingDate, setMeetingDate)
+
         
     

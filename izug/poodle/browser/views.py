@@ -4,6 +4,7 @@ from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName  
 from zope.component import getMultiAdapter, queryMultiAdapter 
 from zope.component import queryUtility
+from zope.app.pagetemplate import ViewPageTemplateFile
 
 from plone.i18n.normalizer.interfaces import IURLNormalizer
 
@@ -68,6 +69,16 @@ class PoodleView(BrowserView):
 
 
 class PoodleTableView(BrowserView):
+    template = ViewPageTemplateFile('poodletable.pt')
+    def __call__(self):
+        at_tool = getToolByName(self.context,'archetype_tool')
+        uid = self.context.REQUEST.get('uid',None)
+        if uid:
+            context = at_tool.getObject(uid)
+
+        else:
+            context = self.context.aq_inner
+        return self.template(uid=context.UID())
 
     def isCurrentUser(self, userid):
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
@@ -89,6 +100,7 @@ class PoodleTableView(BrowserView):
 
     @ram.cache(_get_poodle_results_key)
     def poodleResults(self,data=False):
+        
         context = self.context.aq_inner
         if not data:
             data = context.getPoodleData()
@@ -122,6 +134,13 @@ class PoodleTableView(BrowserView):
 class JQSubmitData(BrowserView):
     def __call__(self):
         izug_poodle_view = getMultiAdapter((self.context, self.request), name=u'izug_poodle_view')
+        at_tool = getToolByName(self.context,'archetype_tool')
+        uid = self.context.REQUEST.get('uid',None)
+        if uid:
+            obj = at_tool.getObject(uid)
+        else:
+            obj = self.context.aq_inner
+        
         
         #woke up archetype 10times
         #izug_poodle_view.saveData()
@@ -136,7 +155,7 @@ class JQSubmitData(BrowserView):
         if dates == ['']:
             return 1
 
-        poodledata = self.context.getPoodleData()
+        poodledata = obj.getPoodleData()
         if userid in poodledata.keys():
             for date in poodledata["dates"]:
                 if date in dates:
@@ -144,10 +163,10 @@ class JQSubmitData(BrowserView):
                 else: 
                     poodledata[userid][date] = False
         #self.setPoodleData(poodledata)
-        if IPoodle.providedBy(self):
-            IPoodleConfig(self).setPoodleData(data)
+        #if IPoodle.providedBy(obj):
+        #    IPoodleConfig(obj).setPoodleData(data)
         #XXX - use zope dict
-        self.context.updatePoodleData()
+        obj.updatePoodleData()
             
         
         # use izug.notification if available
@@ -170,7 +189,7 @@ class JQSubmitData(BrowserView):
         if journal_view is None:
             return 1
         comment = 'Der Benutzer %s hat an der Umfrage (%s) teilgenommen' % (user.getProperty('fullname'),self.context.Title())
-        journal_view.addJournalEntry(self.context,comment)
+        journal_view.addJournalEntry(obj,comment)
         
         return 1
         

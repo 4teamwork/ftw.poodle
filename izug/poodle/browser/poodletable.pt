@@ -1,5 +1,9 @@
-<div id="poodltablewrapper">
-  <table id="poodltable" class="listing" metal:define-macro="poodle_listingy"
+<div tal:define="uid python:options['uid'];
+                 context python:context.archetype_tool.getObject(uid)"
+     tal:attributes="id string:poodltablewrapper_${context/UID}" i18n:domain="izug.poodle">
+
+<form action="" method="post" id="poodleForm">
+  <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable listing" metal:define-macro="poodle_listingy"
          tal:define="poodledata context/getPoodleData;
                      users context/getUsers;
                      dates context/getDates">
@@ -46,6 +50,20 @@
             <td tal:replace="structure python:view.poodleResults(data=poodledata)"> 
                 poodle results
             </td>
+      </tr>
+      <tr class="DefineMeetingRow">
+        <th i18n:translate="">Define meeting date</th>
+        <th tal:repeat="date dates">
+            <input type="checkbox" name="meeting_date" tal:attributes="value date" />
+        </th>
+      
+      </tr>
   </table>
+  <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />          
+  <input class="context allowMultiSubmit"
+         tal:attributes="id string:uid_${context/UID}" type="submit" value="Save" i18n:attributes="value izugpoodle_title_save;" name="form.button.Save"/>
+  <input class="standalone allowMultiSubmit" type="submit" value="Cancel"  i18n:attributes="value izugpoodle_title_cancel;" name="form.button.Cancel"/>
+</form>
 </div>
+
 

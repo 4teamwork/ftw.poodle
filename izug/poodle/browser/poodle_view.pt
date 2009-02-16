@@ -56,13 +56,9 @@
               Description
           </p>
       </tal:block>
-        <form action="" method="post" id="poodleForm">
         
             <div tal:replace="structure python:view.renderTable(context)">renders poodle table</div>
-            
-          <input class="context allowMultiSubmit" type="submit" value="Save" i18n:attributes="value izugpoodle_title_save;" name="form.button.Save"/>
-          <input class="standalone allowMultiSubmit" type="submit" value="Cancel"  i18n:attributes="value izugpoodle_title_cancel;" name="form.button.Cancel"/>
-        </form>
+
       <div tal:replace="structure provider:plone.belowcontentbody" />
   </metal:main-macro>
 </div>

@@ -1,15 +1,15 @@
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
 
-table#poodltable td.not_voted,
+.poodletable td.not_voted,
 table.legend td.not_voted{
-	background-color: #AAAAAA;
+	background-color: #AAAAAA !important;
 }
-table#poodltable td.positive, 
+.poodletable td.positive, 
 table.legend td.positive{
 	background-color: #AAFFAA;
 }
-table#poodltable td.negative,
+.poodletable td.negative,
 table.legend td.negative{
 	background-color: #FFAAAA;
 }
