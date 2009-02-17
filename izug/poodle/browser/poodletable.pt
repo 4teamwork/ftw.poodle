@@ -6,7 +6,8 @@
   <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable listing" metal:define-macro="poodle_listingy"
          tal:define="poodledata context/getPoodleData;
                      users context/getUsers;
-                     dates context/getDates">
+                     dates context/getDates;
+                     member here/@@plone_portal_state/member">
       <tr>
           <th></th>
           <th tal:repeat="date dates" tal:content="string:${date/date} - ${date/duration}"/>
@@ -51,7 +52,7 @@
                 poodle results
             </td>
       </tr>
-      <tr class="DefineMeetingRow">
+      <tr class="DefineMeetingRow" tal:condition="python:member.has_role('Owner',here)">
         <th>&nbsp;</th>
         <th class="buttonContainer" tal:repeat="date dates">
             <form action="" name="subform">
