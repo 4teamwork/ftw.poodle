@@ -1,6 +1,6 @@
 <div tal:define="uid python:options['uid'];
                  context python:context.archetype_tool.getObject(uid)"
-     tal:attributes="id string:poodltablewrapper_${context/UID}" i18n:domain="izug.poodle">
+     tal:attributes="id string:poodltablewrapper_${context/UID}" i18n:domain="izugpoodle">
 
 <form action="" method="post" id="poodleForm">
   <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable" metal:define-macro="poodle_listingy"
@@ -44,14 +44,14 @@
           </tal:block>
       </tr>
       <tr>
-            <td i18n:translate="">
+            <td i18n:translate="izugpoodle_results">
                 Results
             </td>
             <td tal:replace="structure python:view.poodleResults(data=poodledata)"> 
                 poodle results
             </td>
       </tr>
-      <tr class="DefineMeetingRow" tal:condition="python:member.has_role('Owner',here)">
+	  <tr class="DefineMeetingRow" tal:condition="python:member.has_role('Owner',here)">
         <th>&nbsp;</th>
         <th class="buttonContainer" tal:repeat="date dates">
             <form action="" name="subform">

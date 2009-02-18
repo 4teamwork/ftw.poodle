@@ -59,3 +59,13 @@ msgstr "Der Benutzer ${user_name} hat an der Meetingumfrage unter ${document_url
 # default: "Update on meeting poll at"
 msgid "Update der Meetingumfrage unter"
 msgstr ""
+
+msgid "izugpoodle_results"
+msgstr "Resultate"
+
+msgid "izugpoodle_define_meeting_date"
+msgstr "Termin wählen"
+
+
+
+
