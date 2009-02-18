@@ -3,15 +3,15 @@
 
 .poodletable td.not_voted,
 table.legend td.not_voted{
-	background-color: #AAAAAA !important;
+	/*background-color: #AAAAAA !important;*/
 }
 .poodletable td.positive, 
 table.legend td.positive{
-	background-color: #AAFFAA;
+	*/background-color: #AAFFAA;*/
 }
 .poodletable td.negative,
 table.legend td.negative{
-	background-color: #FFAAAA;
+	/*background-color: #FFAAAA;*/
 }
 div.poodle_view table.legend {
 	float: right;
@@ -22,7 +22,18 @@ div.poodle_view table.legend td {
 }
 
 .DefineMeetingRow th.buttonContainer {
-    text-align:center;
+    text-align:left;
+}
+
+.poodleListing .poodleItems {
+    margin-top:2em;
+}
+table.poodletable {
+    border:none;
+}
+
+table.poodletable td {
+    border-top:1px solid silver;
 }
 
 /* </dtml-with> */

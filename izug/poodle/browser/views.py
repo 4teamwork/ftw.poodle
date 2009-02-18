@@ -224,8 +224,6 @@ class ConvertToMeeting(BrowserView):
         for u in users:
             newattendees.append(dict(
                                     contact=u,
-                                    present='',
-                                    excused='',
                                     ))
                                     
         obj.setAttendees(tuple(newattendees))
