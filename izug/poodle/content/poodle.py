@@ -84,7 +84,7 @@ class Poodle(base.ATCTContent):
         a_util = queryUtility(IArbeitsraumUtils,name="arbeitsraum-utils")
         if not a_util:
             return (atapi.DisplayList())
-        users = a_util.getAssignableUsers(self,'Contributor')
+        users = a_util.getAssignableUsers(self,'Reader')
         results = []
         for u in users:
             user = pas_tool.getUserById(u[0])
