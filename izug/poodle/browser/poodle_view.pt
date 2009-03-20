@@ -12,17 +12,7 @@
     <metal:main-macro define-macro="main">
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
-      <h1 class="documentFirstHeading"> 
-          <tal:block condition="exists:here/widget">
-              <metal:field use-macro="python:here.widget('title', mode='view')">
-              Title
-              </metal:field>
-          </tal:block>
-          <tal:block condition="not:exists:here/widget">
-              <tal:block replace="structure view/icon" /> 
-              <span tal:content="view/title" tal:omit-tag="">Directory Id</span>
-          </tal:block>
-      </h1>
+	  <metal:block metal:use-macro="here/@@custom_header/macros/header | here/base/macros/header" />
 
       <table class="legend" metal:define-macro="poodle_legend">
 	       <tr><th colspan="2" i18n:translate="izugpoodle_label_legend">Legend</th></tr>
