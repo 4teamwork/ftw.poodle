@@ -7,7 +7,7 @@ table.legend td.not_voted{
 }
 .poodletable td.positive, 
 table.legend td.positive{
-	*/background-color: #AAFFAA;*/
+	/*background-color: #AAFFAA;*/
 }
 .poodletable td.negative,
 table.legend td.negative{
