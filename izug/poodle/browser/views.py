@@ -11,6 +11,7 @@ from plone.i18n.normalizer.interfaces import IURLNormalizer
 from izug.poodle import poodleMessageFactory as _
 from izug.poodle.interfaces import IPoodle, IPoodleConfig
 from DateTime import DateTime
+from Products.statusmessages.interfaces import IStatusMessage
 
 from plone.memoize import ram
 
@@ -191,8 +192,11 @@ class JQSubmitData(BrowserView):
             return 1
         comment = 'Der Benutzer %s hat an der Umfrage (%s) teilgenommen' % (user.getProperty('fullname'),self.context.Title())
         journal_view.addJournalEntry(obj,comment)
+
+        msg = _(u"Sie haben an der Umfrage teilgenommen.")
+        #IStatusMessage(self.request).addStatusMessage(msg, type='info')
         
-        return 1
+        return msg
         
 class ConvertToMeeting(BrowserView):
     def __call__(self):
@@ -209,14 +213,38 @@ class ConvertToMeeting(BrowserView):
         #set date inforamtion
         start_date = None
         end_date = None
-        start_time, end_time = req.get('date_time',None).split('-')
+        time = req.get('date_time',None).split('-')
+        msg_time = self.context.translate(u'poodle_msg_time_failed',domain="izugpoodle")
+        msg_date = self.context.translate(u'poodle_msg_date_failed',domain="izugpoodle")
+        
+        
+        if len(time)==2:
+            try:
+                start_time, end_time = time
+                DateTime(start_time)
+                DateTime(end_time)
+            except:
+                #we cannot parse the given time, so make a reset
+                start_time, end_time = ['00:00','00:00']
+                IStatusMessage(req).addStatusMessage(msg_time, type='error')
+        else:
+            start_time, end_time = ['00:00','00:00']
+            IStatusMessage(req).addStatusMessage(msg_time, type='error')
+        
         try:
             start_date = DateTime('%s %s' % (req.get('date_from',None),start_time.strip()))
             end_date = DateTime('%s %s' % (req.get('date_from',None),end_time.strip()))
             obj.setStart_date(start_date)
             obj.setEnd_date(end_date)
         except:
-            return ""
+            start_date = DateTime()
+            end_date = DateTime()
+            IStatusMessage(req).addStatusMessage(msg_date, type='error')
+
+        #set date/time
+        obj.setStart_date(start_date)
+        obj.setEnd_date(end_date)
+
 
 
         users = poodle.getUsers()
@@ -229,8 +257,8 @@ class ConvertToMeeting(BrowserView):
         obj.setAttendees(tuple(newattendees))
 
         #set type to meeting
-        obj.setMeeting_type(('meeting_dates',))
+        obj.setMeeting_type('meeting_dates_additional')
         obj.processForm()
-        #set date/time
+        
         return 'done'
 

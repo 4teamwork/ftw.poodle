@@ -5,8 +5,11 @@ function sendPoodleForm(){
             jq.post(base_href+'/jq_submit_data', infos, function(callback){
 
                     jq.post(base_href+'/izug_poodle_table', infos, function(data){
-                        jq('#poodltablewrapper_'+infos[infos.length -1].value).html(data)
+                        jq('#poodltablewrapper_'+infos[infos.length -1].value).html(data);
                     });
+                    
+                    jq('#kssPortalMessage').show();
+                    jq('#kssPortalMessage dd').html(callback);
 
                 });
             e.stopPropagation();

@@ -40,7 +40,7 @@ msgid "izugpoodle_title_save"
 msgstr "Speichern"
 
 msgid "izugpoodle_desc_duration"
-msgstr "Zeit / Dauer"
+msgstr "Dauer von/bis (Bsp: 14:00 - 17:00)"
 
 msgid "izugpoodle_desc_date"
 msgstr "Datum (TT. MM. JJJJ)"
@@ -66,6 +66,11 @@ msgstr "Resultate"
 msgid "izugpoodle_define_meeting_date"
 msgstr "Termin wählen"
 
+msgid "Sie haben an der Umfrage teilgenommen."
+msgstr "Sie haben an der Umfrage teilgenommen."
 
+msgid "poodle_msg_time_failed"
+msgstr "Die Uhrzeit wurde im falschen Format erfasst und konnte daher nicht übernommen werden. Bitte bearbeiten Sie das Objekt und korriergieren Sie die Uhrzeit"
 
-
+msgid "poodle_msg_date_failed"
+msgstr "Das Datum wurde im falschen Format erfasst und konnte daher nicht übernommen werden. Bitte bearbeiten Sie das Objekt und korriergieren Sie das Datum"
