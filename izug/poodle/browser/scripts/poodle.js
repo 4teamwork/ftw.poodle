@@ -3,7 +3,6 @@ function sendPoodleForm(){
             e.stopPropagation();
             e.preventDefault();
             var infos = jq("#"+this.id).closest('form#poodleForm').serializeArray();
-            console.log(infos);
             base_href = jq('base')[0].href;
             jq.post(base_href+'jq_submit_data', infos, function(callback){
 
@@ -27,7 +26,7 @@ function abordPoodleForm(){
                 var infos = jq(this).closest('form#poodleForm').serializeArray();
                 infos.push({"name":"appendix", "value":$(this).attr("id")});
                 jq.post(base_href+'izug_poodle_table', infos, function(data){
-                    jq('#poodltablewrapper_'+infos[infos.length -1].value).html(data)
+                    jq('#poodltablewrapper_'+infos[infos.length -1].value).html(data);
                 });
 
 
