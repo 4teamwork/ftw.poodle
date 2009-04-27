@@ -202,7 +202,9 @@ class ConvertToMeeting(BrowserView):
     def __call__(self):
         at_tool = getToolByName(self.context,'archetype_tool')
         req = self.context.REQUEST
-        uid = req.get('poodle_uid',None)
+        uid = req.get('uid',None)
+        appendix = req.get('appendix','button_0')
+        appendix = appendix.replace('button_','')
         if uid:
             poodle = at_tool.getObject(uid)
         else:
@@ -213,7 +215,7 @@ class ConvertToMeeting(BrowserView):
         #set date inforamtion
         start_date = None
         end_date = None
-        time = req.get('date_time',None).split('-')
+        time = req.get('date_time_%s' % appendix,None).split('-')
         msg_time = self.context.translate(u'poodle_msg_time_failed',domain="izugpoodle")
         msg_date = self.context.translate(u'poodle_msg_date_failed',domain="izugpoodle")
         
@@ -232,8 +234,9 @@ class ConvertToMeeting(BrowserView):
             IStatusMessage(req).addStatusMessage(msg_time, type='error')
         
         try:
-            start_date = DateTime('%s %s' % (req.get('date_from',None),start_time.strip()))
-            end_date = DateTime('%s %s' % (req.get('date_from',None),end_time.strip()))
+            date_from = req.get('date_from_%s' % appendix,None)
+            start_date = DateTime('%s %s' % (date_from,start_time.strip()))
+            end_date = DateTime('%s %s' % (date_from,end_time.strip()))
             obj.setStart_date(start_date)
             obj.setEnd_date(end_date)
         except:

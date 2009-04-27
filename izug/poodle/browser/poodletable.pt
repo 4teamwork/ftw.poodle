@@ -54,12 +54,11 @@
 	  <tr class="DefineMeetingRow" tal:condition="python:member.has_role('Owner',here)">
         <th>&nbsp;</th>
         <th class="buttonContainer" tal:repeat="date dates">
-            <form action="" name="subform">
-                <input type="submit" name="subform.submit.button" value="Termin w&auml;hlen" />
-                <input type="text" name="date_from" tal:attributes="value date/date" style="display:none"/>
-                <input type="text" name="date_time" tal:attributes="value date/duration" style="display:none"/>
-                <input type="text" name="poodle_uid" tal:attributes="value context/UID" style="display:none"/>
-            </form>
+            <input type="submit" tal:attributes="id string:button_${repeat/date/index}" name="subform.submit.button" value="Termin w&auml;hlen" />
+            <input type="text" tal:attributes="name string:date_from_${repeat/date/index}; 
+                                               value date/date" style="display:none"/>
+            <input type="text" tal:attributes="name string:date_time_${repeat/date/index};
+                                               value date/duration" style="display:none"/>
         </th>
       
       </tr>
