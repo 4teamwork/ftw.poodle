@@ -54,11 +54,14 @@ msgstr "Inhaltstyp, um ein Datum für ein Meeting auszumachen"
 
 # default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}"
 msgid "poodle_mailtemplate_body"
-msgstr "Der Benutzer ${user_name} hat an der Meetingumfrage unter ${document_url} auf der Webseite ${portal_title} (${portal_url}) teilgenommen."
+msgstr "${user_name} hat an der Terminumfrage unter ${document_url} im Portal ${portal_title} teilgenommen."
 
 # default: "Update on meeting poll at"
 msgid "Update der Meetingumfrage unter"
 msgstr ""
+
+msgid "izugpoodle_mail_subject"
+msgstr "Terminumfrage iZug "
 
 msgid "izugpoodle_results"
 msgstr "Resultate"

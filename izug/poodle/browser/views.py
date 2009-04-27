@@ -50,7 +50,7 @@ class PoodleView(BrowserView):
         send_to_address = mtool.getMemberById(creator).getProperty('email')
         if send_to_address == '': send_to_address = site_properties.email_from_address
         send_from_address = site_properties.email_from_address
-        subject = u"%s %s" % (_(u"izugpoodle_mail_subject", default="Update on meeting poll at"), self.context.absolute_url())
+        subject = self.context.translate(u"izugpoodle_mail_subject",domain="izugpoodle")
         template = getattr(self.context, 'poodle_notification')
         encoding = portal.getProperty('email_charset')
         envelope_from = send_from_address
