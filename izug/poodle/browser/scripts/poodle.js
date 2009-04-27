@@ -3,6 +3,7 @@ function sendPoodleForm(){
             e.stopPropagation();
             e.preventDefault();
             var infos = jq("#"+this.id).closest('form#poodleForm').serializeArray();
+            console.log(infos);
             base_href = jq('base')[0].href;
             jq.post(base_href+'jq_submit_data', infos, function(callback){
 
