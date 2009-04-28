@@ -19,7 +19,7 @@ function sendPoodleForm(){
 }
 
 function abordPoodleForm(){
-    jq("[name=form.button.Cancel]").live("click", function(e){
+    jq("[name=form.button.Cancel_poodle]").live("click", function(e){
                 e.stopPropagation();
                 e.preventDefault();
                 base_href = jq('base')[0].href;
