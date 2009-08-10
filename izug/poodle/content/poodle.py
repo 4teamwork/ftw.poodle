@@ -22,6 +22,8 @@ from izug.poodle import poodleMessageFactory as _
 from izug.poodle.interfaces import IPoodle, IPoodleConfig
 from izug.poodle.config import PROJECTNAME
 
+from izug.utils.users import getAssignableUsers
+
 PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     atapi.LinesField(
         name='users',
@@ -78,18 +80,7 @@ class Poodle(base.ATCTContent):
 
     security.declarePrivate("getPossibleUsers")
     def getPossibleUsers(self):
-        """Collect users with a given role and return them in a list.
-        """
-        pas_tool = getToolByName(self, 'acl_users')
-        a_util = queryUtility(IArbeitsraumUtils,name="arbeitsraum-utils")
-        if not a_util:
-            return (atapi.DisplayList())
-        users = a_util.getAssignableUsers(self,'Reader')
-        results = []
-        for u in users:
-            user = pas_tool.getUserById(u[0])
-            results.append((u[0], user.getProperty('fullname','')))
-        return results
+        return getAssignableUsers(self,'Reader')
             
 #    def setDatesForUser(user, dates):
 #        if user not in self.getUsers() or len(self.poodledata[user]) > 0: 
