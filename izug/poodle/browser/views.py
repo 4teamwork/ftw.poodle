@@ -97,23 +97,23 @@ class PoodleTableView(BrowserView):
         elif data == False: return "negative"
 
     def getInputId(self, user, date):
-        date = date['date']
+        date = str(date)
         return queryUtility(IURLNormalizer).normalize(user + date)
 
-    @ram.cache(_get_poodle_results_key)
     def poodleResults(self,data=False):
         
         context = self.context.aq_inner
         if not data:
             data = context.getPoodleData()
-        
         dates = data['dates']
+        ids = data['ids']
         #remove the dates entry from list
         data_date_only = data.values()
         data_date_only.remove(dates)
+        data_date_only.remove(ids)
         counted = []
-        
-        for base_d in dates:
+
+        for base_d in ids:
             counter = 0
             for d in data_date_only:
                 if d[base_d]:
@@ -153,13 +153,13 @@ class JQSubmitData(BrowserView):
         userid = user.id
         form = self.context.REQUEST.form
         dates = form.values()
-        
+
         if dates == ['']:
             return 1
 
         poodledata = obj.getPoodleData()
         if userid in poodledata.keys():
-            for date in poodledata["dates"]:
+            for date in poodledata["ids"]:
                 if date in dates:
                     poodledata[userid][date] = True
                 else: 
@@ -169,8 +169,6 @@ class JQSubmitData(BrowserView):
         #    IPoodleConfig(obj).setPoodleData(data)
         #XXX - use zope dict
         obj.updatePoodleData()
-            
-        
         # use izug.notification if available
         #XXX refactor me (use sendNotification)
         try:

@@ -88,6 +88,10 @@ class Poodle(base.ATCTContent):
 #        self.poodledata[user] = dates
 #        return 
 
+    security.declarePrivate("getDatesHash")
+    def getAviableChoices(self):
+        return [str(hash('%s%s' % (a['date'],a['duration']))) for a in self.getDates()]
+
     security.declarePrivate("getPoodleData")
     def getPoodleData(self):
         if IPoodle.providedBy(self):
@@ -123,28 +127,29 @@ class Poodle(base.ATCTContent):
     def updateDates(self, poodledata):
         dates = self.getDates()
         poodledata["dates"] = [i['date'] for i in dates]
+        poodledata['ids'] = self.getAviableChoices()
         return poodledata
         
     security.declarePrivate("updateUsers")
     def updateUsers(self, poodledata):
         users = self.getUsers()
-        dates = [i['date'] for i in self.getDates()]
+        choices = poodledata['ids']
         for user in users:
             if user not in poodledata.keys():
                 # add user to data and fill dates with None
                 userdates = {}
-                [userdates.setdefault(date) for date in dates]
+                [userdates.setdefault(choice) for choice in choices]
                 poodledata[user] = userdates                    
             else:
                 # check if the dates are correct
                 userdates = poodledata[user]
-                for date in dates:
-                    if date not in userdates.keys():
+                for choice in choices:
+                    if choice not in userdates.keys():
                         # a new date
-                        userdates[date] = None
+                        userdates[choice] = None
         # check if we need to remove any users from poodledata
         for user in poodledata.keys():
-            if user != 'dates' and user not in users:
+            if user not in ['dates', 'ids'] and user not in users:
                 del(poodledata[user])
         return poodledata
     

@@ -15,21 +15,23 @@
       <tr tal:repeat="user users">
           <tal:block define="currentUser python:view.isCurrentUser(user)">
               <td tal:attributes="style python:currentUser and 'opacity:1' or 'opacity:0.5'" tal:content="python:view.getUserFullname(user)"/>
-              <tal:block repeat="date dates">
-                  <td tal:define="userdata python: poodledata[user][date.get('date')];
+              <tal:block repeat="choice python:context.getAviableChoices()">
+                  <td tal:define="index repeat/choice/index;
+								  date_id python:poodledata['ids'][index];
+	                              userdata python: poodledata[user][date_id];
                                   cssclass python: view.getCssClass(userdata);
-                                  inputid python: view.getInputId(user, date)"
+                                  inputid python: view.getInputId(user, date_id)"
                       tal:attributes="class cssclass">
                       <tal:if condition="currentUser">
                           <input type="checkbox"
                                  checked="checked"
                                  tal:condition="userdata"
                                  tal:attributes="name inputid;
-                                                 value python:date['date'];"/>
+                                                 value python:choice;"/>
                           <input type="checkbox"
                                  tal:condition="not:userdata"
                                  tal:attributes="name inputid;
-                                                 value python:date['date'];"/>
+                                                 value python:choice;"/>
                       </tal:if>
                       <tal:if condition="not:currentUser">
                           <input type="checkbox"
@@ -47,7 +49,7 @@
             <td i18n:translate="izugpoodle_results">
                 Results
             </td>
-            <td tal:replace="structure python:view.poodleResults(data=poodledata)"> 
+            	<td tal:replace="structure python:view.poodleResults(data=poodledata)"> 
                 poodle results
             </td>
       </tr>
