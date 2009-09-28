@@ -4,6 +4,8 @@ Changelog
 
 0.3
 ---
+* [24.09.2009] Issue #661 — Arbeitsraum - Terminumfrage fehlerhaft bei gleichem Datum [vba]
+
 
 0.2
 ---
