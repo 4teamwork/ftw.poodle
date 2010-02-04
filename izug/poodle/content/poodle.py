@@ -81,7 +81,16 @@ class Poodle(base.ATCTContent):
     security.declarePrivate("getPossibleUsers")
     def getPossibleUsers(self):
         return getAssignableUsers(self,'Reader')
-            
+
+    #sort list, because we get an tuple (not a list)
+    def getUsers(self):
+        sorted_users = []
+        for u in getAssignableUsers(self,'Reader'):
+            if u[0] in self.getField('users').get(self):
+                sorted_users.append(u[0])
+        return sorted_users
+        
+
 #    def setDatesForUser(user, dates):
 #        if user not in self.getUsers() or len(self.poodledata[user]) > 0: 
 #            return False # user not allowed to vote or already voted
