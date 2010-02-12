@@ -1,10 +1,15 @@
 Changelog
 =========
 
+
 0.4
 ---
-* [04.02.2010] Issue #791 Sortierung Teilnehmende bei Termin falsch. [mle]
-* [04.02.2010] aus globalen Variablen lokale gemacht. [mle]
+
+* Issue #791 Sortierung Teilnehmende bei Termin falsch.
+  [04.02.2010, mle]
+  
+* aus globalen Variablen lokale gemacht.
+  [04.02.2010, mle]
 
 
 0.3
