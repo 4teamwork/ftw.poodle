@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.4
+0.3
 ---
 
 * Issue #791 Sortierung Teilnehmende bei Termin falsch.
@@ -11,10 +11,9 @@ Changelog
 * aus globalen Variablen lokale gemacht.
   [04.02.2010, mle]
 
-
-0.3
----
-* [24.09.2009] Issue #661 — Arbeitsraum - Terminumfrage fehlerhaft bei gleichem Datum [vba]
+* Issue #661 Arbeitsraum - Terminumfrage fehlerhaft bei gleichem Datum
+  https://extranet.4teamwork.ch/support/zug/maintlog/661
+  [24.09.2009, vba]
 
 
 0.2
