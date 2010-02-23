@@ -62,12 +62,8 @@ setup(name='izug.poodle',
       extras_require=dict(tests=tests_require),
       test_suite = 'izug.poodle.tests.test_docs.test_suite',
       entry_points="""
-      # -*- entry_points -*- 
-      [distutils.setup_keywords]
-      paster_plugins = setuptools.dist:assert_string_list
-
-      [egg_info.writers]
-      paster_plugins.txt = setuptools.command.egg_info:write_arg
+      # -*- entry_points -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
-      paster_plugins = ["ZopeSkel"],
       )
