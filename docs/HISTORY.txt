@@ -1,15 +1,12 @@
 Changelog
 =========
 
-0.4
----
-* [23.02.2010] Issue #838 Speichere ein PersistenDict in den Annotations. [mle]
-* [04.02.2010] Issue #791 Sortierung Teilnehmende bei Termin falsch. [mle]
-* [04.02.2010] aus globalen Variablen lokale gemacht. [mle]
-
 
 0.3
 ---
+
+* Issue #838 Speichere ein PersistenDict in den Annotations.
+  [23.02.2010, mle]
 
 * Issue #791 Sortierung Teilnehmende bei Termin falsch.
   [04.02.2010, mle]
