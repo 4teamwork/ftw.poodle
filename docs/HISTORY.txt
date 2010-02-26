@@ -5,6 +5,9 @@ Changelog
 0.3
 ---
 
+* Issue #838 Migrationscript für Issue #661 erstellt.
+  [26.02.2010, vba]
+
 * Issue #838 Speichere ein PersistenDict in den Annotations.
   [23.02.2010, mle]
 
