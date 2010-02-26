@@ -19,6 +19,11 @@ Changelog
   [24.09.2009, vba]
 
 
+UPGRADE-STEPS
+  * portal_setup: Upgradestep izug:poodle:default -> Migrate Poodle (0.2 → 0.3) ausführen.
+  
+
+
 0.2
 ---
 
