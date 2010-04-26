@@ -80,12 +80,12 @@ class Poodle(base.ATCTContent):
 
     security.declarePrivate("getPossibleUsers")
     def getPossibleUsers(self):
-        return getAssignableUsers(self,'Reader')
+        return getAssignableUsers(self,'Reader', show_contacts=False)
 
     #sort list, because we get an tuple (not a list)
     def getUsers(self):
         sorted_users = []
-        for u in getAssignableUsers(self,'Reader'):
+        for u in getAssignableUsers(self,'Reader', show_contacts=False):
             if u[0] in self.getField('users').get(self):
                 sorted_users.append(u[0])
         return sorted_users
