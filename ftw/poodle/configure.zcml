@@ -34,9 +34,9 @@
       handler=".eventhandlers.update" />
 
     <adapter
-      provides=".interfaces.IPoodleConfig"
+      provides=".interfaces.IPoodleVotes"
       for=".interfaces.IPoodle"
-      factory=".poodle_config.PoodleConfig" />
+      factory=".poodle_config.PoodleVotes" />
     
     <!-- -*- extra stuff goes here -*- -->
 

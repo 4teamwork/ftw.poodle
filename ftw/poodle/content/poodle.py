@@ -13,7 +13,7 @@ from Products.ATContentTypes.content import schemata
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
 from ftw.poodle import poodleMessageFactory as _
-from ftw.poodle.interfaces import IPoodle, IPoodleConfig
+from ftw.poodle.interfaces import IPoodle, IPoodleVotes
 from ftw.poodle.config import PROJECTNAME
 
 from Products.AutocompleteWidget import AutocompleteWidget
@@ -68,13 +68,13 @@ class Poodle(base.ATCTContent):
     security.declarePrivate("getPoodleData")
     def getPoodleData(self):
         if IPoodle.providedBy(self):
-            return IPoodleConfig(self).getPoodleData()
+            return IPoodleVotes(self).getPoodleData()
         return {}
     
     security.declarePrivate("setPoodleData")
     def setPoodleData(self, data):
         if IPoodle.providedBy(self):
-            IPoodleConfig(self).setPoodleData(data)
+            IPoodleVotes(self).setPoodleData(data)
 
     security.declarePrivate("updatePoodleData")        
     def updatePoodleData(self):

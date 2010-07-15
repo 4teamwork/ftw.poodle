@@ -1,12 +1,12 @@
 from zope.interface import implements
 from zope.component import adapts
 from zope.annotation.interfaces import IAnnotations
-from interfaces import IPoodle, IPoodleConfig
+from interfaces import IPoodle, IPoodleVotes
 from persistent.dict import PersistentDict 
 
 
-class PoodleConfig(object):
-    implements(IPoodleConfig)
+class PoodleVotes(object):
+    implements(IPoodleVotes)
     adapts(IPoodle)
     
     def __init__(self, context):
