@@ -3,7 +3,7 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName  
 from zope.component import getMultiAdapter, queryMultiAdapter 
 from ftw.poodle import poodleMessageFactory as _
-from ftw.poodle.interfaces import IPoodle, IPoodleVotes
+from ftw.poodle.interfaces import IPoodleVotes
 
 
 class JQSubmitData(BrowserView):
@@ -26,14 +26,15 @@ class JQSubmitData(BrowserView):
         if dates == ['']:
             return 1
 
-        poodledata = obj.getPoodleData()
+        votes = IPoodleVotes(obj)
+        poodledata = votes.getPoodleData()
         if userid in poodledata['users'].keys():
             for date in poodledata["ids"]:
                 poodledata['users'][userid][date] = bool(date in dates)
 
-        #store data
-        if IPoodle.providedBy(obj):
-            IPoodleVotes(obj).setPoodleData(poodledata)
+        # #store data
+        # if IPoodle.providedBy(obj):
+        #     IPoodleVotes(obj).setPoodleData(poodledata)
         
         
         ftw_poodle_view.sendNotification(user)

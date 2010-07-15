@@ -12,10 +12,8 @@ class AvailableUsersVocabulary(object):
     implements(IVocabularyFactory)
     
     def __call__(self, context):
-        """
-        this utility calls plone.principalsource.Users utility
+        """this utility calls plone.principalsource.Users utility
         so we can overwrite this one if we want a diffrent source.
-        
         """ 
         if context is None:
             context = getSite()

@@ -57,7 +57,7 @@ class Poodle(base.ATCTContent):
         
 
     security.declarePrivate("getDatesHash")
-    def getAvailableChoices(self):
+    def getDatesHash(self):
         return [str(hash('%s%s' % (a['date'],a['duration']))) for a in self.getDates()]
 
     security.declarePrivate("getPoodleData")
@@ -66,6 +66,10 @@ class Poodle(base.ATCTContent):
             return IPoodleVotes(self).getPoodleData()
         return {}
     
+    def get_poodle_votes(self):
+        if IPoodle.providedBy(self):
+            return IPoodleVotes(self)
+    
     security.declarePrivate("setPoodleData")
     def setPoodleData(self, data):
         if IPoodle.providedBy(self):
@@ -73,10 +77,9 @@ class Poodle(base.ATCTContent):
 
     security.declarePrivate("updatePoodleData")        
     def updatePoodleData(self):
-        poodledata = self.getPoodleData()
-        poodledata = self.updateDates(poodledata)
-        poodledata = self.updateUsers(poodledata)
-        self.setPoodleData(poodledata)
+        votes = self.get_poodle_votes()
+        votes.update_dates()
+        votes.update_users()
         self.updateSharing()
         
     security.declarePrivate("updateSharing")
@@ -91,40 +94,6 @@ class Poodle(base.ATCTContent):
         self.reindexObjectSecurity()
         # XXX: remove users?
 
-    security.declarePrivate("updateDates")
-    def updateDates(self, poodledata):
-        dates = self.getDates()
-        poodledata["dates"] = [i['date'] for i in dates]
-        poodledata['ids'] = self.getAvailableChoices()
-        return poodledata
-        
-    security.declarePrivate("updateUsers")
-    def updateUsers(self, poodledata):
-        users = self.getUsers()
-        choices = poodledata['ids']
-        
-        # create a users part if not available
-        if not hasattr(poodledata,'users'):
-            poodledata['users'] = {}
-        
-        for user in users:
-            if user not in poodledata['users'].keys():
-                # add user to data and fill dates with None
-                userdates = {}
-                [userdates.setdefault(choice) for choice in choices]
-                poodledata['users'][user] = userdates                    
-            else:
-                # check if the dates are correct
-                userdates = poodledata['users'][user]
-                for choice in choices:
-                    if choice not in userdates.keys():
-                        # a new date
-                        userdates[choice] = None
-        # check if we need to remove any users from poodledata
-        for user in poodledata['users'].keys():
-            if user not in users:
-                del(poodledata['users'][user])
-        return poodledata
     
     security.declarePrivate("saveUserData")
     def saveUserData(self, userid, dates):

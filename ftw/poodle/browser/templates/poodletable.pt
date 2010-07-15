@@ -1,6 +1,6 @@
 <div tal:define="uid python:options['uid'];
                  context python:context.reference_catalog.lookupObject(uid)"
-     tal:attributes="id string:poodltablewrapper_${context/UID}" i18n:domain="ftwpoodle">
+     tal:attributes="id string:poodltablewrapper_${context/UID}" i18n:domain="ftw.poodle">
 
 <form action="" method="post" id="poodleForm">
   <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable" metal:define-macro="poodle_listingy"
@@ -15,7 +15,7 @@
       <tr tal:repeat="user users">
           <tal:block define="currentUser python:view.isCurrentUser(user)">
               <td tal:attributes="style python:currentUser and 'opacity:1' or 'opacity:0.5'" tal:content="python:view.getUserFullname(user)"/>
-              <tal:block repeat="choice python:context.getAvailableChoices()">
+              <tal:block repeat="choice python:context.getDatesHash()">
                   <td tal:define="index repeat/choice/index;
 								  date_id python:poodledata['ids'][index];
 	                              userdata python: poodledata['users'][user][date_id];
