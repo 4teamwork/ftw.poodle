@@ -56,7 +56,7 @@ class PoodleView(BrowserView):
         envelope_from = send_from_address
         # Cook from template
         message = template(self,  username=self.getUserFullname(user.id), url=self.context.absolute_url())
-        result = host.secureSend(message, send_to_address,
+        result = host.send(message, send_to_address,
                                  envelope_from, subject=subject,
                                  subtype='plain', charset=encoding,
                                  debug=False, From=send_from_address)

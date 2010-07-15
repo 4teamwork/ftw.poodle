@@ -29,9 +29,7 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         vocabulary="getPossibleUsers",
         widget=atapi.InAndOutWidget
         (
-            label="Users",
-            label_msgid='ftwpoodle_label_users',
-            i18n_domain='ftwpoodle',
+            label=_(u'ftwpoodle_label_users', default=u'Users'),
         ),
         required=1,
         multivalued=1
@@ -43,9 +41,7 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         widget=DataGridWidget(
             auto_insert = True,  
             columns= {"date": Column(_(u"ftwpoodle_desc_date", default="Date (TT. MM. JJJJ)")), "duration": Column(_(u"ftwpoodle_desc_duration", default="Time / Duration"))},
-            label='Dates',
-            label_msgid='ftwpoodle_label_dates',
-            i18n_domain='ftwpoodle',
+            label=_(u'ftwpoodle_label_dates', default=u'Dates'),
         ),
         columns= ("date", "duration")
     ),
@@ -158,31 +154,7 @@ class Poodle(base.ATCTContent):
                     poodledata[userid][date] = False
         self.setPoodleData(poodledata)
 
-    security.declarePrivate("sendNotification")    
-    def sendNotification(self, user):
-        """Sends a notification after someone filled out the meeting poll"""
-        mtool = getToolByName(self, "portal_membership") 
-        portal = getToolByName(self, 'portal_url').getPortalObject()
-        site_properties = getToolByName(self, 'portal_properties').site_properties
-        
-        host = getToolByName(self, "MailHost")
-        creator = self.Creator() # send a mail to the creator of the poll
-        send_to_address = mtool.getMemberById(creator).getProperty('email')
-        if send_to_address == '': send_to_address = site_properties.email_from_address
-        send_from_address = site_properties.email_from_address
-        # XXX: translation not working!
-        #subject = u"%s %s" % (_(u"ftwpoodle_mail_subject", default="Update on meeting poll at"), self.absolute_url())
-        subject = u"%s %s" % ("Update der Sitzungsumfrage unter", self.absolute_url())
 
-        template = getattr(self, 'poodle_notification')
-        encoding = portal.getProperty('email_charset')
-        envelope_from = send_from_address
-        # Cook from template
-        message = template(self,  username=user, url=self.absolute_url())
-        result = host.secureSend(message, send_to_address,
-                                 envelope_from, subject=subject,
-                                 subtype='plain', charset=encoding,
-                                 debug=False, From=send_from_address)    
 
     security.declarePrivate("getStats") 
     def getStats(self):
