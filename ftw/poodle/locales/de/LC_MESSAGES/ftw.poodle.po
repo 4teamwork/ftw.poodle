@@ -1,0 +1,64 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-07-15 07:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ftw.poodle/ftw/poodle/browser/views.py:194
+msgid "Sie haben an der Umfrage teilgenommen."
+msgstr "Sie haben an der Umfrage teilgenommen"
+
+#. Default: "Date (TT. MM. JJJJ)"
+#: ftw.poodle/ftw/poodle/content/poodle.py:43
+msgid "ftwpoodle_desc_date"
+msgstr "Format (TT. MM. JJJJ)"
+
+#. Default: "Time / Duration"
+#: ftw.poodle/ftw/poodle/content/poodle.py:43
+msgid "ftwpoodle_desc_duration"
+msgstr "Zeit / Dauer"
+
+#. Default: "Dates"
+#: ftw.poodle/ftw/poodle/content/poodle.py:44
+msgid "ftwpoodle_label_dates"
+msgstr "Datum"
+
+#. Default: "Legend"
+#: ftw.poodle/ftw/poodle/browser/poodle_view.pt:18
+msgid "ftwpoodle_label_legend"
+msgstr "Legende"
+
+#. Default: "Negative vote"
+#: ftw.poodle/ftw/poodle/browser/poodle_view.pt:29
+msgid "ftwpoodle_label_negative"
+msgstr "Negativ"
+
+#. Default: "Didn't vote yet"
+#: ftw.poodle/ftw/poodle/browser/poodle_view.pt:21
+msgid "ftwpoodle_label_notfilledout"
+msgstr "Nicht teilgenommen"
+
+#. Default: "Positive vote"
+#: ftw.poodle/ftw/poodle/browser/poodle_view.pt:25
+msgid "ftwpoodle_label_positive"
+msgstr "Positiv"
+
+#. Default: "Users"
+#: ftw.poodle/ftw/poodle/content/poodle.py:32
+msgid "ftwpoodle_label_users"
+msgstr "Teilnehmer"
+
+#. Default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}"
+#: ftw.poodle/ftw/poodle/skins/ftw.poodle/poodle_notification.pt:11
+msgid "poodle_mailtemplate_body"
+msgstr ""
+
+
