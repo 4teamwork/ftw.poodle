@@ -8,33 +8,23 @@
     <browser:page
         for="..interfaces.IPoodle"
         name="ftw_poodle_view"
-        class=".views.PoodleView"
-        permission="zope.Public"
-        template="poodle_view.pt"
+        class=".poodle.PoodleView"
+        permission="zope2.View"
         />
         
     <browser:page
         for="*"
         name="ftw_poodle_table"
-        class=".views.PoodleTableView"
-        permission="zope.Public"
-        template="poodletable.pt"
+        class=".poodletable.PoodleTableView"
+        permission="zope2.View"
         />
 
     <browser:page
         for="..interfaces.IPoodle"
         name="jq_submit_data"
         class=".views.JQSubmitData"
-        permission="zope.Public"
+        permission="zope2.View"
         />
-
-    <browser:page
-        for="*"
-        name="convert_to_meeting"
-        class=".views.ConvertToMeeting"
-        permission="zope.Public"
-        />
-
 
     <browser:resourceDirectory
         name="poodle-scripts"

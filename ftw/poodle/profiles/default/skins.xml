@@ -8,7 +8,7 @@
 
  <object name="ftw.poodle"
     meta_type="Filesystem Directory View"
-    directory="izug.poodle:skins/ftw.poodle"/>
+    directory="ftw.poodle:skins/ftw.poodle"/>
   
   <skin-path name="*">
   <layer name="ftw.poodle"

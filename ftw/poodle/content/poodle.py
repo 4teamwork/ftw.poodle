@@ -1,4 +1,5 @@
 from zope.interface import implements
+from zope import schema, component
 
 try:
     from Products.LinguaPlone import public as atapi
@@ -9,27 +10,23 @@ from AccessControl import ClassSecurityInfo
 from Products.ATContentTypes.content import base
 
 from Products.ATContentTypes.content import schemata
-from Products.CMFCore import permissions
-from Products.CMFCore.utils import getToolByName
-
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
-from zope.component import getMultiAdapter, queryMultiAdapter, queryUtility
-from ftw.arbeitsraum.interfaces import IArbeitsraumUtils
-
 from ftw.poodle import poodleMessageFactory as _
 from ftw.poodle.interfaces import IPoodle, IPoodleConfig
 from ftw.poodle.config import PROJECTNAME
 
-from ftw.utils.users import getAssignableUsers
+from Products.AutocompleteWidget import AutocompleteWidget
 
 PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     atapi.LinesField(
         name='users',
-        vocabulary="getPossibleUsers",
+        vocabulary_factory="ftw.poodle.users",
+        enforceVocabulary=True,
         widget=atapi.InAndOutWidget
         (
             label=_(u'ftwpoodle_label_users', default=u'Users'),
+            actb_expand_onfocus=1,
         ),
         required=1,
         multivalued=1
@@ -59,24 +56,10 @@ class Poodle(base.ATCTContent):
     portal_type = "Meeting poll"
     schema = PoodleSchema
 
-    security.declarePrivate("getPossibleUsers")
-    def getPossibleUsers(self):
-        return getAssignableUsers(self,'Reader', show_contacts=False)
-
-    #sort list, because we get an tuple (not a list)
-    def getUsers(self):
-        sorted_users = []
-        for u in getAssignableUsers(self,'Reader', show_contacts=False):
-            if u[0] in self.getField('users').get(self):
-                sorted_users.append(u[0])
-        return sorted_users
+    def get_users(self):
+        factory = component.getUtility(schema.interfaces.IVocabularyFactory, name='ftw.poodle.users', context=self)
+        return [t.value for t in factory(self)]
         
-
-#    def setDatesForUser(user, dates):
-#        if user not in self.getUsers() or len(self.poodledata[user]) > 0: 
-#            return False # user not allowed to vote or already voted
-#        self.poodledata[user] = dates
-#        return 
 
     security.declarePrivate("getDatesHash")
     def getAviableChoices(self):

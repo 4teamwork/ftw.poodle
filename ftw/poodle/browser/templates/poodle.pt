@@ -8,11 +8,10 @@
 
 <body>
 
-<div metal:fill-slot="main" class="poodle_view" tal:define="dummy view/saveData">
-    <metal:main-macro define-macro="main">
-      <div tal:replace="structure provider:plone.abovecontenttitle" />
+<div metal:fill-slot="content-core" class="poodle_view">
+    <metal:main-macro define-macro="content-core">
 
-	  <metal:block metal:use-macro="here/@@custom_header/macros/header | here/base/macros/header" />
+
 
       <table class="legend" metal:define-macro="poodle_legend">
 	       <tr><th colspan="2" i18n:translate="ftwpoodle_label_legend">Legend</th></tr>
@@ -29,8 +28,6 @@
                <td i18n:translate="ftwpoodle_label_negative">Negative vote</td>
            </tr>
       </table>
-
-      <div tal:replace="structure provider:plone.belowcontenttitle" />
 
 
       <p class="documentDescription" tal:condition="exists:here/widget">

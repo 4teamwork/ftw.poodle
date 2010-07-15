@@ -1,11 +1,13 @@
 <div tal:define="uid python:options['uid'];
-                 context python:context.archetype_tool.getObject(uid)"
+                 context python:context.reference_catalog.lookupObject(uid)"
      tal:attributes="id string:poodltablewrapper_${context/UID}" i18n:domain="ftwpoodle">
 
 <form action="" method="post" id="poodleForm">
   <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable" metal:define-macro="poodle_listingy"
          tal:define="poodledata context/getPoodleData;
-                     users context/getUsers;
+                     users python:poodledata.keys();
+                     dummy python: users.remove('ids');
+                     dummy python: users.remove('dates');
                      dates context/getDates;
                      member here/@@plone_portal_state/member">
       <tr>
@@ -52,17 +54,6 @@
             	<td tal:replace="structure python:view.poodleResults(data=poodledata)"> 
                 poodle results
             </td>
-      </tr>
-	  <tr class="DefineMeetingRow" tal:condition="python:member.has_role('Owner',here)">
-        <th>&nbsp;</th>
-        <th class="buttonContainer" tal:repeat="date dates">
-            <input type="submit" tal:attributes="id string:button_${repeat/date/index}" name="subform.submit.button" value="Termin w&auml;hlen" />
-            <input type="text" tal:attributes="name string:date_from_${repeat/date/index}; 
-                                               value string:adm_${date/date}" style="display:none"/>
-            <input type="text" tal:attributes="name string:date_time_${repeat/date/index};
-                                               value string:adm_${date/duration}" style="display:none"/>
-        </th>
-      
       </tr>
   </table>
   <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />          
