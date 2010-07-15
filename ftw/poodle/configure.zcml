@@ -36,7 +36,7 @@
     <adapter
       provides=".interfaces.IPoodleVotes"
       for=".interfaces.IPoodle"
-      factory=".poodle_config.PoodleVotes" />
+      factory=".poodle_votes.PoodleVotes" />
     
     <!-- -*- extra stuff goes here -*- -->
 

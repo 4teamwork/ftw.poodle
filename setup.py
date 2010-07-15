@@ -49,7 +49,9 @@ setup(name='ftw.poodle',
       include_package_data=True,
       zip_safe=False,
       install_requires=['setuptools',
-                        # -*- Extra requirements: -*-
+                        'Products.DataGridField',
+                        'Products.AutocompleteWidget',  
+                        'plone.principalsource'
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),

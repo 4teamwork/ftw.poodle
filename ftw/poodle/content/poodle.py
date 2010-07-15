@@ -1,10 +1,7 @@
 from zope.interface import implements
 from zope import schema, component
 
-try:
-    from Products.LinguaPlone import public as atapi
-except ImportError:
-    from Products.Archetypes import atapi
+from Products.Archetypes import atapi
 
 from AccessControl import ClassSecurityInfo
 from Products.ATContentTypes.content import base
@@ -15,8 +12,6 @@ from Products.DataGridField.Column import Column
 from ftw.poodle import poodleMessageFactory as _
 from ftw.poodle.interfaces import IPoodle, IPoodleVotes
 from ftw.poodle.config import PROJECTNAME
-
-from Products.AutocompleteWidget import AutocompleteWidget
 
 PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     atapi.LinesField(
