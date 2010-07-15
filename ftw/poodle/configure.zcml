@@ -2,7 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    i18n_domain="izug.poodle">
+    i18n_domain="ftw.poodle">
 
     <five:registerPackage package="." initialize=".initialize" />
 
@@ -16,7 +16,7 @@
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
       name="default"
-      title="izug.poodle"
+      title="ftw.poodle"
       directory="profiles/default"
       description="A product to make polls to find out when to have a meeting"
       provides="Products.GenericSetup.interfaces.EXTENSION"
@@ -45,7 +45,7 @@
       destination="0.3"
       title="Migrate Poodle"
       description="Fix Annotation structure from pre0.3 Poodles"
-      profile="izug.poodle:default"
+      profile="ftw.poodle:default"
       handler=".upgrades.fix_poodles"
       />
 

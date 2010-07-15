@@ -1,8 +1,8 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:cmf="http://namespaces.zope.org/cmf"
-    i18n_domain="uster.navigation">
+    i18n_domain="ftw.poodle">
 
-   <cmf:registerDirectory name="izug_poodle"/>
+   <cmf:registerDirectory name="ftw.poodle"/>
 
 </configure>

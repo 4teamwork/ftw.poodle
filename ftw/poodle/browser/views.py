@@ -8,8 +8,8 @@ from zope.app.pagetemplate import ViewPageTemplateFile
 
 from plone.i18n.normalizer.interfaces import IURLNormalizer
 
-from izug.poodle import poodleMessageFactory as _
-from izug.poodle.interfaces import IPoodle, IPoodleConfig
+from ftw.poodle import poodleMessageFactory as _
+from ftw.poodle.interfaces import IPoodle, IPoodleConfig
 from DateTime import DateTime
 from Products.statusmessages.interfaces import IStatusMessage
 
@@ -50,7 +50,7 @@ class PoodleView(BrowserView):
         send_to_address = mtool.getMemberById(creator).getProperty('email')
         if send_to_address == '': send_to_address = site_properties.email_from_address
         send_from_address = site_properties.email_from_address
-        subject = self.context.translate(u"izugpoodle_mail_subject",domain="izugpoodle")
+        subject = self.context.translate(u"ftwpoodle_mail_subject",domain="ftwpoodle")
         template = getattr(self.context, 'poodle_notification')
         encoding = portal.getProperty('email_charset')
         envelope_from = send_from_address
@@ -66,7 +66,7 @@ class PoodleView(BrowserView):
         
 
     def renderTable(self, context):
-        view = getMultiAdapter((context, self.context.request), name=u'izug_poodle_table')
+        view = getMultiAdapter((context, self.context.request), name=u'ftw_poodle_table')
         return view()
 
 
@@ -135,7 +135,7 @@ class PoodleTableView(BrowserView):
 
 class JQSubmitData(BrowserView):
     def __call__(self):
-        izug_poodle_view = getMultiAdapter((self.context, self.request), name=u'izug_poodle_view')
+        ftw_poodle_view = getMultiAdapter((self.context, self.request), name=u'ftw_poodle_view')
         at_tool = getToolByName(self.context,'archetype_tool')
         uid = self.context.REQUEST.get('uid',None)
         if uid:
@@ -145,7 +145,7 @@ class JQSubmitData(BrowserView):
         
         
         #woke up archetype 10times
-        #izug_poodle_view.saveData()
+        #ftw_poodle_view.saveData()
         
         # copied together, now we just once call the at object
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
@@ -169,10 +169,10 @@ class JQSubmitData(BrowserView):
         #    IPoodleConfig(obj).setPoodleData(data)
         #XXX - use zope dict
         obj.updatePoodleData()
-        # use izug.notification if available
+        # use ftw.notification if available
         #XXX refactor me (use sendNotification)
         try:
-            from izug.notification.base import utils
+            from ftw.notification.base import utils
             mtool = getToolByName(self.context, "portal_membership") 
             template = getattr(self.context, 'poodle_notification')
             creator = self.context.Creator()
@@ -182,7 +182,7 @@ class JQSubmitData(BrowserView):
             
         except ImportError:
             #use old notifyer
-            izug_poodle_view.sendNotification(user)
+            ftw_poodle_view.sendNotification(user)
         
         #create journal entry
         journal_view = queryMultiAdapter((self.context, self.context.REQUEST), name="journal_action")
@@ -214,8 +214,8 @@ class ConvertToMeeting(BrowserView):
         start_date = None
         end_date = None
         time = req.get('date_time_%s' % appendix,None).replace('adm_','').split('-')
-        msg_time = self.context.translate(u'poodle_msg_time_failed',domain="izugpoodle")
-        msg_date = self.context.translate(u'poodle_msg_date_failed',domain="izugpoodle")
+        msg_time = self.context.translate(u'poodle_msg_time_failed',domain="ftwpoodle")
+        msg_date = self.context.translate(u'poodle_msg_date_failed',domain="ftwpoodle")
         
         
         if len(time)==2:

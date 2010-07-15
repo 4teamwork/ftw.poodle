@@ -6,12 +6,12 @@
         cookie_persistence="False"
         request_varname="plone_skin">
 
- <object name="izug_poodle"
+ <object name="ftw.poodle"
     meta_type="Filesystem Directory View"
-    directory="izug.poodle:skins/izug_poodle"/>
+    directory="izug.poodle:skins/ftw.poodle"/>
   
   <skin-path name="*">
-  <layer name="izug_poodle"
+  <layer name="ftw.poodle"
      insert-after="custom"/> 
  </skin-path>
 </object>

@@ -1,13 +1,13 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="izug.poodle">
+    i18n_domain="ftw.poodle">
 
     <include package="plone.app.contentmenu" />
 
     <browser:page
         for="..interfaces.IPoodle"
-        name="izug_poodle_view"
+        name="ftw_poodle_view"
         class=".views.PoodleView"
         permission="zope.Public"
         template="poodle_view.pt"
@@ -15,7 +15,7 @@
         
     <browser:page
         for="*"
-        name="izug_poodle_table"
+        name="ftw_poodle_table"
         class=".views.PoodleTableView"
         permission="zope.Public"
         template="poodletable.pt"

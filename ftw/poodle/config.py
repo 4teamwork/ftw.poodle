@@ -1,8 +1,8 @@
 """Common configuration constants
 """
 
-PROJECTNAME = 'izug.poodle'
+PROJECTNAME = 'ftw.poodle'
 
 ADD_PERMISSIONS = {
-    'Meeting poll': 'izug.poodle: Add Meeting poll',
+    'Meeting poll': 'ftw.poodle: Add Meeting poll',
 }

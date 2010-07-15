@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="izugpoodle">
+      i18n:domain="ftw.poodle">
 
 <body>
 
@@ -15,18 +15,18 @@
 	  <metal:block metal:use-macro="here/@@custom_header/macros/header | here/base/macros/header" />
 
       <table class="legend" metal:define-macro="poodle_legend">
-	       <tr><th colspan="2" i18n:translate="izugpoodle_label_legend">Legend</th></tr>
+	       <tr><th colspan="2" i18n:translate="ftwpoodle_label_legend">Legend</th></tr>
            <tr>
                <td class="not_voted">&nbsp;&nbsp;</td>
-               <td i18n:translate="izugpoodle_label_notfilledout">Didn't vote yet</td>
+               <td i18n:translate="ftwpoodle_label_notfilledout">Didn't vote yet</td>
            </tr>
            <tr>
                <td class="positive">&nbsp;&nbsp;</td>
-               <td i18n:translate="izugpoodle_label_positive">Positive vote</td>
+               <td i18n:translate="ftwpoodle_label_positive">Positive vote</td>
            </tr>
            <tr>
                <td class="negative">&nbsp;&nbsp;</td>
-               <td i18n:translate="izugpoodle_label_negative">Negative vote</td>
+               <td i18n:translate="ftwpoodle_label_negative">Negative vote</td>
            </tr>
       </table>
 

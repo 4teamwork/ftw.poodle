@@ -15,14 +15,13 @@ from Products.CMFCore.utils import getToolByName
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
 from zope.component import getMultiAdapter, queryMultiAdapter, queryUtility
-from izug.arbeitsraum.interfaces import IArbeitsraumUtils
+from ftw.arbeitsraum.interfaces import IArbeitsraumUtils
 
-from izug.poodle.datagridextension.CalendarColumn import CalendarColumn
-from izug.poodle import poodleMessageFactory as _
-from izug.poodle.interfaces import IPoodle, IPoodleConfig
-from izug.poodle.config import PROJECTNAME
+from ftw.poodle import poodleMessageFactory as _
+from ftw.poodle.interfaces import IPoodle, IPoodleConfig
+from ftw.poodle.config import PROJECTNAME
 
-from izug.utils.users import getAssignableUsers
+from ftw.utils.users import getAssignableUsers
 
 PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
     atapi.LinesField(
@@ -31,8 +30,8 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         widget=atapi.InAndOutWidget
         (
             label="Users",
-            label_msgid='izugpoodle_label_users',
-            i18n_domain='izugpoodle',
+            label_msgid='ftwpoodle_label_users',
+            i18n_domain='ftwpoodle',
         ),
         required=1,
         multivalued=1
@@ -43,27 +42,13 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
         allow_empty_rows = False,
         widget=DataGridWidget(
             auto_insert = True,  
-            columns= {"date": Column(_(u"izugpoodle_desc_date", default="Date (TT. MM. JJJJ)")), "duration": Column(_(u"izugpoodle_desc_duration", default="Time / Duration"))},
+            columns= {"date": Column(_(u"ftwpoodle_desc_date", default="Date (TT. MM. JJJJ)")), "duration": Column(_(u"ftwpoodle_desc_duration", default="Time / Duration"))},
             label='Dates',
-            label_msgid='izugpoodle_label_dates',
-            i18n_domain='izugpoodle',
+            label_msgid='ftwpoodle_label_dates',
+            i18n_domain='ftwpoodle',
         ),
         columns= ("date", "duration")
     ),
-    
-    # XXX: Ein Datumsfeld waere schoen; wird von Datagridfield noch nicht unterstuetzt, deshalb habe ich selber mit "CalendarColumn" angefangen.
-    # Funktioniert leider noch nicht. So wuerde es gehen:
-    #
-    # DataGridField(
-    #     name='dates',
-    #     widget=DataGridWidget(
-    #         columns= {"date": CalendarColumn("Date"), },
-    #         label='Dates',
-    #         label_msgid='izugpoodle_label_users',
-    #         i18n_domain='izugpoodle',
-    #     ),
-    #     columns= ("date",)
-    # ),
 ))
 
 schemata.finalizeATCTSchema(PoodleSchema, moveDiscussion=False)
@@ -186,7 +171,7 @@ class Poodle(base.ATCTContent):
         if send_to_address == '': send_to_address = site_properties.email_from_address
         send_from_address = site_properties.email_from_address
         # XXX: translation not working!
-        #subject = u"%s %s" % (_(u"izugpoodle_mail_subject", default="Update on meeting poll at"), self.absolute_url())
+        #subject = u"%s %s" % (_(u"ftwpoodle_mail_subject", default="Update on meeting poll at"), self.absolute_url())
         subject = u"%s %s" % ("Update der Sitzungsumfrage unter", self.absolute_url())
 
         template = getattr(self, 'poodle_notification')

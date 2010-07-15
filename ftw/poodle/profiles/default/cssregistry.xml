@@ -2,5 +2,5 @@
 <object name="portal_css" meta_type="Stylesheets Registry" autogroup="False">
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on" expression=""
-    id="izug_poodle.css" media="" rel="stylesheet" rendering="import"/>
+    id="poodle.css" media="" rel="stylesheet" rendering="import"/>
 </object>

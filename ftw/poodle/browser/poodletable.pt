@@ -1,6 +1,6 @@
 <div tal:define="uid python:options['uid'];
                  context python:context.archetype_tool.getObject(uid)"
-     tal:attributes="id string:poodltablewrapper_${context/UID}" i18n:domain="izugpoodle">
+     tal:attributes="id string:poodltablewrapper_${context/UID}" i18n:domain="ftwpoodle">
 
 <form action="" method="post" id="poodleForm">
   <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable" metal:define-macro="poodle_listingy"
@@ -46,7 +46,7 @@
           </tal:block>
       </tr>
       <tr>
-            <td i18n:translate="izugpoodle_results">
+            <td i18n:translate="ftwpoodle_results">
                 Results
             </td>
             	<td tal:replace="structure python:view.poodleResults(data=poodledata)"> 
@@ -67,8 +67,8 @@
   </table>
   <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />          
   <input class="context allowMultiSubmit"
-         tal:attributes="id string:uid_${context/UID}" type="submit" value="Save" i18n:attributes="value izugpoodle_title_save;" name="form.button.Save"/>
-  <input class="standalone allowMultiSubmit" type="submit" value="Cancel"  i18n:attributes="value izugpoodle_title_cancel;" name="form.button.Cancel_poodle"/>
+         tal:attributes="id string:uid_${context/UID}" type="submit" value="Save" i18n:attributes="value ftwpoodle_title_save;" name="form.button.Save"/>
+  <input class="standalone allowMultiSubmit" type="submit" value="Cancel"  i18n:attributes="value ftwpoodle_title_cancel;" name="form.button.Cancel_poodle"/>
 </form>
 </div>
 

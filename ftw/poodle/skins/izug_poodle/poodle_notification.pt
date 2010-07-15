@@ -1,4 +1,4 @@
-<div i18n:domain="izugpoodle" 
+<div i18n:domain="ftw.poodle" 
      tal:omit-tag=""
      tal:define="utool nocall:here/portal_url;
                  charset here/email_charset|string:utf-8;
