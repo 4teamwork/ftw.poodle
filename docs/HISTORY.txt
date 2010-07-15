@@ -1,61 +1,7 @@
 Changelog
 =========
 
-
-1.0c3
------
-
-* Fixed import error in setup.py
-  [22.06.2010, jbaumann]
-
-
-1.0c2
------
-
-* Fixed setup.py: use docs/HISTORY.txt , remove CONTRIBUTORS.txt
-  [18.06.2010, jbaumann]
-
-
-1.0
----
-
-* Issue #835 Arbeitsraum - 1 oder mehrere Verantwortliche pro Termin definieren
-  [jin]
-
-
-0.3
----
-
-* Issue #838 Migrationscript für Issue #661 erstellt.
-  [26.02.2010, vba]
-
-* Issue #838 Speichere ein PersistenDict in den Annotations.
-  [23.02.2010, mle]
-
-* Issue #791 Sortierung Teilnehmende bei Termin falsch.
-  [04.02.2010, mle]
-  
-* aus globalen Variablen lokale gemacht.
-  [04.02.2010, mle]
-
-* Issue #661 Arbeitsraum - Terminumfrage fehlerhaft bei gleichem Datum
-  https://extranet.4teamwork.ch/support/zug/maintlog/661
-  [24.09.2009, vba]
-
-
-UPGRADE-STEPS
-  * portal_setup: Upgradestep izug:poodle:default -> Migrate Poodle (0.2 → 0.3) ausführen.
-  
-
-
-0.2
----
-
-* [10.08.2009] Issue #583 auf Funktion in izug.utils verwiesen [jin]
-
-
-0.1
----
-
-* Initial release
-
+1.0beta
+-------
+* copy from izug.poodle version 1.0c3
+  [15.07.2010, mathias.leimgruber]

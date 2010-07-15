@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-This module contains the tool of izug.poodle
+This module contains the tool of ftw.poodle
 """
 from setuptools import setup, find_packages
 
 def read(*rnames):
     return open('/'.join(rnames)).read()
 
-version = open('izug/poodle/version.txt').read().strip()
+version = open('ftw/poodle/version.txt').read().strip()
 maintainer = 'Mathias Leimgruber'
 
 long_description = (
@@ -21,7 +21,7 @@ long_description = (
     'Detailed Documentation\n'
     '**********************\n'
     + '\n' +
-    read('izug', 'poodle', 'README.txt')
+    read('ftw', 'poodle', 'README.txt')
     + '\n' +
     'Download\n'
     '********\n'
@@ -29,11 +29,10 @@ long_description = (
 
 tests_require=['zope.testing']
 
-setup(name='izug.poodle',
+setup(name='ftw.poodle',
       version=version,
       description="A product to make polls to find out when to have a meeting (Maintainer: %s)" % maintainer,
       long_description=long_description,
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Plone',
         'Intended Audience :: Developers',
@@ -43,10 +42,10 @@ setup(name='izug.poodle',
       keywords='',
       author='%s, 4teamwork GmbH' % maintainer,
       author_email='mailto:info@4teamwork.ch',
-      url='http://psc.4teamwork.ch/4teamwork/kunden/izug/izug.poodle/',
+      url='http://psc.4teamwork.ch/4teamwork/ftw/ftw.poodle/',
       license='GPL2',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['izug', ],
+      namespace_packages=['ftw', ],
       include_package_data=True,
       zip_safe=False,
       install_requires=['setuptools',
@@ -54,7 +53,7 @@ setup(name='izug.poodle',
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
-      test_suite = 'izug.poodle.tests.test_docs.test_suite',
+      test_suite = 'ftw.poodle.tests.test_docs.test_suite',
       entry_points="""
       # -*- entry_points -*-
       [z3c.autoinclude.plugin]
