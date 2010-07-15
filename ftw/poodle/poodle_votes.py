@@ -20,14 +20,14 @@ class PoodleVotes(object):
             self.annotations['poodledata'] = PersistentMapping(data)
     
 
-    def update_dates(self):
+    def updateDates(self):
         poodledata = self.getPoodleData()
         dates = self.getDates()
         poodledata["dates"] = [i['date'] for i in dates]
         poodledata['ids'] = self.context.getDatesHash()
         return poodledata
 
-    def update_users(self):
+    def updateUsers(self):
         poodledata = self.getPoodleData()
         users = self.context.getUsers()
         choices = poodledata['ids']

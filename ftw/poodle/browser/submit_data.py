@@ -32,9 +32,6 @@ class JQSubmitData(BrowserView):
             for date in poodledata["ids"]:
                 poodledata['users'][userid][date] = bool(date in dates)
 
-        # #store data
-        # if IPoodle.providedBy(obj):
-        #     IPoodleVotes(obj).setPoodleData(poodledata)
         
         
         ftw_poodle_view.sendNotification(user)
@@ -47,7 +44,7 @@ class JQSubmitData(BrowserView):
         journal_view.addJournalEntry(obj,comment)
 
         msg = _(u"Sie haben an der Umfrage teilgenommen.")
-        #IStatusMessage(self.request).addStatusMessage(msg, type='info')
+    
         
         return msg
         

@@ -51,10 +51,6 @@ class Poodle(base.ATCTContent):
     portal_type = "Meeting poll"
     schema = PoodleSchema
 
-    def get_users(self):
-        factory = component.getUtility(schema.interfaces.IVocabularyFactory, name='ftw.poodle.users', context=self)
-        return [t.value for t in factory(self)]
-        
 
     security.declarePrivate("getDatesHash")
     def getDatesHash(self):
@@ -78,8 +74,8 @@ class Poodle(base.ATCTContent):
     security.declarePrivate("updatePoodleData")        
     def updatePoodleData(self):
         votes = self.get_poodle_votes()
-        votes.update_dates()
-        votes.update_users()
+        votes.updateDates()
+        votes.updateUsers()
         self.updateSharing()
         
     security.declarePrivate("updateSharing")
@@ -97,30 +93,13 @@ class Poodle(base.ATCTContent):
     
     security.declarePrivate("saveUserData")
     def saveUserData(self, userid, dates):
-        poodledata = self.getPoodleData()
+        votes = self.get_poodle_votes()
+        poodledata = votes.getPoodleData()
         if userid in poodledata['users'].keys():
             for date in poodledata["dates"]:
-                if date in dates:
-                    poodledata['users'][userid][date] = True
-                else: 
-                    poodledata['users'][userid][date] = False
-        self.setPoodleData(poodledata)
+                poodledata['users'][userid][date] = bool(date in dates)
 
 
-
-    security.declarePrivate("getStats") 
-    def getStats(self):
-        data = self.getPoodleData()
-        dates = data.get('dates')
-        users = [u for u in data.keys() if u != 'dates']
-        result = {}
-        for date in dates:
-            result[date] = 0
-        for user in users:
-            for date in data[user]: 
-                if date == True: result[date] += 1
-            
-        return result
             
         
 atapi.registerType(Poodle, PROJECTNAME)
