@@ -5,9 +5,7 @@
 <form action="" method="post" id="poodleForm">
   <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable" metal:define-macro="poodle_listingy"
          tal:define="poodledata context/getPoodleData;
-                     users python:poodledata.keys();
-                     dummy python: users.remove('ids');
-                     dummy python: users.remove('dates');
+                     users python:poodledata['users'].keys();
                      dates context/getDates;
                      member here/@@plone_portal_state/member">
       <tr>
@@ -17,10 +15,10 @@
       <tr tal:repeat="user users">
           <tal:block define="currentUser python:view.isCurrentUser(user)">
               <td tal:attributes="style python:currentUser and 'opacity:1' or 'opacity:0.5'" tal:content="python:view.getUserFullname(user)"/>
-              <tal:block repeat="choice python:context.getAviableChoices()">
+              <tal:block repeat="choice python:context.getAvailableChoices()">
                   <td tal:define="index repeat/choice/index;
 								  date_id python:poodledata['ids'][index];
-	                              userdata python: poodledata[user][date_id];
+	                              userdata python: poodledata['users'][user][date_id];
                                   cssclass python: view.getCssClass(userdata);
                                   inputid python: view.getInputId(user, date_id)"
                       tal:attributes="class cssclass">

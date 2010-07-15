@@ -3,6 +3,7 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName  
 from zope.component import getMultiAdapter, queryMultiAdapter 
 from ftw.poodle import poodleMessageFactory as _
+from ftw.poodle.interfaces import IPoodle, IPoodleVotes
 
 
 class JQSubmitData(BrowserView):
@@ -15,10 +16,6 @@ class JQSubmitData(BrowserView):
         else:
             obj = self.context.aq_inner
         
-        
-        #woke up archetype 10times
-        #ftw_poodle_view.saveData()
-        
         # copied together, now we just once call the at object
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         user = portal_state.member()
@@ -30,17 +27,14 @@ class JQSubmitData(BrowserView):
             return 1
 
         poodledata = obj.getPoodleData()
-        if userid in poodledata.keys():
+        if userid in poodledata['users'].keys():
             for date in poodledata["ids"]:
-                if date in dates:
-                    poodledata[userid][date] = True
-                else: 
-                    poodledata[userid][date] = False
-        #self.setPoodleData(poodledata)
-        #if IPoodle.providedBy(obj):
-        #    IPoodleConfig(obj).setPoodleData(data)
-        #XXX - use zope dict
-        obj.updatePoodleData()
+                poodledata['users'][userid][date] = bool(date in dates)
+
+        #store data
+        if IPoodle.providedBy(obj):
+            IPoodleVotes(obj).setPoodleData(poodledata)
+        
         
         ftw_poodle_view.sendNotification(user)
         

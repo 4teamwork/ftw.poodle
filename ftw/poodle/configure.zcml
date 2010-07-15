@@ -38,18 +38,6 @@
       for=".interfaces.IPoodle"
       factory=".poodle_votes.PoodleVotes" />
     
-    <!-- -*- extra stuff goes here -*- -->
-
-    <genericsetup:upgradeStep
-      sortkey="1"
-      source="0.2"
-      destination="0.3"
-      title="Migrate Poodle"
-      description="Fix Annotation structure from pre0.3 Poodles"
-      profile="ftw.poodle:default"
-      handler=".upgrades.fix_poodles"
-      />
-
       <!-- register user vocabulary-->
       <utility 
         component=".vocabularies.AvailableUsersVocabularyFactory" 

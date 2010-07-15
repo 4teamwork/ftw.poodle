@@ -22,7 +22,7 @@
     <browser:page
         for="..interfaces.IPoodle"
         name="jq_submit_data"
-        class=".views.JQSubmitData"
+        class=".submit_data.JQSubmitData"
         permission="zope2.View"
         />
 

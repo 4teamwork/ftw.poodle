@@ -42,17 +42,13 @@ class PoodleTableView(BrowserView):
         context = self.context.aq_inner
         if not data:
             data = context.getPoodleData()
-        dates = data['dates']
         ids = data['ids']
-        #remove the dates entry from list
-        data_date_only = data.values()
-        data_date_only.remove(dates)
-        data_date_only.remove(ids)
+        users = data['users'].values()
         counted = []
 
         for base_d in ids:
             counter = 0
-            for d in data_date_only:
+            for d in users:
                 if d[base_d]:
                     counter += 1
             counted.append(counter)
