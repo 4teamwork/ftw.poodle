@@ -3,6 +3,5 @@
   <version>0.1</version>
   <dependencies>
      <dependency>profile-Products.DataGridField:default</dependency>
-     <dependency>profile-Products.AutocompleteWidget:default</dependency>     
   </dependencies>
 </metadata>
