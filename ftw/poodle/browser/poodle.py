@@ -1,11 +1,12 @@
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName  
-from zope.component import getMultiAdapter
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
+
 class PoodleView(BrowserView):
-    
+    """ View of a poodle object
+    """
     template = ViewPageTemplateFile('templates/poodle.pt')
     
     def __call__(self):
@@ -13,23 +14,16 @@ class PoodleView(BrowserView):
         
 
     def getUserFullname(self, userid):
+        """returns the fullname of a given user
+        """
         mtool = getToolByName(self.context, "portal_membership") 
         return mtool.getMemberById(userid).getProperty('fullname')
 
-    def saveData(self):
-        if hasattr(self.context.REQUEST, 'form'):
-            portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-            user = portal_state.member()
-            form = self.context.REQUEST.form
-            values = form.values()
-            if values == ['']:
-                return
-            self.context.saveUserData(user.id, values)  
-            self.sendNotification(user)
             
         
     def sendNotification(self, user):
-        """Sends a notification after someone filled out the meeting poll"""
+        """Sends a notification after someone filled out the meeting poll
+        """
         mtool = getToolByName(self.context, "portal_membership") 
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
         site_properties = getToolByName(self.context, 'portal_properties').site_properties
@@ -56,5 +50,7 @@ class PoodleView(BrowserView):
         
 
     def renderTable(self, context):
+        """render the poodle table
+        """
         view = context.restrictedTraverse('@@ftw_poodle_table')
         return view()

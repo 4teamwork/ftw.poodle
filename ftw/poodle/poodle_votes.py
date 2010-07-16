@@ -13,14 +13,20 @@ class PoodleVotes(object):
         self.annotations = IAnnotations(self.context)
     
     def getPoodleData(self):
+        """getter for poodledata
+        """
         return self.annotations.get('poodledata', PersistentMapping())
     
     def setPoodleData(self, data):
+        """setter for poodledata
+        """
         if data:
             self.annotations['poodledata'] = PersistentMapping(data)
     
 
     def updateDates(self):
+        """updates date informations
+        """
         poodledata = self.getPoodleData()
         dates = self.getDates()
         poodledata["dates"] = [i['date'] for i in dates]
@@ -28,6 +34,8 @@ class PoodleVotes(object):
         return poodledata
 
     def updateUsers(self):
+        """uddate user informations
+        """
         poodledata = self.getPoodleData()
         users = self.context.getUsers()
         choices = poodledata['ids']

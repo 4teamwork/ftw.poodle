@@ -7,6 +7,8 @@ from ftw.poodle.interfaces import IPoodleVotes
 
 
 class JQSubmitData(BrowserView):
+    """Stores the new poodledate and returns a state-message
+    """
     def __call__(self):
         ftw_poodle_view = getMultiAdapter((self.context, self.request), name=u'ftw_poodle_view')
         rc = getToolByName(self.context,'reference_catalog')
@@ -16,16 +18,18 @@ class JQSubmitData(BrowserView):
         else:
             obj = self.context.aq_inner
         
-        # copied together, now we just once call the at object
+        
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         user = portal_state.member()
         userid = user.id
         form = self.context.REQUEST.form
         dates = form.values()
 
+        # no dates available
         if dates == ['']:
             return 1
 
+        # change values
         votes = IPoodleVotes(obj)
         poodledata = votes.getPoodleData()
         if userid in poodledata['users'].keys():
@@ -33,18 +37,18 @@ class JQSubmitData(BrowserView):
                 poodledata['users'][userid][date] = bool(date in dates)
 
         
-        
+        # sends email notification to th owner
         ftw_poodle_view.sendNotification(user)
         
-        #create journal entry
+        # status message
+        msg = _(u"Sie haben an der Umfrage teilgenommen.")
+        
+        #create journal entry - if available
         journal_view = queryMultiAdapter((self.context, self.context.REQUEST), name="journal_action")
         if journal_view is None:
-            return 1
+            return msg
+            
         comment = 'Der Benutzer %s hat an der Umfrage (%s) teilgenommen' % (user.getProperty('fullname'),self.context.Title())
         journal_view.addJournalEntry(obj,comment)
 
-        msg = _(u"Sie haben an der Umfrage teilgenommen.")
-    
-        
         return msg
-        
