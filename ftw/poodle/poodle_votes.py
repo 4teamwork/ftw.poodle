@@ -28,20 +28,26 @@ class PoodleVotes(object):
         """updates date informations
         """
         poodledata = self.getPoodleData()
-        dates = self.getDates()
+        dates = self.context.getDates()
         poodledata["dates"] = [i['date'] for i in dates]
         poodledata['ids'] = self.context.getDatesHash()
-        return poodledata
+
+        # in case of the first call of this method we have to store
+        # the poodledata
+        if not self.getPoodleData():
+            self.setPoodleData(poodledata)
 
     def updateUsers(self):
         """uddate user informations
         """
         poodledata = self.getPoodleData()
         users = self.context.getUsers()
+        # create ids part if not available
+        if 'ids' not in poodledata:
+            poodledata['ids'] = {}
         choices = poodledata['ids']
-
         # create a users part if not available
-        if not hasattr(poodledata,'users'):
+        if 'users' not in poodledata:
             poodledata['users'] = {}
 
         for user in users:
@@ -61,4 +67,8 @@ class PoodleVotes(object):
         for user in poodledata['users'].keys():
             if user not in users:
                 del(poodledata['users'][user])
-        return poodledata    
+        
+        # in case of the first call of this method we have to store
+        # the poodledata
+        if not self.getPoodleData():
+            self.setPoodleData(poodledata)

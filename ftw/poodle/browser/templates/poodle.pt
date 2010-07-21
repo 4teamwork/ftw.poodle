@@ -11,25 +11,6 @@
 <div metal:fill-slot="content-core" class="poodle_view">
     <metal:main-macro define-macro="content-core">
 
-
-
-      <table class="legend" metal:define-macro="poodle_legend">
-	       <tr><th colspan="2" i18n:translate="ftwpoodle_label_legend">Legend</th></tr>
-           <tr>
-               <td class="not_voted">&nbsp;&nbsp;</td>
-               <td i18n:translate="ftwpoodle_label_notfilledout">Didn't vote yet</td>
-           </tr>
-           <tr>
-               <td class="positive">&nbsp;&nbsp;</td>
-               <td i18n:translate="ftwpoodle_label_positive">Positive vote</td>
-           </tr>
-           <tr>
-               <td class="negative">&nbsp;&nbsp;</td>
-               <td i18n:translate="ftwpoodle_label_negative">Negative vote</td>
-           </tr>
-      </table>
-
-
       <p class="documentDescription" tal:condition="exists:here/widget">
           <metal:field use-macro="python:here.widget('description', mode='view')">
               Description
