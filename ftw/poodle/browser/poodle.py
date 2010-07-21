@@ -3,7 +3,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
-
 class PoodleView(BrowserView):
     """ View of a poodle object
     """
