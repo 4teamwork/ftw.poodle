@@ -17,6 +17,7 @@
         name="ftw_poodle_table"
         class=".poodletable.PoodleTableView"
         permission="zope2.View"
+        allowed_attributes="poodleResults"
         />
 
     <browser:page

@@ -61,7 +61,7 @@
 </form>
 
 
-<div tal:replace="provider:ftw.poodletable.bottom" />
+<div tal:replace="structure provider:ftw.poodletable.bottom" />
 
 </div>
 
