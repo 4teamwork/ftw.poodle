@@ -57,7 +57,7 @@ class PoodleTableView(BrowserView):
 
     def getInputId(self, user, date):
         """generates the unique and normalized id for the checkboxes"""
-        
+
         date = str(date)
         return queryUtility(IURLNormalizer).normalize(user + date)
 
@@ -81,7 +81,7 @@ class PoodleTableView(BrowserView):
                 if d[base_d]:
                     counter += 1
             result.append(counter)
-            
+
         # TODO: store the calculation in poodle_votes adapter
         if not print_html:
             data['result']= result
@@ -95,3 +95,13 @@ class PoodleTableView(BrowserView):
                 v = "<b>%s</b>" % v
             html_data += "<td>%s</td>" % v
         return html_data
+
+    def show_inputs(self):
+        """returns bool value if user can vote"""
+
+        portal_state = getMultiAdapter(
+            (self.context, self.request),
+            name=u'plone_portal_state')
+        user = portal_state.member()
+
+        return user.id in self.context.getUsers()

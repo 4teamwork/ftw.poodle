@@ -54,10 +54,12 @@
             </td>
       </tr>
   </table>
-  <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />          
-  <input class="context allowMultiSubmit"
-         tal:attributes="id string:uid_${context/UID}" type="submit" value="Save" i18n:attributes="value ftwpoodle_title_save;" name="form.button.Save"/>
-  <input class="standalone allowMultiSubmit" type="submit" value="Cancel"  i18n:attributes="value ftwpoodle_title_cancel;" name="form.button.Cancel_poodle"/>
+  <div class="inputs" tal:condition="view/show_inputs">
+      <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />          
+      <input class="context allowMultiSubmit"
+             tal:attributes="id string:uid_${context/UID}" type="submit" value="Save" i18n:attributes="value ftwpoodle_title_save;" name="form.button.Save"/>
+      <input class="standalone allowMultiSubmit" type="submit" value="Cancel"  i18n:attributes="value ftwpoodle_title_cancel;" name="form.button.Cancel_poodle"/>
+  </div>
 </form>
 
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-07-15 07:13+0000\n"
+"POT-Creation-Date: 2010-08-02 13:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,52 +17,47 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: ftw.poodle\n"
 
-#: ftw.poodle/ftw/poodle/browser/views.py:194
+#: ./ftw/poodle/browser/submit_data.py:44
 msgid "Sie haben an der Umfrage teilgenommen."
 msgstr ""
 
 #. Default: "Date (TT. MM. JJJJ)"
-#: ftw.poodle/ftw/poodle/content/poodle.py:43
+#: ./ftw/poodle/content/poodle.py:35
 msgid "ftwpoodle_desc_date"
 msgstr ""
 
 #. Default: "Time / Duration"
-#: ftw.poodle/ftw/poodle/content/poodle.py:43
+#: ./ftw/poodle/content/poodle.py:35
 msgid "ftwpoodle_desc_duration"
 msgstr ""
 
 #. Default: "Dates"
-#: ftw.poodle/ftw/poodle/content/poodle.py:44
+#: ./ftw/poodle/content/poodle.py:36
 msgid "ftwpoodle_label_dates"
 msgstr ""
 
-#. Default: "Legend"
-#: ftw.poodle/ftw/poodle/browser/poodle_view.pt:18
-msgid "ftwpoodle_label_legend"
-msgstr ""
-
-#. Default: "Negative vote"
-#: ftw.poodle/ftw/poodle/browser/poodle_view.pt:29
-msgid "ftwpoodle_label_negative"
-msgstr ""
-
-#. Default: "Didn't vote yet"
-#: ftw.poodle/ftw/poodle/browser/poodle_view.pt:21
-msgid "ftwpoodle_label_notfilledout"
-msgstr ""
-
-#. Default: "Positive vote"
-#: ftw.poodle/ftw/poodle/browser/poodle_view.pt:25
-msgid "ftwpoodle_label_positive"
-msgstr ""
-
 #. Default: "Users"
-#: ftw.poodle/ftw/poodle/content/poodle.py:32
+#: ./ftw/poodle/content/poodle.py:23
 msgid "ftwpoodle_label_users"
 msgstr ""
 
+#. Default: "Results"
+#: ./ftw/poodle/browser/templates/poodletable.pt:49
+msgid "ftwpoodle_results"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./ftw/poodle/browser/templates/poodletable.pt:61
+msgid "ftwpoodle_title_cancel"
+msgstr ""
+
+#. Default: "Save"
+#: ./ftw/poodle/browser/templates/poodletable.pt:59
+msgid "ftwpoodle_title_save"
+msgstr ""
+
 #. Default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}"
-#: ftw.poodle/ftw/poodle/skins/ftw.poodle/poodle_notification.pt:11
+#: ./ftw/poodle/skins/ftw.poodle/poodle_notification.pt:11
 msgid "poodle_mailtemplate_body"
 msgstr ""
 

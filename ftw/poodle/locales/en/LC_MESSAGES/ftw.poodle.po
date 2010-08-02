@@ -14,46 +14,46 @@ msgstr ""
 
 #: ./ftw/poodle/browser/submit_data.py:44
 msgid "Sie haben an der Umfrage teilgenommen."
-msgstr "Sie haben an der Umfrage teilgenommen"
+msgstr ""
 
 #. Default: "Date (TT. MM. JJJJ)"
 #: ./ftw/poodle/content/poodle.py:35
 msgid "ftwpoodle_desc_date"
-msgstr "Format (TT. MM. JJJJ)"
+msgstr ""
 
 #. Default: "Time / Duration"
 #: ./ftw/poodle/content/poodle.py:35
 msgid "ftwpoodle_desc_duration"
-msgstr "Zeit / Dauer (HH:MM-HH:MM)"
+msgstr ""
 
 #. Default: "Dates"
 #: ./ftw/poodle/content/poodle.py:36
 msgid "ftwpoodle_label_dates"
-msgstr "Datum"
+msgstr ""
 
 #. Default: "Users"
 #: ./ftw/poodle/content/poodle.py:23
 msgid "ftwpoodle_label_users"
-msgstr "Teilnehmer"
+msgstr ""
 
 #. Default: "Results"
 #: ./ftw/poodle/browser/templates/poodletable.pt:49
 msgid "ftwpoodle_results"
-msgstr "Resultat"
+msgstr ""
 
 #. Default: "Cancel"
 #: ./ftw/poodle/browser/templates/poodletable.pt:61
 msgid "ftwpoodle_title_cancel"
-msgstr "Abbrechen"
+msgstr ""
 
 #. Default: "Save"
 #: ./ftw/poodle/browser/templates/poodletable.pt:59
 msgid "ftwpoodle_title_save"
-msgstr "Speichern"
+msgstr ""
 
 #. Default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}"
 #: ./ftw/poodle/skins/ftw.poodle/poodle_notification.pt:11
 msgid "poodle_mailtemplate_body"
-msgstr "Der Benutzer ${user_name} hat an der Umfrage ${document_url} auf ${portal_title} teilgenommen"
+msgstr ""
 
 
