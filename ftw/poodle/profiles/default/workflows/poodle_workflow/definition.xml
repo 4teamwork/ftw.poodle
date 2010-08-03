@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="poodle_workflow" title="Poodle Worklfow" description="" state_variable="review_state" initial_state="open" manager_bypass="False">
+ <permission>View</permission>
+ <permission>Access contents information</permission>
+ <state state_id="close" title="Close">
+  <description>No one can vote until the owner opens the poodle</description>
+  <exit-transition transition_id="open_poodle"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Reader</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Reader</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="open" title="Open">
+  <description>All user in getUsers list can vote</description>
+  <exit-transition transition_id="close_poodle"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Reader</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Reader</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="close_poodle" title="close poodle" new_state="close" trigger="USER" before_script="" after_script="">
+  <description>closes poodle for voting</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=close_poodle" category="workflow" icon="">Close poodle</action>
+  <guard>
+   <guard-role>Owner</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="open_poodle" title="Open poodle" new_state="open" trigger="USER" before_script="" after_script="">
+  <description>open poodle for voting</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=open_poodle" category="workflow" icon="">Activate poodle</action>
+  <guard>
+   <guard-role>Owner</guard-role>
+  </guard>
+ </transition>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>Previous transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the previous transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comment about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>When the previous transition was performed</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>

@@ -35,7 +35,8 @@ class PoodleTableView(BrowserView):
             (self.context, self.request),
             name=u'plone_portal_state')
         user = portal_state.member()
-        return user.id == userid
+        # also add is poodle active check
+        return user.id == userid and self.is_active()
 
     def getUserFullname(self, userid):
         """returns fullname of a given user
@@ -104,4 +105,20 @@ class PoodleTableView(BrowserView):
             name=u'plone_portal_state')
         user = portal_state.member()
 
-        return user.id in self.context.getUsers()
+        # added is_active check, to find out if poodle is active or not
+        return (user.id in self.context.getUsers()) and self.is_active()
+
+
+    def is_active(self):
+        """Checks the portal state if poodle is active
+        TODO: Add a real security guard
+
+        """
+        context_state = getMultiAdapter(
+            (self.context, self.request),
+            name=u'plone_context_state')
+        obj_state = context_state.workflow_state()
+        
+        return obj_state == 'open'
+            
+        
