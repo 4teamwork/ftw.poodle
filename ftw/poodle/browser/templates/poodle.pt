@@ -8,8 +8,17 @@
 
 <body>
 
-<div metal:fill-slot="content-core" class="poodle_view">
-    <metal:main-macro define-macro="content-core">
+<div metal:fill-slot="main" class="poodle_view">
+    <metal:main-macro define-macro="main">
+
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+      <metal:title define-slot="content-title">
+          <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view">
+              Generic KSS Title. Is rendered with class="documentFirstHeading".
+          </h1>
+      </metal:title>
+    
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
 
       <p class="documentDescription" tal:condition="exists:here/widget">
           <metal:field use-macro="python:here.widget('description', mode='view')">
@@ -24,10 +33,15 @@
               Description
           </p>
       </tal:block>
+
+
+      <div tal:replace="structure provider:plone.abovecontentbody" /> 
         
             <div tal:replace="structure python:view.renderTable(context)">renders poodle table</div>
 
-      <div tal:replace="structure provider:plone.belowcontentbody" />
+    <!--    <div tal:replace="structure provider:plone.belowcontentbody" />-->
+
+
   </metal:main-macro>
 </div>
 
