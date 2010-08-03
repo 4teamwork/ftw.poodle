@@ -37,8 +37,9 @@
 
       <div tal:replace="structure provider:plone.abovecontentbody" /> 
         
-            <div tal:replace="structure python:view.renderTable(context)">renders poodle table</div>
-
+            <div tal:condition="context/getDates | nothing" 
+                 tal:replace="structure python:view.renderTable(context)">renders poodle table</div>
+            <div tal:condition="not:context/getDates" i18n:translate="no_dates_defined_text">no dates</div>
     <!--    <div tal:replace="structure provider:plone.belowcontentbody" />-->
 
 

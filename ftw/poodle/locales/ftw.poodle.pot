@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-08-02 13:25+0000\n"
+"POT-Creation-Date: 2010-08-03 13:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,11 @@ msgstr ""
 #. Default: "Save"
 #: ./ftw/poodle/browser/templates/poodletable.pt:59
 msgid "ftwpoodle_title_save"
+msgstr ""
+
+#. Default: "no text"
+#: ./ftw/poodle/browser/templates/poodle.pt:42
+msgid "no_dates_defined_text"
 msgstr ""
 
 #. Default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}"

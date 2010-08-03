@@ -82,7 +82,11 @@ class PoodleTableView(BrowserView):
                 if d[base_d]:
                     counter += 1
             result.append(counter)
-
+        
+        # if result is still empty return empty string
+        if not result:
+            return ""
+        
         # TODO: store the calculation in poodle_votes adapter
         if not print_html:
             data['result']= result
