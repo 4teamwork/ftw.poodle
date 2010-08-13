@@ -2,7 +2,7 @@
 <object name="Poodle"
    meta_type="Factory-based Type Information with dynamic views"
    i18n:domain="ftw.poodle" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
-  <property name="title" i18n:translate="ftw.poodle_type_name">Meeting poll</property>
+  <property name="title" i18n:translate="">Meeting poll</property>
   <property name="description"
     i18n:translate="ftw.poodle_type_description"></property>
   <property name="content_meta_type">Poodle</property>

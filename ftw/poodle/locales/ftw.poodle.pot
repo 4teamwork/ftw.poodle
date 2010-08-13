@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-08-11 14:48+0000\n"
+"POT-Creation-Date: 2010-08-13 08:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,12 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: ftw.poodle\n"
 
-#: ./ftw/poodle/browser/submit_data.py:44
-msgid "Sie haben an der Umfrage teilgenommen."
+#: ./ftw/poodle/profiles/default/types/Poodle.xml
+msgid "Meeting poll"
 msgstr ""
 
-#. Default: "Meeting poll"
-#: ./ftw/poodle/profiles/default/types/Poodle.xml
-msgid "ftw.poodle_type_name"
+#: ./ftw/poodle/browser/submit_data.py:44
+msgid "Sie haben an der Umfrage teilgenommen."
 msgstr ""
 
 #. Default: "Date (TT. MM. JJJJ)"
