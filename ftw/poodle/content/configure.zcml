@@ -3,4 +3,12 @@
     xmlns:five="http://namespaces.zope.org/five"
     i18n_domain="ftw.poodle">
 
+
+    <class class=".poodle.Poodle">
+        <require
+           permission="zope2.View"
+           interface="..interfaces.IPoodle"
+           />
+    </class>
+
 </configure>
