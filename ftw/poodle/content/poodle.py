@@ -11,18 +11,16 @@ from zope.interface import implements
 
 
 PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
+
         atapi.LinesField(
             name='users',
             vocabulary_factory="ftw.poodle.users",
             enforceVocabulary=True,
-            widget=atapi.InAndOutWidget
-            (
+            widget=atapi.InAndOutWidget(
                 label=_(u'ftwpoodle_label_users', default=u'Users'),
-                actb_expand_onfocus=1,
-                ),
+                actb_expand_onfocus=1),
             required=1,
-            multivalued=1
-            ),
+            multivalued=1),
 
         DataGridField(
             name='dates',
@@ -34,8 +32,7 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
                                      default="Date (TT. MM. JJJJ)")),
                     "duration": Column(_(u"ftwpoodle_desc_duration",
                                          default="Time / Duration"))},
-                label=_(u'ftwpoodle_label_dates', default=u'Dates'),
-                ),
+                label=_(u'ftwpoodle_label_dates', default=u'Dates')),
             columns=("date", "duration")),
 
         ))
