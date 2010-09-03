@@ -99,5 +99,10 @@ class Poodle(base.ATCTContent):
             for date in poodledata["dates"]:
                 poodledata['users'][userid][date] = bool(date in dates)
 
+    def getMeeting_type(self):
+        """Set meeting type for tabbed-view compatibility in ftw.workspace.
+        """
+        return 'poll'
+
 
 atapi.registerType(Poodle, PROJECTNAME)
