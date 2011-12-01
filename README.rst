@@ -18,7 +18,7 @@ Usage
 
 
 Links
-=====
+-----
 
 - Main github project repository: https://github.com/4teamwork/ftw.poodle
 - Issue tracker: https://github.com/4teamwork/ftw.poodle/issues
@@ -26,7 +26,7 @@ Links
 
 
 Maintainer
-==========
+----------
 
 This package is produced and maintained by `4teamwork <http://www.4teamwork.ch/>`_ company.
 
