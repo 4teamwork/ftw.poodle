@@ -2,23 +2,23 @@ Changelog
 =========
 
 
+1.0 (Unreleased)
+----------------
 
+- Added getMeeting_type for ftw.workspace / tabbed view compatibility
+  [jbaumann]
 
+- added comments and docstrings
+  [mathias.leimgruber]
 
+- added german translations
+  [mathias.leimgruber]
 
-1.0b
--------
+- remove some unused code
+  [mathias.leimgruber]
 
-* Added getMeeting_type for ftw.workspace / tabbed view compatibility
-  [03.09.2010, jbaumann]
+- code review and optimizations
+  [mathias.leimgruber]
 
-* added comments and docstrings
-  [16.07.2010, mathias.leimgruber]
-* added german translations
-  [15.07.2010, mathias.leimgruber]
-* remove some unused code
-  [15.07.2010, mathias.leimgruber]
-* code review and optimizations
-  [15.07.2010, mathias.leimgruber]
-* copy from izug.poodle version 1.0c3
-  [15.07.2010, mathias.leimgruber]
+- copy from izug.poodle version 1.0c3
+  [mathias.leimgruber]
