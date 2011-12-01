@@ -14,7 +14,7 @@ setup(name='ftw.poodle',
       version=version,
       description="A product to make polls to find out when to have a meeting",
       long_description=open('README.rst').read() + '\n' + \
-        open(os.path.join('docs', 'HISTORY.txt')).read(),
+          open(os.path.join('docs', 'HISTORY.txt')).read(),
 
       classifiers=[
         'Framework :: Plone'
@@ -32,16 +32,18 @@ setup(name='ftw.poodle',
       maintainer=maintainer,
       url='https://github.com/4teamwork/ftw.poodle/',
       license='GPL2',
+
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['ftw', ],
       include_package_data=True,
       zip_safe=False,
 
-      install_requires=['setuptools',
-                        'Products.DataGridField',
-                        'Products.AutocompleteWidget',  
-                        'plone.principalsource'
-                        ],
+      install_requires=[
+        'setuptools',
+        'Products.DataGridField',
+        'Products.AutocompleteWidget',
+        'plone.principalsource'
+        ],
 
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
