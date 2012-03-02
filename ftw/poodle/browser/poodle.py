@@ -3,7 +3,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import getMultiAdapter
 from Products.statusmessages.interfaces import IStatusMessage
-
+from ftw.poodle import poodleMessageFactory as _
 
 class PoodleView(BrowserView):
     """ View of a poodle object
@@ -52,15 +52,15 @@ class PoodleView(BrowserView):
         if send_to_address == '':
             send_to_address = site_properties.email_from_address
         send_from_address = site_properties.email_from_address
-        subject = self.context.translate(
-            u"ftwpoodle_mail_subject",
-            domain="ftw.poodle")
+        username = self.getUserFullname(user.id)
+        subject = self.context.translate(_(u"ftwpoodle_mail_subject", default=u"The User ${username} has filled out your poodle", mapping={'username':username}))
+
         template = getattr(self.context, 'poodle_notification')
         encoding = portal.getProperty('email_charset')
         # Cook from template
         message = template(
             self,
-            username=self.getUserFullname(user.id),
+            username=username,
             url=self.context.absolute_url())
 
         # in case of wrong mail_settings, the creator will be informed after

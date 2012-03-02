@@ -26,8 +26,9 @@ class AvailableUsersVocabulary(object):
                 schema.interfaces.IVocabularyFactory,
                 name='plone.principalsource.Users',
                 context=context)
+            return factory(context)
 
-        items = factory(context)
-        return items
+        return factory(context, membersonly=True)
+
 
 AvailableUsersVocabularyFactory = AvailableUsersVocabulary()

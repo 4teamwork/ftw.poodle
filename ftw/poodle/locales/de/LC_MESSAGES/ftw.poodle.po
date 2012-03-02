@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-08-13 08:53+0000\n"
+"POT-Creation-Date: 2012-03-02 09:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,24 +21,29 @@ msgid "Sie haben an der Umfrage teilgenommen."
 msgstr "Sie haben an der Umfrage teilgenommen"
 
 #. Default: "Date (TT. MM. JJJJ)"
-#: ./ftw/poodle/content/poodle.py:35
+#: ./ftw/poodle/content/poodle.py:31
 msgid "ftwpoodle_desc_date"
 msgstr "Format (TT. MM. JJJJ)"
 
 #. Default: "Time / Duration"
-#: ./ftw/poodle/content/poodle.py:35
+#: ./ftw/poodle/content/poodle.py:33
 msgid "ftwpoodle_desc_duration"
 msgstr "Zeit / Dauer (HH:MM-HH:MM)"
 
 #. Default: "Dates"
-#: ./ftw/poodle/content/poodle.py:36
+#: ./ftw/poodle/content/poodle.py:35
 msgid "ftwpoodle_label_dates"
 msgstr "Datum"
 
 #. Default: "Users"
-#: ./ftw/poodle/content/poodle.py:23
+#: ./ftw/poodle/content/poodle.py:20
 msgid "ftwpoodle_label_users"
 msgstr "Teilnehmer"
+
+#. Default: "The User ${username} has filled out your poodle"
+#: ./ftw/poodle/browser/poodle.py:56
+msgid "ftwpoodle_mail_subject"
+msgstr "Der Benutzer ${username} hat ihre Sitzungsumfrage ausgefüllt"
 
 #. Default: "Results"
 #: ./ftw/poodle/browser/templates/poodletable.pt:49

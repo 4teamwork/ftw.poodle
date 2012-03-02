@@ -5,6 +5,9 @@ Changelog
 1.0 (Unreleased)
 ----------------
 
+- Fixed Mailsubject.
+  [ttschanz]
+
 - Added getMeeting_type for ftw.workspace / tabbed view compatibility
   [jbaumann]
 
