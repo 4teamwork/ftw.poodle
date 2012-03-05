@@ -5,7 +5,7 @@ This module contains the tool of ftw.poodle
 from setuptools import setup, find_packages
 import os
 
-version = '1.0dev'
+version = '1.0'
 maintainer = 'Mathias Leimgruber'
 
 tests_require=['zope.testing']
