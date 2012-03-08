@@ -20,7 +20,7 @@ class PoodleView(BrowserView):
                 type='warning')
 
         if not self.is_active():
-            msg = "Survey is deactivated"
+            msg = _(u"survey_deactivated", default=u"Survey is deactivated")
             IStatusMessage(self.request).addStatusMessage(
                 msg,
                 type='info')

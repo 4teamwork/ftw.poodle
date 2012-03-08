@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-03-02 09:54+0000\n"
+"POT-Creation-Date: 2012-03-08 09:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,5 +69,10 @@ msgstr "Noch keine Terminvorschläge definiert"
 #: ./ftw/poodle/skins/ftw.poodle/poodle_notification.pt:11
 msgid "poodle_mailtemplate_body"
 msgstr "Der Benutzer ${user_name} hat an der Umfrage ${document_url} auf ${portal_title} teilgenommen"
+
+#. Default: "Survey is deactivated"
+#: ./ftw/poodle/browser/poodle.py:23
+msgid "survey_deactivated"
+msgstr "Diese Umfrage ist deaktiviert."
 
 
