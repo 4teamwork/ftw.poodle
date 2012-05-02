@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-03-08 09:42+0000\n"
+"POT-Creation-Date: 2012-05-02 15:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,11 @@ msgstr "Format (TT. MM. JJJJ)"
 msgid "ftwpoodle_desc_duration"
 msgstr "Zeit / Dauer (HH:MM-HH:MM)"
 
+#. Default: "Edit votes"
+#: ./ftw/poodle/browser/templates/voted.pt:6
+msgid "ftwpoodle_edit_votes"
+msgstr "Umfrage bearbeiten"
+
 #. Default: "Dates"
 #: ./ftw/poodle/content/poodle.py:35
 msgid "ftwpoodle_label_dates"
@@ -46,17 +51,17 @@ msgid "ftwpoodle_mail_subject"
 msgstr "Der Benutzer ${username} hat ihre Sitzungsumfrage ausgefüllt"
 
 #. Default: "Results"
-#: ./ftw/poodle/browser/templates/poodletable.pt:49
+#: ./ftw/poodle/browser/templates/poodletable.pt:50
 msgid "ftwpoodle_results"
 msgstr "Resultat"
 
 #. Default: "Cancel"
-#: ./ftw/poodle/browser/templates/poodletable.pt:61
+#: ./ftw/poodle/browser/templates/poodletable.pt:62
 msgid "ftwpoodle_title_cancel"
 msgstr "Abbrechen"
 
 #. Default: "Save"
-#: ./ftw/poodle/browser/templates/poodletable.pt:59
+#: ./ftw/poodle/browser/templates/poodletable.pt:60
 msgid "ftwpoodle_title_save"
 msgstr "Speichern"
 
@@ -74,5 +79,10 @@ msgstr "Der Benutzer ${user_name} hat an der Umfrage ${document_url} auf ${porta
 #: ./ftw/poodle/browser/poodle.py:23
 msgid "survey_deactivated"
 msgstr "Diese Umfrage ist deaktiviert."
+
+#. Default: "Your input has been succesfully saved."
+#: ./ftw/poodle/browser/templates/voted.pt:2
+msgid "text_voted"
+msgstr "Ihre Eingabe wurde erfolgreich gespeichert. Klicken Sie auf \"Umfrage bearbeiten\", um Ihre Eingabe zu ändern."
 
 

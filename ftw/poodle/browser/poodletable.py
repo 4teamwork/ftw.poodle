@@ -13,17 +13,21 @@ class PoodleTableView(BrowserView):
     """
 
     template = ViewPageTemplateFile('templates/poodletable.pt')
+    voted_template = ViewPageTemplateFile('templates/voted.pt')
 
     def __call__(self):
         """
         """
         rc = getToolByName(self.context, 'reference_catalog')
-        uid = self.context.REQUEST.get('uid', None)
+        uid = self.request.get('uid', None)
+        voted = self.request.get('voted', None)
         if uid:
             context = rc.lookupObject(uid)
 
         else:
             context = self.context.aq_inner
+        if voted:
+            return self.voted_template()
         return self.template(uid=context.UID())
 
     def isCurrentUser(self, userid):

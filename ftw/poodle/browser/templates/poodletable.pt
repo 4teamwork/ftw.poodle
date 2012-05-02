@@ -3,6 +3,7 @@
      tal:attributes="id string:poodltablewrapper_${context/UID}" i18n:domain="ftw.poodle">
 
 <form action="" method="post" id="poodleForm">
+    <input type="hidden" value="1" name="voted" />
   <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable" metal:define-macro="poodle_listingy"
          tal:define="poodledata context/getPoodleData;
                      users python:poodledata['users'].keys();
@@ -17,8 +18,8 @@
               <td tal:attributes="style python:currentUser and 'opacity:1' or 'opacity:0.5'" tal:content="python:view.getUserFullname(user)"/>
               <tal:block repeat="choice python:context.getDatesHash()">
                   <td tal:define="index repeat/choice/index;
-								  date_id python:poodledata['ids'][index];
-	                              userdata python: poodledata['users'][user][date_id];
+                                  date_id python:poodledata['ids'][index];
+                                  userdata python: poodledata['users'][user][date_id];
                                   cssclass python: view.getCssClass(userdata);
                                   inputid python: view.getInputId(user, date_id)"
                       tal:attributes="class cssclass">
@@ -39,7 +40,7 @@
                                  value="None"
                                  tal:attributes="name inputid;
                                                  checked python: userdata and userdata or ''"/>
-                      
+
                       </tal:if>
                   </td>
               </tal:block>
@@ -49,13 +50,13 @@
             <td i18n:translate="ftwpoodle_results">
                 Results
             </td>
-            <td tal:replace="structure python:view.poodleResults(data=poodledata)"> 
+            <td tal:replace="structure python:view.poodleResults(data=poodledata)">
                 poodle results
             </td>
       </tr>
   </table>
   <div class="inputs" tal:condition="view/show_inputs">
-      <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />          
+      <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />
       <input class="context allowMultiSubmit"
              tal:attributes="id string:uid_${context/UID}" type="submit" value="Save" i18n:attributes="value ftwpoodle_title_save;" name="form.button.Save"/>
       <input class="standalone allowMultiSubmit" type="submit" value="Cancel"  i18n:attributes="value ftwpoodle_title_cancel;" name="form.button.Cancel_poodle"/>
