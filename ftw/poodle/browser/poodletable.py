@@ -46,7 +46,10 @@ class PoodleTableView(BrowserView):
         """returns fullname of a given user
         """
         mtool = getToolByName(self.context, "portal_membership")
-        return mtool.getMemberById(userid).getProperty('fullname')
+        fullname = mtool.getMemberById(userid).getProperty('fullname')
+        if not fullname:
+            return userid
+        return fullname
 
     def getCssClass(self, data):
         """returns three diffrent css class-names

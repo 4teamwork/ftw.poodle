@@ -5,7 +5,9 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Small usability customizations.
+  This package needs refactoring.
+  [mathias.leimgruber]
 
 
 1.1 (2012-03-12)
