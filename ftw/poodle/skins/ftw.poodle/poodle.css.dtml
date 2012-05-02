@@ -1,18 +1,10 @@
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
 
-.poodletable td.not_voted,
-table.legend td.not_voted{
-	/*background-color: #AAAAAA !important;*/
+table.poodletable.listing {
+    width:100%;
 }
-.poodletable td.positive, 
-table.legend td.positive{
-	/*background-color: #AAFFAA;*/
-}
-.poodletable td.negative,
-table.legend td.negative{
-	/*background-color: #FFAAAA;*/
-}
+
 div.poodle_view table.legend {
 	float: right;
 	width: auto;

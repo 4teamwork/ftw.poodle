@@ -4,7 +4,7 @@
 
 <form action="" method="post" id="poodleForm">
     <input type="hidden" value="1" name="voted" />
-  <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable" metal:define-macro="poodle_listingy"
+  <table tal:attributes="id string:poodletable_${context/UID}" class="poodletable listing" metal:define-macro="poodle_listingy"
          tal:define="poodledata context/getPoodleData;
                      users python:poodledata['users'].keys();
                      dates context/getDates;
