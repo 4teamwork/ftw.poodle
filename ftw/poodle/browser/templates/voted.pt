@@ -1,7 +1,7 @@
 <div class="poodleVoted" i18n:domain="ftw.poodle">
     <p i18n:translate="text_voted">Your input has been succesfully saved.</p>
     <form action="" method="post" id="poodleForm">
-        <div class="inputs" tal:condition="view/show_inputs">
+        <div class="inputs">
             <input type="hidden" name="uid" tal:attributes="value string:${context/UID}" />
             <input class="standalone allowMultiSubmit"
                    type="submit" value="Edit votes"
