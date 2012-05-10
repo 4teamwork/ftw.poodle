@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1.2 (unreleased)
+1.1.2 (2012-05-10)
 ------------------
 
 - Found a second getfullname method -.- fix this one too.
