@@ -28,10 +28,13 @@ class PoodleView(BrowserView):
         return self.template()
 
     def getUserFullname(self, userid):
-        """returns the fullname of a given user
+        """returns fullname of a given user
         """
         mtool = getToolByName(self.context, "portal_membership")
-        return mtool.getMemberById(userid).getProperty('fullname')
+        fullname = mtool.getMemberById(userid).getProperty('fullname')
+        if not fullname:
+            return userid
+        return fullname
 
     def sendNotification(self, user):
         """Sends a notification after someone filled out the meeting poll
