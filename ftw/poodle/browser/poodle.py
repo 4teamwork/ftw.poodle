@@ -56,7 +56,10 @@ class PoodleView(BrowserView):
             send_to_address = site_properties.email_from_address
         send_from_address = site_properties.email_from_address
         username = self.getUserFullname(user.id)
-        subject = self.context.translate(_(u"ftwpoodle_mail_subject", default=u"The User ${username} has filled out your poodle", mapping={'username':username}))
+        subject = self.context.translate(
+            _(u"ftwpoodle_mail_subject",
+              default=u"The User ${username} has filled out your poodle",
+              mapping={'username':username.decode('utf-8')}))
 
         template = getattr(self.context, 'poodle_notification')
         encoding = portal.getProperty('email_charset')
