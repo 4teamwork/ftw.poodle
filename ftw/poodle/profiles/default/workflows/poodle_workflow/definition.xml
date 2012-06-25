@@ -1,20 +1,18 @@
 <?xml version="1.0"?>
 <dc-workflow workflow_id="poodle_workflow" title="Poodle Worklfow" description="" state_variable="review_state" initial_state="open" manager_bypass="False">
- <permission>View</permission>
  <permission>Access contents information</permission>
+ <permission>View</permission>
  <state state_id="close" title="Close">
   <description>No one can vote until the owner opens the poodle</description>
   <exit-transition transition_id="open_poodle"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Contributor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Member</permission-role>
    <permission-role>Reader</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Contributor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Member</permission-role>
    <permission-role>Reader</permission-role>
   </permission-map>
  </state>
@@ -24,13 +22,11 @@
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Contributor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Member</permission-role>
    <permission-role>Reader</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Contributor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Member</permission-role>
    <permission-role>Reader</permission-role>
   </permission-map>
  </state>
