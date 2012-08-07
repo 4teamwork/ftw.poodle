@@ -46,7 +46,10 @@ class PoodleTableView(BrowserView):
         """returns fullname of a given user
         """
         mtool = getToolByName(self.context, "portal_membership")
-        fullname = mtool.getMemberById(userid).getProperty('fullname')
+        member = mtool.getMemberById(userid)
+        if not member:
+            return userid
+        fullname = member.getProperty('fullname')
         if not fullname:
             return userid
         return fullname
