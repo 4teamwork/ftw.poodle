@@ -106,7 +106,6 @@ class TestPoodleVotes(MockTestCase):
             ['01.11.2012', '13.11.2012', '20.11.2012'])
         self.assertEquals(votes.getPoodleData().get('ids'), hashes_2)
 
-        # TODO: should work also, update mehtods should be refactored
         for date_hash in votes.getPoodleData().get('users').get('hugo.boss').keys():
             self.assertTrue(date_hash in hashes_2)
 
