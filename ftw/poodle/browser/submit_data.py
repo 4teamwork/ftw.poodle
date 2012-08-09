@@ -37,6 +37,7 @@ class JQSubmitData(BrowserView):
             for date in poodledata["ids"]:
                 poodledata['users'][userid][date] = bool(date in dates)
 
+        votes.setPoodleData(poodledata)
 
         # sends email notification to th owner
         ftw_poodle_view.sendNotification(user)

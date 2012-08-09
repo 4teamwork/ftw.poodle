@@ -97,12 +97,14 @@ class Poodle(base.ATCTContent):
         # XXX: remove users?
 
     security.declarePrivate("saveUserData")
+
     def saveUserData(self, userid, dates):
         votes = self.get_poodle_votes()
         poodledata = votes.getPoodleData()
         if userid in poodledata['users'].keys():
             for date in poodledata["dates"]:
                 poodledata['users'][userid][date] = bool(date in dates)
+        votes.setPoodleData(poodledata)
 
     def getMeeting_type(self):
         """Set meeting type for tabbed-view compatibility in ftw.workspace.
