@@ -5,6 +5,30 @@ from persistent.mapping import PersistentMapping
 from zope.annotation.interfaces import IAttributeAnnotatable
 
 
+SAMPLE_DATA = {
+    'dates': ['12.11.2012', '15.11.2012', '20.11.2012'],
+    'ids': ['3780942686938285155', '-4524804321304724558',
+                '-5507833967094327526'],
+    'users': {
+        'hugo.boss': {
+            '3780942686938285155': False,
+            '-4524804321304724558': None,
+            '4544035125307673798': True,
+            '-5507833967094327526': None, },
+        'james.bond': {
+            '3780942686938285155': True,
+            '-4524804321304724558': True,
+            '4544035125307673798': True,
+            '-5507833967094327526': False, },
+        'peter.muster': {
+            '3780942686938285155': False,
+            '-4524804321304724558': False,
+            '4544035125307673798': True,
+            '-5507833967094327526': False, },
+        }
+    }
+
+
 class TestPoodleVotes(MockTestCase):
 
     layer = POODLE_VOTES_ZCML_LAYER
@@ -72,6 +96,8 @@ class TestPoodleVotes(MockTestCase):
             ['01.11.2012', '15.11.2012', '20.11.2012'])
         self.assertEquals(votes.getPoodleData().get('ids'), hashes_1)
 
+        votes.setPoodleData(SAMPLE_DATA)
+
         # second update
         votes.updateDates()
 
@@ -80,33 +106,14 @@ class TestPoodleVotes(MockTestCase):
             ['01.11.2012', '13.11.2012', '20.11.2012'])
         self.assertEquals(votes.getPoodleData().get('ids'), hashes_2)
 
+        # TODO: should work also, update mehtods should be refactored
+        for date_hash in votes.getPoodleData().get('users').get('hugo.boss').keys():
+            self.assertTrue(date_hash in hashes_2)
+
     def test_update_users(self):
 
         poodle = self.providing_stub(
             [IAttributeAnnotatable, IPoodle])
-
-        data = {
-            'dates': ['12.11.2012', '15.11.2012', '20.11.2012'],
-            'ids': ['8097406929898805012', '-4524804321304724558',
-                        '4544035125307673798'],
-            'users': {
-                'hugo.boss': {
-                    '8097406929898805012': False,
-                    '-4524804321304724558': None,
-                    '4544035125307673798': True,
-                    '8410780190390256022': None,},
-                'james.bond': {
-                    '8097406929898805012': True,
-                    '-4524804321304724558': True,
-                    '4544035125307673798': True,
-                    '8410780190390256022': False,},
-                'peter.muster': {
-                    '8097406929898805012': False,
-                    '-4524804321304724558': False,
-                    '4544035125307673798': True,
-                    '8410780190390256022': False,},
-                }
-            }
 
         self.expect(poodle.getUsers()).result(
         ['hugo.boss', 'peter.muster', 'ms.busy'])
@@ -114,7 +121,7 @@ class TestPoodleVotes(MockTestCase):
         self.replay()
 
         votes = IPoodleVotes(poodle)
-        votes.setPoodleData(data)
+        votes.setPoodleData(SAMPLE_DATA)
 
         votes.updateUsers()
 
@@ -125,11 +132,5 @@ class TestPoodleVotes(MockTestCase):
 
         self.assertEquals(
             votes.getPoodleData().get('users').get('ms.busy'),
-            {'8097406929898805012': None, '-4524804321304724558': None,
-             '4544035125307673798': None,})
-
-        # TODO: should work also, update mehtods should be refactored
-        # self.assertEquals(
-        #     votes.getPoodleData().get('users').get('hugo.boss').keys(),
-        #     ['8097406929898805012', '-4524804321304724558',
-        #      '4544035125307673798'])
+            {'3780942686938285155': None, '-4524804321304724558': None,
+             '-5507833967094327526': None, })

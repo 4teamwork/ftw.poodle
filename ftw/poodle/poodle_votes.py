@@ -35,6 +35,12 @@ class PoodleVotes(object):
         poodledata["dates"] = [i['date'] for i in dates]
         poodledata['ids'] = self.context.getDatesHash()
 
+        # clean up the old dates in the users votes
+        for user in poodledata.get('users', {}).keys():
+            for date_hash in poodledata.get('users').get(user).keys():
+                if date_hash not in poodledata.get('ids'):
+                    poodledata.get('users').get(user).pop(date_hash)
+
         self.setPoodleData(poodledata)
 
     def updateUsers(self):
