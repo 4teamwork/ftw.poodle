@@ -5,6 +5,7 @@ from zope.component import getMultiAdapter
 from Products.statusmessages.interfaces import IStatusMessage
 from ftw.poodle import poodleMessageFactory as _
 
+
 class PoodleView(BrowserView):
     """ View of a poodle object
     """
@@ -13,7 +14,7 @@ class PoodleView(BrowserView):
     def __call__(self):
         if not self.check_mail_settings():
             msg = """Wrong email-settings, please check control panel.
-            At time it's not possible to send email notification about 
+            At time it's not possible to send email notification about
             attendees, who vote. """
             IStatusMessage(self.request).addStatusMessage(
                 msg,
@@ -59,7 +60,7 @@ class PoodleView(BrowserView):
         subject = self.context.translate(
             _(u"ftwpoodle_mail_subject",
               default=u"The User ${username} has filled out your poodle",
-              mapping={'username':username.decode('utf-8')}))
+              mapping={'username': username.decode('utf-8')}))
 
         template = getattr(self.context, 'poodle_notification')
         encoding = portal.getProperty('email_charset')
@@ -72,12 +73,11 @@ class PoodleView(BrowserView):
         # in case of wrong mail_settings, the creator will be informed after
         # creation
         if self.check_mail_settings():
-            host.send(messageText = message,
-                      mto = send_to_address,
-                      mfrom = send_from_address,
-                      subject = subject,
-                      charset = encoding,
-                      )
+            host.send(messageText=message,
+                      mto=send_to_address,
+                      mfrom=send_from_address,
+                      subject=subject,
+                      charset=encoding,)
 
     def check_mail_settings(self):
         """check for correct mail settings - use control panel"""

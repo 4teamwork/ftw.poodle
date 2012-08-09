@@ -59,11 +59,11 @@ class PoodleTableView(BrowserView):
         depending on the data param.
 
         """
-        if data == None:
+        if data is None:
             return "not_voted"
-        elif data == True:
+        elif data is True:
             return "positive"
-        elif data == False:
+        elif data is False:
             return "negative"
 
     def getInputId(self, user, date):
@@ -92,14 +92,14 @@ class PoodleTableView(BrowserView):
                 if d[base_d]:
                     counter += 1
             result.append(counter)
-        
+
         # if result is still empty return empty string
         if not result:
             return ""
-        
+
         # TODO: store the calculation in poodle_votes adapter
         if not print_html:
-            data['result']= result
+            data['result'] = result
             return data
         h_value = max(result)
 
@@ -122,7 +122,6 @@ class PoodleTableView(BrowserView):
         # added is_active check, to find out if poodle is active or not
         return (user.id in self.context.getUsers()) and self.is_active()
 
-
     def is_active(self):
         """Checks the portal state if poodle is active
         TODO: Add a real security guard
@@ -132,7 +131,5 @@ class PoodleTableView(BrowserView):
             (self.context, self.request),
             name=u'plone_context_state')
         obj_state = context_state.workflow_state()
-        
+
         return obj_state == 'open'
-            
-        

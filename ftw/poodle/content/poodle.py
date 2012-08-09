@@ -53,11 +53,13 @@ class Poodle(base.ATCTContent):
     schema = PoodleSchema
 
     security.declarePrivate("getDatesHash")
+
     def getDatesHash(self):
         return [str(hash('%s%s' % (a['date'], a['duration'])))
                 for a in self.getDates()]
 
     security.declarePrivate("getPoodleData")
+
     def getPoodleData(self):
         if IPoodle.providedBy(self):
             return IPoodleVotes(self).getPoodleData()
@@ -68,11 +70,13 @@ class Poodle(base.ATCTContent):
             return IPoodleVotes(self)
 
     security.declarePrivate("setPoodleData")
+
     def setPoodleData(self, data):
         if IPoodle.providedBy(self):
             IPoodleVotes(self).setPoodleData(data)
 
     security.declarePrivate("updatePoodleData")
+
     def updatePoodleData(self):
         votes = self.get_poodle_votes()
         votes.updateDates()
@@ -80,6 +84,7 @@ class Poodle(base.ATCTContent):
         self.updateSharing()
 
     security.declarePrivate("updateSharing")
+
     def updateSharing(self):
         """
         Allow the selected Users to view the object
