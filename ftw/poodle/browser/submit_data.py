@@ -1,37 +1,44 @@
-from Products.Five.browser import BrowserView
-
 from Products.CMFCore.utils import getToolByName
-from zope.component import getMultiAdapter, queryMultiAdapter
+from Products.Five.browser import BrowserView
+from ftw.notification.base.interfaces import INotifier
 from ftw.poodle import poodleMessageFactory as _
 from ftw.poodle.interfaces import IPoodleVotes
+from zope.component import getMultiAdapter, queryMultiAdapter, queryUtility
 
 
 class JQSubmitData(BrowserView):
     """Stores the new poodledate and returns a state-message
     """
     def __call__(self):
-        ftw_poodle_view = getMultiAdapter(
-            (self.context, self.request), name=u'ftw_poodle_view')
-        rc = getToolByName(self.context, 'reference_catalog')
-        uid = self.context.REQUEST.get('uid', None)
-        if uid:
-            obj = rc.lookupObject(uid)
-        else:
-            obj = self.context.aq_inner
 
-        portal_state = getMultiAdapter(
-            (self.context, self.request), name=u'plone_portal_state')
-        user = portal_state.member()
-        userid = user.id
+        self.poodle = self._get_poodle()
+
+        mtool = getToolByName(self.context, "portal_membership")
+        member = mtool.getAuthenticatedMember()
+
         form = self.context.REQUEST.form
-        dates = form.values()
 
         # no dates available
-        if dates == ['']:
-            return 1
+        if not form.values() or form.values() == ['']:
+            return False
 
-        # change values
-        votes = IPoodleVotes(obj)
+        self._save_votes(member.id, form.values())
+        self._send_notification()
+        self._create_journal_entry(member)
+        return _(u"Sie haben an der Umfrage teilgenommen.")
+
+    def _get_poodle(self):
+        rc = getToolByName(self.context, 'reference_catalog')
+        uid = self.context.REQUEST.get('uid', None)
+
+        if uid:
+            return rc.lookupObject(uid)
+        else:
+            return self.context.aq_inner
+
+    def _save_votes(self, userid, dates):
+
+        votes = IPoodleVotes(self.poodle)
         poodledata = votes.getPoodleData()
         if userid in poodledata['users'].keys():
             for date in poodledata["ids"]:
@@ -39,20 +46,26 @@ class JQSubmitData(BrowserView):
 
         votes.setPoodleData(poodledata)
 
-        # sends email notification to th owner
-        ftw_poodle_view.sendNotification(user)
-
-        # status message
-        msg = _(u"Sie haben an der Umfrage teilgenommen.")
-
-        #create journal entry - if available
+    def _create_journal_entry(self, member):
+        """Creates a journal entry - if the journal is available"""
         journal_view = queryMultiAdapter(
             (self.context, self.context.REQUEST), name="journal_action")
-        if journal_view is None:
-            return msg
+        if journal_view:
+            comment = _(
+                "label_user_has_participated",
+                default='The user {fullname} participated in the poll {title}',
+                mapping={
+                    'fullname': member.getProperty('fullname') or member.id,
+                    'title': self.poodle.Title()})
 
-        comment = 'Der Benutzer %s hat an der Umfrage (%s) teilgenommen' % (
-            user.getProperty('fullname'), self.context.Title())
-        journal_view.addJournalEntry(obj, comment)
+            journal_view.addJournalEntry(self.poodle, comment)
 
-        return msg
+    def _send_notification(self):
+        """Sends a notification to the poodle creator,
+        with the help of ftw.notification.email"""
+
+        # notify with ftw.notifaction.email
+        notifier = queryUtility(INotifier, name='email-notifier')
+        notifier.send_notification(
+            to_list=[self.context.Creator()],
+            object_=self.context)

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-05-02 15:25+0000\n"
+"POT-Creation-Date: 2012-08-10 12:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Meeting poll"
 msgstr ""
 
-#: ./ftw/poodle/browser/submit_data.py:44
+#: ./ftw/poodle/browser/submit_data.py:28
 msgid "Sie haben an der Umfrage teilgenommen."
 msgstr ""
 
@@ -51,7 +51,7 @@ msgid "ftwpoodle_label_users"
 msgstr ""
 
 #. Default: "The User ${username} has filled out your poodle"
-#: ./ftw/poodle/browser/poodle.py:56
+#: ./ftw/poodle/browser/submit_data.py:88
 msgid "ftwpoodle_mail_subject"
 msgstr ""
 
@@ -65,6 +65,11 @@ msgstr ""
 msgid "ftwpoodle_title_save"
 msgstr ""
 
+#. Default: "The user {fullname} participated in the poll {title}"
+#: ./ftw/poodle/browser/submit_data.py:55
+msgid "label_user_has_participated"
+msgstr ""
+
 #. Default: "no dates"
 #: ./ftw/poodle/browser/templates/poodle.pt:42
 msgid "no_dates_defined_text"
@@ -76,7 +81,7 @@ msgid "poodle_mailtemplate_body"
 msgstr ""
 
 #. Default: "Survey is deactivated"
-#: ./ftw/poodle/browser/poodle.py:23
+#: ./ftw/poodle/browser/poodle.py:24
 msgid "survey_deactivated"
 msgstr ""
 

@@ -2,7 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    xmlns:i18n="http://namespaces.zope.org/i18n" 
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="ftw.poodle">
 
     <five:registerPackage package="." initialize=".initialize" />
@@ -13,8 +13,8 @@
     <include package=".browser" />
     <include package=".content" />
     <include package=".viewlets" />
-        
-    <include file="skins.zcml" />    
+
+    <include file="skins.zcml" />
 
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
@@ -39,14 +39,26 @@
       provides=".interfaces.IPoodleVotes"
       for=".interfaces.IPoodle"
       factory=".poodle_votes.PoodleVotes" />
-    
+
+    <adapter
+        provides="ftw.notification.email.interfaces.ISubjectCreator"
+        factory=".adapters.PoodleSubjectCreator"
+        for=".interfaces.IPoodle"
+        />
+
+    <adapter
+        provides="ftw.notification.email.interfaces.IEMailRepresentation"
+        factory=".adapters.PoodleEmailRepresentation"
+        for=".interfaces.IPoodle"
+        />
+
       <!-- register user vocabulary-->
-      <utility 
-        component=".vocabularies.AvailableUsersVocabularyFactory" 
+      <utility
+        component=".vocabularies.AvailableUsersVocabularyFactory"
         name="ftw.poodle.users"
         />
 
     <!-- register locales -->
-     <i18n:registerTranslations directory="locales" /> 
-     
+     <i18n:registerTranslations directory="locales" />
+
 </configure>

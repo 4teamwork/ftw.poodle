@@ -15,6 +15,10 @@ class PoodleVotesZCMLLayer(Layer):
         xmlconfig.file(
             'configure.zcml', zope.annotation, context=context)
 
+        import zope.traversing
+        xmlconfig.file(
+            'configure.zcml', zope.traversing, context=context)
+
         import ftw.poodle
         xmlconfig.file(
             'tests.zcml', ftw.poodle, context=context)
