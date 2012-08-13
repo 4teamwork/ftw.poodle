@@ -5,8 +5,6 @@ from ftw.poodle.testing import POODLE_VOTES_ZCML_LAYER
 from ftw.testing import MockTestCase
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IBrowserView
-from zope.traversing.interfaces import ITraversable
-from Products.CMFCore.interfaces._tools import IPropertiesTool
 
 
 class TestNotificationAdapters(MockTestCase):

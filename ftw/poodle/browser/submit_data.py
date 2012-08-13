@@ -3,7 +3,7 @@ from Products.Five.browser import BrowserView
 from ftw.notification.base.interfaces import INotifier
 from ftw.poodle import poodleMessageFactory as _
 from ftw.poodle.interfaces import IPoodleVotes
-from zope.component import getMultiAdapter, queryMultiAdapter, queryUtility
+from zope.component import queryMultiAdapter, queryUtility
 
 
 class JQSubmitData(BrowserView):
