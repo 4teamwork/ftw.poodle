@@ -47,7 +47,8 @@ setup(name='ftw.poodle',
         'Products.DataGridField',
         'Products.AutocompleteWidget',
         'plone.principalsource',
-        'ftw.notification.email'
+        'ftw.notification.email',
+        'ftw.notification.base',
         ],
 
       tests_require=tests_require,
