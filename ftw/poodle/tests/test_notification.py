@@ -58,9 +58,6 @@ class TestNotificationAdapters(MockTestCase):
         self.expect(member.getProperty('fullname')).result(None)
         self.expect(member.id).result('hugo.boss')
 
-        prop_tool = self.stub()
-        self.mock_utility(prop_tool, IPropertiesTool)
-
         self.replay()
 
         email = IEMailRepresentation(poodle)
