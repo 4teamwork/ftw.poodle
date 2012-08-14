@@ -1,6 +1,7 @@
 from ftw.poodle.interfaces import IPoodle, IPoodleVotes
 from ftw.poodle.testing import POODLE_VOTES_ZCML_LAYER
 from ftw.testing import MockTestCase
+from persistent.list import PersistentList
 from persistent.mapping import PersistentMapping
 from zope.annotation.interfaces import IAttributeAnnotatable
 
@@ -44,9 +45,9 @@ class TestPoodleVotes(MockTestCase):
         data = votes.getPoodleData()
         self.assertEquals(data, {})
 
-        # we don't have direct wright access
+        # we have direct wright access
         data['results'] = ['1', '0', '3']
-        self.assertTrue(data != votes.getPoodleData())
+        self.assertTrue(data == votes.getPoodleData())
 
         votes.setPoodleData(data)
         self.assertEquals(votes.getPoodleData(), data)
@@ -56,6 +57,23 @@ class TestPoodleVotes(MockTestCase):
 
         self.assertEquals(
             type(votes.annotations.get('poodledata')), PersistentMapping)
+
+
+    def test_recursive_persistent(self):
+        poodle = self.providing_stub(
+            [IAttributeAnnotatable, IPoodle])
+
+        self.replay()
+
+        votes = IPoodleVotes(poodle)
+
+        votes.setPoodleData(SAMPLE_DATA)
+        data = votes.getPoodleData()
+
+        self.assertTrue(type(data.get('dates')), PersistentList)
+        self.assertTrue(type(data.get('ids')), PersistentList)
+        self.assertTrue(type(data.get('users')), PersistentMapping)
+        self.assertTrue(type(data.get('users').get('james.bond')), PersistentMapping)
 
     def test_update_dates(self):
         poodle = self.providing_stub(

@@ -3,6 +3,24 @@ from zope.component import adapts
 from zope.annotation.interfaces import IAnnotations
 from interfaces import IPoodle, IPoodleVotes
 from persistent.mapping import PersistentMapping
+from persistent.list import PersistentList
+
+
+def make_persistent(data):
+    if isinstance(data, dict):
+        data = PersistentMapping(data)
+
+        for key, value in data.items():
+            value = make_persistent(value)
+            data[key] = value
+
+    elif isinstance(data, list):
+        new_data = PersistentList()
+        for item in data:
+            new_data.append(make_persistent(item))
+        data = new_data
+
+    return data
 
 
 class PoodleVotes(object):
@@ -16,15 +34,16 @@ class PoodleVotes(object):
     def getPoodleData(self):
         """getter for poodledata
         """
-        if self.annotations.get('poodledata'):
-            return self.annotations.get('poodledata').data
-        return {}
+        if not self.annotations.get('poodledata'):
+            self.annotations['poodledata'] = PersistentMapping()
+        return self.annotations['poodledata']
 
     def setPoodleData(self, data):
         """setter for poodledata
         """
         if data:
-            self.annotations['poodledata'] = PersistentMapping(data)
+            self.annotations['poodledata'] = PersistentMapping(
+                make_persistent(data))
 
     def updateDates(self):
         """updates date informations
@@ -46,7 +65,6 @@ class PoodleVotes(object):
     def updateUsers(self):
         """uddate user informations
         """
-
         poodledata = self.getPoodleData()
         users = self.context.getUsers()
         # create ids part if not available
