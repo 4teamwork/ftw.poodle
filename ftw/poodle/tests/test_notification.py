@@ -34,7 +34,8 @@ class TestNotificationAdapters(MockTestCase):
         request = self.stub_request()
         response = self.stub_response()
         self.expect(poodle.REQUEST).result(request)
-        self.expect(poodle.absolute_url).result('http://localhost:8080/platform/poodle-1')
+        self.expect(poodle.absolute_url).result(
+            'http://localhost:8080/platform/poodle-1')
 
         # portal state mocks
         portal_state = self.stub()
@@ -42,7 +43,8 @@ class TestNotificationAdapters(MockTestCase):
             [Interface, Interface], name='plone_portal_state')
         self.expect(portal_state(poodle, request)).result(portal_state)
         portal = self.stub()
-        self.expect(portal_state.portal_url).result('http://localhost:8080/platform')
+        self.expect(portal_state.portal_url).result(
+            'http://localhost:8080/platform')
         self.expect(portal_state.portal).result(portal)
         self.expect(portal.__call__()).result(portal)
         self.expect(portal()).result(portal)
