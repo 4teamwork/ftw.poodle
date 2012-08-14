@@ -3,39 +3,64 @@ from zope.component import adapts
 from zope.annotation.interfaces import IAnnotations
 from interfaces import IPoodle, IPoodleVotes
 from persistent.mapping import PersistentMapping
+from persistent.list import PersistentList
+
+
+def make_persistent(data):
+    if isinstance(data, dict):
+        data = PersistentMapping(data)
+
+        for key, value in data.items():
+            value = make_persistent(value)
+            data[key] = value
+
+    elif isinstance(data, list):
+        new_data = PersistentList()
+        for item in data:
+            new_data.append(make_persistent(item))
+        data = new_data
+
+    return data
+
 
 class PoodleVotes(object):
     implements(IPoodleVotes)
     adapts(IPoodle)
-    
+
     def __init__(self, context):
         self.context = context
         self.annotations = IAnnotations(self.context)
-    
+
     def getPoodleData(self):
         """getter for poodledata
         """
-        return self.annotations.get('poodledata', PersistentMapping())
-    
+        if not self.annotations.get('poodledata'):
+            self.annotations['poodledata'] = PersistentMapping()
+        return self.annotations['poodledata']
+
     def setPoodleData(self, data):
         """setter for poodledata
         """
         if data:
-            self.annotations['poodledata'] = PersistentMapping(data)
-    
+            self.annotations['poodledata'] = PersistentMapping(
+                make_persistent(data))
 
     def updateDates(self):
         """updates date informations
         """
         poodledata = self.getPoodleData()
+
         dates = self.context.getDates()
         poodledata["dates"] = [i['date'] for i in dates]
         poodledata['ids'] = self.context.getDatesHash()
 
-        # in case of the first call of this method we have to store
-        # the poodledata
-        if not self.getPoodleData():
-            self.setPoodleData(poodledata)
+        # clean up the old dates in the users votes
+        for user in poodledata.get('users', {}).keys():
+            for date_hash in poodledata.get('users').get(user).keys():
+                if date_hash not in poodledata.get('ids'):
+                    poodledata.get('users').get(user).pop(date_hash)
+
+        self.setPoodleData(poodledata)
 
     def updateUsers(self):
         """uddate user informations
@@ -55,7 +80,7 @@ class PoodleVotes(object):
                 # add user to data and fill dates with None
                 userdates = {}
                 [userdates.setdefault(choice) for choice in choices]
-                poodledata['users'][user] = userdates                    
+                poodledata['users'][user] = userdates
             else:
                 # check if the dates are correct
                 userdates = poodledata['users'][user]
@@ -63,12 +88,10 @@ class PoodleVotes(object):
                     if choice not in userdates.keys():
                         # a new date
                         userdates[choice] = None
+
         # check if we need to remove any users from poodledata
         for user in poodledata['users'].keys():
             if user not in users:
                 del(poodledata['users'][user])
-        
-        # in case of the first call of this method we have to store
-        # the poodledata
-        if not self.getPoodleData():
-            self.setPoodleData(poodledata)
+
+        self.setPoodleData(poodledata)

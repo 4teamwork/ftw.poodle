@@ -5,10 +5,14 @@ This module contains the tool of ftw.poodle
 from setuptools import setup, find_packages
 import os
 
-version = '1.1.5.dev0'
+version = '1.2.dev0'
 maintainer = 'Mathias Leimgruber'
 
-tests_require=['zope.testing']
+tests_require = [
+    'plone.app.testing',
+    'ftw.testing',
+    ]
+
 
 setup(name='ftw.poodle',
       version=version,
@@ -42,12 +46,13 @@ setup(name='ftw.poodle',
         'setuptools',
         'Products.DataGridField',
         'Products.AutocompleteWidget',
-        'plone.principalsource'
+        'plone.principalsource',
+        'ftw.notification.email',
+        'ftw.notification.base',
         ],
 
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
-      test_suite = 'ftw.poodle.tests.test_docs.test_suite',
       entry_points="""
       # -*- entry_points -*-
       [z3c.autoinclude.plugin]

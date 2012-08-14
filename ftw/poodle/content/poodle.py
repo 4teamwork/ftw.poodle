@@ -53,11 +53,13 @@ class Poodle(base.ATCTContent):
     schema = PoodleSchema
 
     security.declarePrivate("getDatesHash")
+
     def getDatesHash(self):
         return [str(hash('%s%s' % (a['date'], a['duration'])))
                 for a in self.getDates()]
 
     security.declarePrivate("getPoodleData")
+
     def getPoodleData(self):
         if IPoodle.providedBy(self):
             return IPoodleVotes(self).getPoodleData()
@@ -68,11 +70,13 @@ class Poodle(base.ATCTContent):
             return IPoodleVotes(self)
 
     security.declarePrivate("setPoodleData")
+
     def setPoodleData(self, data):
         if IPoodle.providedBy(self):
             IPoodleVotes(self).setPoodleData(data)
 
     security.declarePrivate("updatePoodleData")
+
     def updatePoodleData(self):
         votes = self.get_poodle_votes()
         votes.updateDates()
@@ -80,24 +84,28 @@ class Poodle(base.ATCTContent):
         self.updateSharing()
 
     security.declarePrivate("updateSharing")
+
     def updateSharing(self):
         """
         Allow the selected Users to view the object
         """
         users = self.getUsers()
-        wanted_roles = [u'Reader']
         for user in users:
+            wanted_roles = [u'Reader']
+            wanted_roles += list(self.get_local_roles_for_userid(user))
             self.manage_setLocalRoles(user, wanted_roles)
         self.reindexObjectSecurity()
         # XXX: remove users?
 
     security.declarePrivate("saveUserData")
+
     def saveUserData(self, userid, dates):
         votes = self.get_poodle_votes()
         poodledata = votes.getPoodleData()
         if userid in poodledata['users'].keys():
             for date in poodledata["dates"]:
                 poodledata['users'][userid][date] = bool(date in dates)
+        votes.setPoodleData(poodledata)
 
     def getMeeting_type(self):
         """Set meeting type for tabbed-view compatibility in ftw.workspace.

@@ -1,0 +1,11 @@
+<div i18n:domain="ftw.poodle"
+     tal:omit-tag=""
+     tal:define="portal context/@@plone_portal_state/portal;">
+<div i18n:translate="poodle_mailtemplate_body" tal:omit-tag="">
+ The user <span i18n:name="user_name" tal:omit-tag="" tal:replace="structure view/fullname"/>
+ has entered his data into the meeting poll at
+ <span i18n:name="document_url" tal:omit-tag="" tal:replace="structure view/context/absolute_url" />
+ on the website <span i18n:name="portal_title" tal:omit-tag="" tal:replace="structure python: portal.Title()" />
+ at <span i18n:name="portal_url" tal:omit-tag="" tal:replace="structure context/@@plone_portal_state/portal_url" />
+</div>
+</div>
