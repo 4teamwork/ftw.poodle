@@ -58,7 +58,6 @@ class TestPoodleVotes(MockTestCase):
         self.assertEquals(
             type(votes.annotations.get('poodledata')), PersistentMapping)
 
-
     def test_recursive_persistent(self):
         poodle = self.providing_stub(
             [IAttributeAnnotatable, IPoodle])
@@ -73,7 +72,8 @@ class TestPoodleVotes(MockTestCase):
         self.assertTrue(type(data.get('dates')), PersistentList)
         self.assertTrue(type(data.get('ids')), PersistentList)
         self.assertTrue(type(data.get('users')), PersistentMapping)
-        self.assertTrue(type(data.get('users').get('james.bond')), PersistentMapping)
+        self.assertTrue(type(data.get('users').get('james.bond')),
+                        PersistentMapping)
 
     def test_update_dates(self):
         poodle = self.providing_stub(
@@ -124,7 +124,8 @@ class TestPoodleVotes(MockTestCase):
             ['01.11.2012', '13.11.2012', '20.11.2012'])
         self.assertEquals(votes.getPoodleData().get('ids'), hashes_2)
 
-        for date_hash in votes.getPoodleData().get('users').get('hugo.boss').keys():
+        for date_hash in votes.getPoodleData().get(
+            'users').get('hugo.boss').keys():
             self.assertTrue(date_hash in hashes_2)
 
     def test_update_users(self):
