@@ -90,8 +90,9 @@ class Poodle(base.ATCTContent):
         Allow the selected Users to view the object
         """
         users = self.getUsers()
-        wanted_roles = [u'Reader']
         for user in users:
+            wanted_roles = [u'Reader']
+            wanted_roles += list(self.get_local_roles_for_userid(user))
             self.manage_setLocalRoles(user, wanted_roles)
         self.reindexObjectSecurity()
         # XXX: remove users?
