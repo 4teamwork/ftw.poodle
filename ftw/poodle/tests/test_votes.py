@@ -66,12 +66,12 @@ class TestPoodleVotes(MockTestCase):
 
         votes = IPoodleVotes(poodle)
 
-        votes.setPoodleData(SAMPLE_DATA)
+        votes.setPoodleData(PersistentMapping(SAMPLE_DATA))
         data = votes.getPoodleData()
 
-        self.assertTrue(type(data.get('dates')), PersistentList)
-        self.assertTrue(type(data.get('ids')), PersistentList)
-        self.assertTrue(type(data.get('users')), PersistentMapping)
+        self.assertTrue(type(data.get('dates')) == PersistentList)
+        self.assertTrue(type(data.get('ids')) == PersistentList)
+        self.assertTrue(type(data.get('users')) == PersistentMapping)
         self.assertTrue(type(data.get('users').get('james.bond')),
                         PersistentMapping)
 
@@ -143,10 +143,10 @@ class TestPoodleVotes(MockTestCase):
 
         votes.updateUsers()
 
-        self.assertEquals(
-            votes.getPoodleData().get('users').keys(),
-            ['hugo.boss', 'ms.busy', 'peter.muster'],
-            )
+        users = votes.getPoodleData().get('users')
+        self.assertIn('hugo.boss', users)
+        self.assertIn('peter.muster', users)
+        self.assertIn('ms.busy', users)
 
         self.assertEquals(
             votes.getPoodleData().get('users').get('ms.busy'),

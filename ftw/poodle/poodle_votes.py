@@ -7,14 +7,18 @@ from persistent.list import PersistentList
 
 
 def make_persistent(data):
-    if isinstance(data, dict):
+    if isinstance(data, dict) or \
+            isinstance(data, PersistentMapping):
+
         data = PersistentMapping(data)
 
         for key, value in data.items():
             value = make_persistent(value)
             data[key] = value
 
-    elif isinstance(data, list):
+    elif isinstance(data, list) or \
+            isinstance(data, PersistentList):
+
         new_data = PersistentList()
         for item in data:
             new_data.append(make_persistent(item))
