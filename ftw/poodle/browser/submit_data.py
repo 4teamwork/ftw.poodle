@@ -2,8 +2,10 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from ftw.notification.base.interfaces import INotifier
 from ftw.poodle import poodleMessageFactory as _
+from ftw.poodle.interfaces import IPoodleFilledOutMarker
 from ftw.poodle.interfaces import IPoodleVotes
 from zope.component import queryMultiAdapter, queryUtility
+from zope.interface import directlyProvides, noLongerProvides
 
 
 class JQSubmitData(BrowserView):
@@ -66,6 +68,8 @@ class JQSubmitData(BrowserView):
 
         # notify with ftw.notifaction.email
         notifier = queryUtility(INotifier, name='email-notifier')
+        directlyProvides(self.context, IPoodleFilledOutMarker)
         notifier.send_notification(
             to_list=[self.context.Creator()],
             object_=self.context)
+        noLongerProvides(self.context, IPoodleFilledOutMarker)

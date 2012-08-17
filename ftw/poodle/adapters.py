@@ -14,7 +14,7 @@ def get_full_name(context):
     return member.id
 
 
-class PoodleSubjectCreator(object):
+class PoodleFilledOutSubjectCreator(object):
     def __init__(self, context):
         self.context = aq_inner(context)
         self.request = self.context.REQUEST
@@ -31,7 +31,7 @@ class PoodleSubjectCreator(object):
         return subject
 
 
-class PoodleEmailRepresentation(BaseEmailRepresentation):
+class PoodleFilledOutEmailRepresentation(BaseEmailRepresentation):
 
     template = ViewPageTemplateFile('poodle_notification.pt')
 
