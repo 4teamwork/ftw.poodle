@@ -1,6 +1,10 @@
+from Products.Archetypes.interfaces.base import IBaseObject
+from Products.CMFCore.interfaces._content import IContentish
+from ftw.notification.email.adapters import BaseSubjectCreator
 from ftw.notification.email.interfaces import IEMailRepresentation
 from ftw.notification.email.interfaces import ISubjectCreator
-from ftw.poodle.interfaces import IPoodle
+from ftw.notification.email.templates.base import BaseEmailRepresentation
+from ftw.poodle.interfaces import IPoodleFilledOutMarker, IPoodle
 from ftw.poodle.testing import POODLE_VOTES_ZCML_LAYER
 from ftw.testing import MockTestCase
 from zope.interface import Interface
@@ -11,8 +15,8 @@ class TestNotificationAdapters(MockTestCase):
 
     layer = POODLE_VOTES_ZCML_LAYER
 
-    def test_subject_creator(self):
-        poodle = self.providing_stub([IPoodle])
+    def test_filled_out_subject_creator(self):
+        poodle = self.providing_stub([IPoodleFilledOutMarker])
         request = self.stub_request()
         self.expect(poodle.REQUEST).result(request)
 
@@ -28,11 +32,10 @@ class TestNotificationAdapters(MockTestCase):
         self.assertEquals(
             subject, u'The User Hugo Boss has filled out your poodle')
 
-    def test_email_representation(self):
+    def test_filled_out_email_representation(self):
         # poodle and request stuff
-        poodle = self.providing_stub([IPoodle])
+        poodle = self.providing_stub([IPoodleFilledOutMarker])
         request = self.stub_request()
-        response = self.stub_response()
         self.expect(poodle.REQUEST).result(request)
         self.expect(poodle.absolute_url).result(
             'http://localhost:8080/platform/poodle-1')
@@ -64,3 +67,21 @@ class TestNotificationAdapters(MockTestCase):
 
         self.assertEquals(
             email.template(),'\n\n The user hugo.boss\n has entered his data into the meeting poll at\n http://localhost:8080/platform/poodle-1\n on the website My poodle portal\n at http://localhost:8080/platform\n\n\n')
+
+    def test_regular_notications(self):
+        poodle = self.providing_stub(
+            [IPoodle, IContentish, IBaseObject])
+
+        request = self.stub_request()
+        self.expect(poodle.REQUEST).result(request)
+
+        self.replay()
+
+
+        self.assertEquals(
+            type(IEMailRepresentation(poodle)),
+            BaseEmailRepresentation)
+
+        self.assertEquals(
+            type(ISubjectCreator(poodle)),
+            BaseSubjectCreator)

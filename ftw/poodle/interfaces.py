@@ -18,3 +18,8 @@ class IPoodletableBottom(IViewletManager):
     packages.
 
     """
+
+
+class IPoodleFilledOutMarker(IPoodle):
+    """Marker interfaces for Filledout Poodle
+    """

@@ -14,21 +14,26 @@
 
     <adapter
         provides="ftw.notification.email.interfaces.ISubjectCreator"
-        factory=".adapters.PoodleSubjectCreator"
-        for=".interfaces.IPoodle"
+        factory=".adapters.PoodleFilledOutSubjectCreator"
+        for=".interfaces.IPoodleFilledOutMarker"
         />
 
     <adapter
         provides="ftw.notification.email.interfaces.IEMailRepresentation"
-        factory=".adapters.PoodleEmailRepresentation"
-        for=".interfaces.IPoodle"
+        factory=".adapters.PoodleFilledOutEmailRepresentation"
+        for=".interfaces.IPoodleFilledOutMarker"
         />
 
-    <!-- <browser:page -->
-    <!--     for=".interfaces.IPoodle" -->
-    <!--     name="jq_submit_data" -->
-    <!--     class=".browser.submit_data.JQSubmitData" -->
-    <!--     permission="zope2.View" -->
-    <!--     /> -->
+  <adapter
+      factory="ftw.notification.email.templates.base.BaseEmailRepresentation"
+      for="Products.CMFCore.interfaces._content.IContentish"
+      provides="ftw.notification.email.interfaces.IEMailRepresentation"
+      />
+
+  <adapter
+      factory="ftw.notification.email.adapters.BaseSubjectCreator"
+      for="Products.Archetypes.interfaces.base.IBaseObject"
+      provides="ftw.notification.email.interfaces.ISubjectCreator"
+      />
 
 </configure>

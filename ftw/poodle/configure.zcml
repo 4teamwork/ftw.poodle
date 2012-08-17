@@ -42,14 +42,14 @@
 
     <adapter
         provides="ftw.notification.email.interfaces.ISubjectCreator"
-        factory=".adapters.PoodleSubjectCreator"
-        for=".interfaces.IPoodle"
+        factory=".adapters.PoodleFilledOutSubjectCreator"
+        for=".interfaces.IPoodleFilledOutMarker"
         />
 
     <adapter
         provides="ftw.notification.email.interfaces.IEMailRepresentation"
-        factory=".adapters.PoodleEmailRepresentation"
-        for=".interfaces.IPoodle"
+        factory=".adapters.PoodleFilledOutEmailRepresentation"
+        for=".interfaces.IPoodleFilledOutMarker"
         />
 
       <!-- register user vocabulary-->

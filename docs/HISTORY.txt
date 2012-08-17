@@ -5,6 +5,9 @@ Changelog
 1.2 (unreleased)
 ----------------
 
+- Adjust Notification Adapters: so that the regular notification of a poodle works still fine.
+  [phgross]
+
 - Fix: Do no override Owner role.
   [mathias.leimgruber]
 

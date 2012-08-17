@@ -107,11 +107,11 @@ class TestJQSubmit(MockTestCase):
         view._create_journal_entry(user)
 
     def test_notification(self):
-        poodle = self.stub()
         request = self.stub()
-        self.expect(poodle.REQUEST).result(request)
-        self.expect(poodle.Title()).result('Test Poll')
-        self.expect(poodle.Creator()).result('hugo.boss')
+        poodle = self.create_dummy(
+            REQUEST=request,
+            Title='Test Poll',
+            Creator=lambda: 'hugo.boss')
 
         notifier = self.stub()
         self.mock_utility(
@@ -123,4 +123,5 @@ class TestJQSubmit(MockTestCase):
 
         view = JQSubmitData(poodle, request)
         view.poodle = poodle
+
         view._send_notification()
