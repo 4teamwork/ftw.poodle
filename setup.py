@@ -5,7 +5,7 @@ This module contains the tool of ftw.poodle
 from setuptools import setup, find_packages
 import os
 
-version = '1.2.dev0'
+version = '1.2'
 maintainer = 'Mathias Leimgruber'
 
 tests_require = [
