@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-This module contains the tool of ftw.poodle
-"""
 from setuptools import setup, find_packages
 import os
 
@@ -34,7 +30,7 @@ setup(name='ftw.poodle',
       author='4teamwork GmbH',
       author_email='mailto:info@4teamwork.ch',
       maintainer=maintainer,
-      url='https://github.com/4teamwork/ftw.poodle/',
+      url='https://github.com/4teamwork/ftw.poodle',
       license='GPL2',
 
       packages=find_packages(exclude=['ez_setup']),
