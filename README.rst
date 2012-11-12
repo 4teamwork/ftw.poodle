@@ -23,6 +23,7 @@ Links
 - Main github project repository: https://github.com/4teamwork/ftw.poodle
 - Issue tracker: https://github.com/4teamwork/ftw.poodle/issues
 - Package on pypi: http://pypi.python.org/pypi/ftw.poodle
+- Continuous integration: https://jenkins.4teamwork.ch/search?q=ftw.poodle
 
 
 Copyright
