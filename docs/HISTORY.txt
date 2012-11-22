@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.3 (unreleased)
+1.3 (2012-11-22)
 ----------------
 
 - Public release on pypi / plone.org
