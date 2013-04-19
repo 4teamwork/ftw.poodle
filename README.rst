@@ -32,3 +32,7 @@ Copyright
 This package is copyright by `4teamwork <http://www.4teamwork.ch/>`_.
 
 ``ftw.poodle`` is licensed under GNU General Public License, version 2.
+
+.. image:: https://cruel-carlota.pagodabox.com/f107d92ec42f7462e348c3df41ebdefe
+   :alt: githalytics.com
+   :target: http://githalytics.com/4teamwork/ftw.poodle
