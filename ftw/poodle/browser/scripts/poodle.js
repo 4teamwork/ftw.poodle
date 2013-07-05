@@ -1,5 +1,5 @@
 function sendPoodleForm(){
-    $("#poodleForm [name=form.button.Save]").live("click", function(e){
+    $('#poodleForm [name="form.button.Save"]').live("click", function(e){
             e.stopPropagation();
             e.preventDefault();
             var infos = $("#"+this.id).closest('form#poodleForm').serializeArray();
