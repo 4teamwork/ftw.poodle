@@ -1,0 +1,88 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-08-10 12:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./ftw/poodle/profiles/default/types/Poodle.xml
+msgid "Meeting poll"
+msgstr ""
+
+#: ./ftw/poodle/browser/submit_data.py:28
+msgid "Sie haben an der Umfrage teilgenommen."
+msgstr ""
+
+#. Default: "Date (TT. MM. JJJJ)"
+#: ./ftw/poodle/content/poodle.py:31
+msgid "ftwpoodle_desc_date"
+msgstr ""
+
+#. Default: "Time / Duration"
+#: ./ftw/poodle/content/poodle.py:33
+msgid "ftwpoodle_desc_duration"
+msgstr ""
+
+#. Default: "Edit votes"
+#: ./ftw/poodle/browser/templates/voted.pt:6
+msgid "ftwpoodle_edit_votes"
+msgstr ""
+
+#. Default: "Dates"
+#: ./ftw/poodle/content/poodle.py:35
+msgid "ftwpoodle_label_dates"
+msgstr ""
+
+#. Default: "Users"
+#: ./ftw/poodle/content/poodle.py:20
+msgid "ftwpoodle_label_users"
+msgstr ""
+
+#. Default: "The User ${username} has filled out your poodle"
+#: ./ftw/poodle/browser/submit_data.py:88
+msgid "ftwpoodle_mail_subject"
+msgstr ""
+
+#. Default: "Results"
+#: ./ftw/poodle/browser/templates/poodletable.pt:50
+msgid "ftwpoodle_results"
+msgstr ""
+
+#. Default: "Save"
+#: ./ftw/poodle/browser/templates/poodletable.pt:60
+msgid "ftwpoodle_title_save"
+msgstr ""
+
+#. Default: "The user {fullname} participated in the poll {title}"
+#: ./ftw/poodle/browser/submit_data.py:55
+msgid "label_user_has_participated"
+msgstr ""
+
+#. Default: "no dates"
+#: ./ftw/poodle/browser/templates/poodle.pt:42
+msgid "no_dates_defined_text"
+msgstr ""
+
+#. Default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}"
+#: ./ftw/poodle/skins/ftw.poodle/poodle_notification.pt:11
+msgid "poodle_mailtemplate_body"
+msgstr ""
+
+#. Default: "Survey is deactivated"
+#: ./ftw/poodle/browser/poodle.py:24
+msgid "survey_deactivated"
+msgstr ""
+
+#. Default: "Your input has been succesfully saved."
+#: ./ftw/poodle/browser/templates/voted.pt:2
+msgid "text_voted"
+msgstr ""
+
+
