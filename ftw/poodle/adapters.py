@@ -2,7 +2,7 @@ from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from ftw.notification.email.templates.base import BaseEmailRepresentation
 from ftw.poodle import poodleMessageFactory as _
-from zope.app.pagetemplate import ViewPageTemplateFile
+from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 from zope.i18n import translate
 
 

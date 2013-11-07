@@ -1,7 +1,7 @@
 from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
 from zope import schema, component
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 
 
 class AvailableUsersVocabulary(object):
