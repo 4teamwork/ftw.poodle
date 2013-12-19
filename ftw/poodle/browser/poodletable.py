@@ -1,9 +1,10 @@
-from Products.Five.browser import BrowserView
+from plone.i18n.normalizer.interfaces import IIDNormalizer
+from plone.i18n.normalizer.interfaces import IURLNormalizer
 from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from plone.i18n.normalizer.interfaces import IURLNormalizer
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class PoodleTableView(BrowserView):
@@ -53,6 +54,14 @@ class PoodleTableView(BrowserView):
         if not fullname:
             return userid
         return fullname
+
+    def get_sorted_users(self):
+        normalizer = queryUtility(IIDNormalizer)
+        poodledata = self.context.getPoodleData()
+        userids = poodledata['users'].keys()
+        userids.sort(
+            key=lambda id_: normalizer.normalize(self.getUserFullname(id_)))
+        return userids
 
     def getCssClass(self, data):
         """returns three diffrent css class-names
