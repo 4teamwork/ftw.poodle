@@ -5,6 +5,9 @@ Changelog
 1.3.5 (unreleased)
 ------------------
 
+- Sort users by normalized fullname.
+  [mathias.leimgruber]
+
 - Plone 4.3 compatibility
   [mathias.leimgruber]
 
