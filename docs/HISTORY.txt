@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+1.2.1 (unreleased)
+------------------
+
+- Sort users by normalized fullname.
+  [mathias.leimgruber]
+
+
 1.2 (2012-08-21)
 ----------------
 
