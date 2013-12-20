@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2.1 (unreleased)
+1.2.1 (2013-12-20)
 ------------------
 
 - Sort users by normalized fullname.
