@@ -5,6 +5,9 @@ Changelog
 1.3.5 (unreleased)
 ------------------
 
+- Update French translations.
+  [tschanzt]
+
 - Sort users by normalized fullname.
   [mathias.leimgruber]
 
