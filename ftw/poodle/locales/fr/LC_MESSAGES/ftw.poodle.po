@@ -14,75 +14,75 @@ msgstr ""
 
 #: ./ftw/poodle/profiles/default/types/Poodle.xml
 msgid "Meeting poll"
-msgstr ""
+msgstr "Enquête de réunion"
 
 #: ./ftw/poodle/browser/submit_data.py:28
 msgid "Sie haben an der Umfrage teilgenommen."
-msgstr ""
+msgstr "Ils ont participé à l'enquête"
 
 #. Default: "Date (TT. MM. JJJJ)"
 #: ./ftw/poodle/content/poodle.py:31
 msgid "ftwpoodle_desc_date"
-msgstr ""
+msgstr "Format (TT. MM. JJJJ)"
 
 #. Default: "Time / Duration"
 #: ./ftw/poodle/content/poodle.py:33
 msgid "ftwpoodle_desc_duration"
-msgstr ""
+msgstr "Heure / durée (HH:MM-HH:MM)"
 
 #. Default: "Edit votes"
 #: ./ftw/poodle/browser/templates/voted.pt:6
 msgid "ftwpoodle_edit_votes"
-msgstr ""
+msgstr "Modifier enquête"
 
 #. Default: "Dates"
 #: ./ftw/poodle/content/poodle.py:35
 msgid "ftwpoodle_label_dates"
-msgstr ""
+msgstr "Date"
 
 #. Default: "Users"
 #: ./ftw/poodle/content/poodle.py:20
 msgid "ftwpoodle_label_users"
-msgstr ""
+msgstr "Particpants"
 
 #. Default: "The User ${username} has filled out your poodle"
 #: ./ftw/poodle/browser/submit_data.py:88
 msgid "ftwpoodle_mail_subject"
-msgstr ""
+msgstr "L'utilisateur $ {nom d'utilisateur} a terminé son enquête de réunion"
 
 #. Default: "Results"
 #: ./ftw/poodle/browser/templates/poodletable.pt:50
 msgid "ftwpoodle_results"
-msgstr ""
+msgstr "Résultat"
 
 #. Default: "Save"
 #: ./ftw/poodle/browser/templates/poodletable.pt:60
 msgid "ftwpoodle_title_save"
-msgstr ""
+msgstr "Enregistrer"
 
 #. Default: "The user {fullname} participated in the poll {title}"
 #: ./ftw/poodle/browser/submit_data.py:55
 msgid "label_user_has_participated"
-msgstr ""
+msgstr "L'utilisateur $ {fullname} a participé à l'enquête ({title})"
 
 #. Default: "no dates"
 #: ./ftw/poodle/browser/templates/poodle.pt:42
 msgid "no_dates_defined_text"
-msgstr ""
+msgstr "Pas de propositions de date definies"
 
 #. Default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}"
 #: ./ftw/poodle/skins/ftw.poodle/poodle_notification.pt:11
 msgid "poodle_mailtemplate_body"
-msgstr ""
+msgstr "L'utilisateur $ {user_name} a participé à l'enquête ${document_url} sur ${portal_title}"
 
 #. Default: "Survey is deactivated"
 #: ./ftw/poodle/browser/poodle.py:24
 msgid "survey_deactivated"
-msgstr ""
+msgstr "Cette enquête est désactivée"
 
 #. Default: "Your input has been succesfully saved."
 #: ./ftw/poodle/browser/templates/voted.pt:2
 msgid "text_voted"
-msgstr ""
+msgstr "Votre requête a bien été sauvgardée. Cliquez sur \"Umfrage bearbeiten\" pour modifier votre requête."
 
 
