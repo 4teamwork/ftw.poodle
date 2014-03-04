@@ -11,7 +11,7 @@
         class=".poodle.PoodleView"
         permission="zope2.View"
         />
-        
+
     <browser:page
         for="*"
         name="ftw_poodle_table"
@@ -26,10 +26,5 @@
         class=".submit_data.JQSubmitData"
         permission="zope2.View"
         />
-
-    <browser:resourceDirectory
-        name="poodle-scripts"
-        directory="scripts" />
-
 
 </configure>

@@ -17,7 +17,7 @@
               Generic KSS Title. Is rendered with class="documentFirstHeading".
           </h1>
       </metal:title>
-    
+
       <div tal:replace="structure provider:plone.belowcontenttitle" />
 
       <p class="documentDescription" tal:condition="exists:here/widget">
@@ -27,17 +27,17 @@
       </p>
 
       <tal:block condition="not:exists:here/widget">
-          <p class="documentDescription" 
-                     tal:content="context/Description" 
-                     tal:condition="context/Description"> 
+          <p class="documentDescription"
+                     tal:content="context/Description"
+                     tal:condition="context/Description">
               Description
           </p>
       </tal:block>
 
 
-      <div tal:replace="structure provider:plone.abovecontentbody" /> 
-        
-            <div tal:condition="context/getDates | nothing" 
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+
+            <div tal:condition="context/getDates | nothing"
                  tal:replace="structure python:view.renderTable(context)">renders poodle table</div>
             <div tal:condition="not:context/getDates" i18n:translate="no_dates_defined_text">no dates</div>
     <!--    <div tal:replace="structure provider:plone.belowcontentbody" />-->
