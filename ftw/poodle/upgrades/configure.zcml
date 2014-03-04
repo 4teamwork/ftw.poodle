@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:upgrade-step="http://namespaces.zope.org/ftw.upgrade"
+    i18n_domain="ftw.poodle">
+
+  <upgrade-step:importProfile
+        title="Remove poodle.js from jsregistry"
+        profile="ftw.poodle:default"
+        source="0.1"
+        destination="1360"
+        directory="profiles/1360"
+        />
+
+</configure>

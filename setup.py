@@ -47,6 +47,7 @@ setup(name='ftw.poodle',
         'plone.principalsource',
         'ftw.notification.email',
         'ftw.notification.base',
+        'ftw.upgrade',
         ],
 
       tests_require=tests_require,
