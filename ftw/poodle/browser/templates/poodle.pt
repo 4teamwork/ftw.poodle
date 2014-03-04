@@ -6,6 +6,13 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="ftw.poodle">
 
+<head>
+  <div metal:fill-slot="javascript_head_slot" tal:omit-tag="">
+    <script type="text/javascript"
+            tal:attributes="src string:${here/portal_url}/++resource++poodle-scripts/poodle.js" />
+  </div>
+</head>
+
 <body>
 
 <div metal:fill-slot="main" class="poodle_view">
