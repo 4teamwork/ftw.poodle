@@ -5,7 +5,8 @@ Changelog
 1.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix saveing votes, since the form only works with js.
+  [mathias.leimgruber]
 
 
 1.4.0 (2014-03-31)
