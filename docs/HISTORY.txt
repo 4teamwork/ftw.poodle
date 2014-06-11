@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.4.1 (unreleased)
+1.4.1 (2014-06-11)
 ------------------
 
 - Fix saveing votes, since the form only works with js.
