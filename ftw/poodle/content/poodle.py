@@ -20,7 +20,7 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
                 label=_(u'ftwpoodle_label_users', default=u'Users'),
                 actb_expand_onfocus=1),
             required=1,
-            multivalued=1),
+            multiValued=1),
 
         DataGridField(
             name='dates',
