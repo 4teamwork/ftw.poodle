@@ -41,7 +41,7 @@ msgstr "Orario / Durata"
 #. Default: "Edit votes"
 #: ../browser/templates/voted.pt:6
 msgid "ftwpoodle_edit_votes"
-msgstr "Modofica preferenze"
+msgstr "Modifica preferenze"
 
 #. Default: "Provide a date in a format like MM-DD-AAAA"
 #: ../content/poodle.py:33
