@@ -36,7 +36,7 @@ msgstr "Data"
 #. Default: "Time / Duration"
 #: ../content/poodle.py:36
 msgid "ftwpoodle_desc_duration"
-msgstr "Orario / Duarata"
+msgstr "Orario / Durata"
 
 #. Default: "Edit votes"
 #: ../browser/templates/voted.pt:6
