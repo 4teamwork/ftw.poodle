@@ -6,8 +6,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2015-05-05 15:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,21 +19,21 @@ msgstr ""
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Activate poodle"
-msgstr ""
+msgstr "Attiva poodle"
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Close poodle"
-msgstr ""
+msgstr "Chiudi poodle"
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Closed"
-msgstr ""
+msgstr "Chiuso"
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Open"
-msgstr ""
+msgstr "Aperto"
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Open poodle"
-msgstr ""
+msgstr "Apri poodle"
 

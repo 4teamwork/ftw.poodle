@@ -27,7 +27,7 @@ class JQSubmitData(BrowserView):
         self._save_votes(member.id, form.values())
         self._send_notification()
         self._create_journal_entry(member)
-        return _(u"Sie haben an der Umfrage teilgenommen.")
+        return _(u"You taked part to the poll")
 
     def _get_poodle(self):
         rc = getToolByName(self.context, 'reference_catalog')

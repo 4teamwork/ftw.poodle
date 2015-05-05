@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-10 12:28+0000\n"
+"POT-Creation-Date: 2015-05-05 15:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,76 +17,79 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: ftw.poodle\n"
 
-#: ./ftw/poodle/profiles/default/types/Poodle.xml
+msgid "A product to make polls to find out when to have a meeting"
+msgstr ""
+
+#: ../profiles/default/types/Poodle.xml
 msgid "Meeting poll"
 msgstr ""
 
-#: ./ftw/poodle/browser/submit_data.py:28
-msgid "Sie haben an der Umfrage teilgenommen."
+#: ../browser/submit_data.py:30
+msgid "You taked part to the poll"
 msgstr ""
 
-#. Default: "Date (TT. MM. JJJJ)"
-#: ./ftw/poodle/content/poodle.py:31
+#. Default: "Date"
+#: ../content/poodle.py:31
 msgid "ftwpoodle_desc_date"
 msgstr ""
 
 #. Default: "Time / Duration"
-#: ./ftw/poodle/content/poodle.py:33
+#: ../content/poodle.py:36
 msgid "ftwpoodle_desc_duration"
 msgstr ""
 
 #. Default: "Edit votes"
-#: ./ftw/poodle/browser/templates/voted.pt:6
+#: ../browser/templates/voted.pt:6
 msgid "ftwpoodle_edit_votes"
 msgstr ""
 
+#. Default: "Provide a date in a format like MM-DD-AAAA"
+#: ../content/poodle.py:33
+msgid "ftwpoodle_help_date"
+msgstr ""
+
 #. Default: "Dates"
-#: ./ftw/poodle/content/poodle.py:35
+#: ../content/poodle.py:40
 msgid "ftwpoodle_label_dates"
 msgstr ""
 
 #. Default: "Users"
-#: ./ftw/poodle/content/poodle.py:20
+#: ../content/poodle.py:20
 msgid "ftwpoodle_label_users"
 msgstr ""
 
 #. Default: "The User ${username} has filled out your poodle"
-#: ./ftw/poodle/browser/submit_data.py:88
+#: ../adapters.py:25
 msgid "ftwpoodle_mail_subject"
 msgstr ""
 
 #. Default: "Results"
-#: ./ftw/poodle/browser/templates/poodletable.pt:50
+#: ../browser/templates/poodletable.pt:50
 msgid "ftwpoodle_results"
 msgstr ""
 
-#. Default: "Save"
-#: ./ftw/poodle/browser/templates/poodletable.pt:60
-msgid "ftwpoodle_title_save"
-msgstr ""
-
 #. Default: "The user {fullname} participated in the poll {title}"
-#: ./ftw/poodle/browser/submit_data.py:55
+#: ../browser/submit_data.py:56
 msgid "label_user_has_participated"
 msgstr ""
 
 #. Default: "no dates"
-#: ./ftw/poodle/browser/templates/poodle.pt:42
+#: ../browser/templates/poodle.pt:67
 msgid "no_dates_defined_text"
 msgstr ""
 
 #. Default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}"
-#: ./ftw/poodle/skins/ftw.poodle/poodle_notification.pt:11
+#: ../poodle_notification.pt:9
 msgid "poodle_mailtemplate_body"
 msgstr ""
 
 #. Default: "Survey is deactivated"
-#: ./ftw/poodle/browser/poodle.py:24
+#: ../browser/poodle.py:23
 msgid "survey_deactivated"
 msgstr ""
 
 #. Default: "Your input has been succesfully saved."
-#: ./ftw/poodle/browser/templates/voted.pt:2
+#: ../browser/templates/voted.pt:2
 msgid "text_voted"
 msgstr ""
 

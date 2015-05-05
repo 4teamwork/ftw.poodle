@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-05-05 15:33+0000\n"
+"POT-Creation-Date: 2012-08-10 12:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,25 +15,7 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: plone\n"
+"Domain: ftw.poodle\n"
 
-#: ../profiles/default/workflows/poodle_workflow/definition.xml
-msgid "Activate poodle"
+msgid "A product to make polls to find out when to have a meeting"
 msgstr ""
-
-#: ../profiles/default/workflows/poodle_workflow/definition.xml
-msgid "Close poodle"
-msgstr ""
-
-#: ../profiles/default/workflows/poodle_workflow/definition.xml
-msgid "Closed"
-msgstr ""
-
-#: ../profiles/default/workflows/poodle_workflow/definition.xml
-msgid "Open"
-msgstr ""
-
-#: ../profiles/default/workflows/poodle_workflow/definition.xml
-msgid "Open poodle"
-msgstr ""
-

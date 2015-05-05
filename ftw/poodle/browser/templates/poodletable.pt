@@ -58,7 +58,7 @@
   <div class="inputs" tal:condition="view/show_inputs">
       <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />
       <input class="context allowMultiSubmit"
-             tal:attributes="id string:uid_${context/UID}" type="submit" value="Save" i18n:attributes="value ftwpoodle_title_save;" name="form.button.Save"/>
+             tal:attributes="id string:uid_${context/UID}" type="submit" value="Save" i18n:domain="plone" i18n:attributes="value" name="form.button.Save"/>
   </div>
 </form>
 
