@@ -13,22 +13,20 @@ msgstr ""
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Activate poodle"
-msgstr ""
+msgstr "Ouvrir"
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Close poodle"
-msgstr ""
+msgstr "Fermer"
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Closed"
-msgstr ""
+msgstr "Fermé"
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Open"
-msgstr ""
+msgstr "Ouvert"
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Open poodle"
-msgstr ""
-
-
+msgstr "Ouvrir"

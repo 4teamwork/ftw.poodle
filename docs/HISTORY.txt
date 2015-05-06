@@ -4,6 +4,9 @@ Changelog
 1.5.0 (unreleased)
 ------------------
 
+- Update French translations.
+  [jone]
+
 - Disable ``auto-insert`` in ``dates`` field because of validation.
   [jone]
 
