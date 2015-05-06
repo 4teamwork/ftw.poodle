@@ -26,7 +26,6 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             name='dates',
             allow_empty_rows=False,
             widget=DataGridWidget(
-                auto_insert=True,
                 columns={
                     "date": Column(_(u"ftwpoodle_desc_date",
                                      default="Date"),
