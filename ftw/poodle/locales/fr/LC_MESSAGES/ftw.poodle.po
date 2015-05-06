@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-05-05 15:33+0000\n"
+"POT-Creation-Date: 2015-05-06 07:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,85 +9,83 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
 
 msgid "A product to make polls to find out when to have a meeting"
 msgstr ""
 
-#: ../profiles/default/types/Poodle.xml
+#: ./ftw/poodle/profiles/default/types/Poodle.xml
 msgid "Meeting poll"
 msgstr "Enquête de réunion"
 
-#: ../browser/submit_data.py:30
+#: ./ftw/poodle/browser/submit_data.py:30
 msgid "You taked part to the poll"
 msgstr ""
 
 #. Default: "Date"
-#: ../content/poodle.py:31
+#: ./ftw/poodle/content/poodle.py:31
 #, fuzzy
 msgid "ftwpoodle_desc_date"
 msgstr "Format (TT. MM. JJJJ)"
 
 #. Default: "Time / Duration"
-#: ../content/poodle.py:36
+#: ./ftw/poodle/content/poodle.py:36
 msgid "ftwpoodle_desc_duration"
 msgstr "Heure / durée (HH:MM-HH:MM)"
 
 #. Default: "Edit votes"
-#: ../browser/templates/voted.pt:6
+#: ./ftw/poodle/browser/templates/voted.pt:6
 msgid "ftwpoodle_edit_votes"
 msgstr "Modifier enquête"
 
 #. Default: "Provide a date in a format like MM-DD-AAAA"
-#: ../content/poodle.py:33
+#: ./ftw/poodle/content/poodle.py:33
 msgid "ftwpoodle_help_date"
 msgstr ""
 
 #. Default: "Dates"
-#: ../content/poodle.py:40
+#: ./ftw/poodle/content/poodle.py:40
 msgid "ftwpoodle_label_dates"
 msgstr "Date"
 
 #. Default: "Users"
-#: ../content/poodle.py:20
+#: ./ftw/poodle/content/poodle.py:20
 msgid "ftwpoodle_label_users"
 msgstr "Particpants"
 
 #. Default: "The User ${username} has filled out your poodle"
-#: ../adapters.py:25
+#: ./ftw/poodle/adapters.py:25
 msgid "ftwpoodle_mail_subject"
 msgstr "L'utilisateur $ {nom d'utilisateur} a terminé son enquête de réunion"
 
 #. Default: "Results"
-#: ../browser/templates/poodletable.pt:50
+#: ./ftw/poodle/browser/templates/poodletable.pt:50
 msgid "ftwpoodle_results"
 msgstr "Résultat"
 
 #. Default: "The user {fullname} participated in the poll {title}"
-#: ../browser/submit_data.py:56
+#: ./ftw/poodle/browser/submit_data.py:56
 msgid "label_user_has_participated"
 msgstr "L'utilisateur $ {fullname} a participé à l'enquête ({title})"
 
 #. Default: "no dates"
-#: ../browser/templates/poodle.pt:67
+#: ./ftw/poodle/browser/templates/poodle.pt:67
 msgid "no_dates_defined_text"
 msgstr "Pas de propositions de date definies"
 
 #. Default: "The user ${user_name} has entered his data into the meeting poll at ${document_url} on the website ${portal_title} at ${portal_url}"
-#: ../poodle_notification.pt:9
+#: ./ftw/poodle/poodle_notification.pt:9
 msgid "poodle_mailtemplate_body"
 msgstr "L'utilisateur $ {user_name} a participé à l'enquête ${document_url} sur ${portal_title}"
 
 #. Default: "Survey is deactivated"
-#: ../browser/poodle.py:23
+#: ./ftw/poodle/browser/poodle.py:23
 msgid "survey_deactivated"
 msgstr "Cette enquête est désactivée"
 
 #. Default: "Your input has been succesfully saved."
-#: ../browser/templates/voted.pt:2
+#: ./ftw/poodle/browser/templates/voted.pt:2
 msgid "text_voted"
 msgstr "Votre requête a bien été sauvgardée. Cliquez sur \"Umfrage bearbeiten\" pour modifier votre requête."
+
 

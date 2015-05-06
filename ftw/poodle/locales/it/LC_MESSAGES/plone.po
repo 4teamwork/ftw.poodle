@@ -12,10 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: it\n"
-"Language-Name: Italian\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: plone\n"
 
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Activate poodle"
@@ -36,4 +33,5 @@ msgstr "Aperto"
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Open poodle"
 msgstr "Apri poodle"
+
 
