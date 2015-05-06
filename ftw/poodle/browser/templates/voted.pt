@@ -1,4 +1,4 @@
-<div class="poodleVoted" i18n:domain="ftw.poodle">
+<div class="poodleVoted" xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="ftw.poodle">
     <p i18n:translate="text_voted">Your input has been succesfully saved.</p>
     <form action="" method="post" id="poodleForm">
         <div class="inputs">

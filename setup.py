@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.4.3.dev0'
+version = '1.5.0.dev0'
 maintainer = 'Mathias Leimgruber'
 
 tests_require = [
@@ -42,7 +42,7 @@ setup(name='ftw.poodle',
 
       install_requires=[
         'setuptools',
-        'Products.DataGridField',
+        'Products.DataGridField>=1.9.0',
         'Products.AutocompleteWidget',
         'plone.principalsource',
         'ftw.notification.email',

@@ -29,9 +29,14 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
                 auto_insert=True,
                 columns={
                     "date": Column(_(u"ftwpoodle_desc_date",
-                                     default="Date (TT. MM. JJJJ)")),
+                                     default="Date"),
+                                   col_description=_("ftwpoodle_help_date",
+                                                     default="Provide a date in a format like MM-DD-AAAA"),
+                                   required=True),
                     "duration": Column(_(u"ftwpoodle_desc_duration",
-                                         default="Time / Duration"))},
+                                         default="Time / Duration"),
+                                       required=True),
+                    },
                 label=_(u'ftwpoodle_label_dates', default=u'Dates')),
             columns=("date", "duration")),
 

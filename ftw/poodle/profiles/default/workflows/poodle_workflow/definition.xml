@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="poodle_workflow" title="Poodle Worklfow" description="" state_variable="review_state" initial_state="open" manager_bypass="False">
+<dc-workflow workflow_id="poodle_workflow" title="Poodle Worklfow" description="" state_variable="review_state" initial_state="open" manager_bypass="False"
+             xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="plone">
  <permission>Access contents information</permission>
  <permission>View</permission>
- <state state_id="close" title="Close">
+ <state state_id="close" title="Closed" i18n:attributes="title">
   <description>No one can vote until the owner opens the poodle</description>
   <exit-transition transition_id="open_poodle"/>
   <permission-map name="Access contents information" acquired="False">
@@ -16,7 +17,7 @@
    <permission-role>Reader</permission-role>
   </permission-map>
  </state>
- <state state_id="open" title="Open">
+ <state state_id="open" title="Open" i18n:attributes="title">
   <description>All user in getUsers list can vote</description>
   <exit-transition transition_id="close_poodle"/>
   <permission-map name="Access contents information" acquired="False">
@@ -30,16 +31,16 @@
    <permission-role>Reader</permission-role>
   </permission-map>
  </state>
- <transition transition_id="close_poodle" title="close poodle" new_state="close" trigger="USER" before_script="" after_script="">
-  <description>closes poodle for voting</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=close_poodle" category="workflow" icon="">Close poodle</action>
+ <transition transition_id="close_poodle" i18n:attributes="title" title="Close poodle" new_state="close" trigger="USER" before_script="" after_script="">
+  <description>Closes poodle from voting</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=close_poodle" category="workflow" icon="" i18n:translate="">Close poodle</action>
   <guard>
    <guard-role>Owner</guard-role>
   </guard>
  </transition>
- <transition transition_id="open_poodle" title="Open poodle" new_state="open" trigger="USER" before_script="" after_script="">
-  <description>open poodle for voting</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=open_poodle" category="workflow" icon="">Activate poodle</action>
+ <transition transition_id="open_poodle" i18n:attributes="title" title="Open poodle" new_state="open" trigger="USER" before_script="" after_script="">
+  <description>Open poodle for voting</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=open_poodle" category="workflow" icon="" i18n:translate="">Activate poodle</action>
   <guard>
    <guard-role>Owner</guard-role>
   </guard>

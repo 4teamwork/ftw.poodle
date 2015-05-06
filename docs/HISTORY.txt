@@ -1,12 +1,14 @@
 Changelog
 =========
 
-
-1.4.3 (unreleased)
+1.5.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- i18n engine fixes [keul]
+- Added italian translation [keul]
+- Now using (and requiring) DataGridField 1.9+ and new features like required
+  columns, column's description and DateColumn [keul]
+- Restored "View" object action [keul]
 
 1.4.2 (2015-04-30)
 ------------------

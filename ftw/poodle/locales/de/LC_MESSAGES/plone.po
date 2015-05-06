@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-06-12 16:56+0000\n"
+"POT-Creation-Date: 2015-05-05 15:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,14 +9,28 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-
-#: poodle_workflow
-msgid "Close poodle"
-msgstr "Umfrage beenden"
-
-#: poodle_workflow
+#: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Activate poodle"
-msgstr "Umfrage öffnen"
+msgstr ""
+
+#: ../profiles/default/workflows/poodle_workflow/definition.xml
+msgid "Close poodle"
+msgstr ""
+
+#: ../profiles/default/workflows/poodle_workflow/definition.xml
+msgid "Closed"
+msgstr ""
+
+#: ../profiles/default/workflows/poodle_workflow/definition.xml
+msgid "Open"
+msgstr ""
+
+#: ../profiles/default/workflows/poodle_workflow/definition.xml
+msgid "Open poodle"
+msgstr ""
+
