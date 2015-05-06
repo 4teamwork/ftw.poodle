@@ -4,6 +4,9 @@ Changelog
 1.5.0 (unreleased)
 ------------------
 
+- Update German translations.
+  [jone]
+
 - i18n engine fixes [keul]
 - Added italian translation [keul]
 - Now using (and requiring) DataGridField 1.9+ and new features like required

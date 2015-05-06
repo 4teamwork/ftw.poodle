@@ -12,7 +12,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 
 msgid "A product to make polls to find out when to have a meeting"
-msgstr ""
+msgstr "Ein Produkt für Sitzungsumfragen."
 
 #: ./ftw/poodle/profiles/default/types/Poodle.xml
 msgid "Meeting poll"
@@ -20,13 +20,12 @@ msgstr "Sitzungsumfrage"
 
 #: ./ftw/poodle/browser/submit_data.py:30
 msgid "You taked part to the poll"
-msgstr ""
+msgstr "Sie haben an der Umfrage teilgenommen."
 
 #. Default: "Date"
 #: ./ftw/poodle/content/poodle.py:31
-#, fuzzy
 msgid "ftwpoodle_desc_date"
-msgstr "Format (TT. MM. JJJJ)"
+msgstr "Format"
 
 #. Default: "Time / Duration"
 #: ./ftw/poodle/content/poodle.py:36
@@ -41,7 +40,7 @@ msgstr "Umfrage bearbeiten"
 #. Default: "Provide a date in a format like MM-DD-AAAA"
 #: ./ftw/poodle/content/poodle.py:33
 msgid "ftwpoodle_help_date"
-msgstr ""
+msgstr "Datumsformat: TT.MM.YYYY (z.B. 22.10.2015)"
 
 #. Default: "Dates"
 #: ./ftw/poodle/content/poodle.py:40
@@ -87,5 +86,3 @@ msgstr "Diese Umfrage ist deaktiviert."
 #: ./ftw/poodle/browser/templates/voted.pt:2
 msgid "text_voted"
 msgstr "Ihre Eingabe wurde erfolgreich gespeichert. Klicken Sie auf \"Umfrage bearbeiten\", um Ihre Eingabe zu ändern."
-
-
