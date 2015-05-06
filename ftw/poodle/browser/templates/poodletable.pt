@@ -11,7 +11,10 @@
                      member here/@@plone_portal_state/member">
       <tr>
           <th></th>
-          <th tal:repeat="date dates" tal:content="structure string:${date/date} <br/> ${date/duration}"/>
+          <th tal:repeat="date dates">
+              <span tal:replace="date/date" /><br />
+              <span tal:replace="date/duration"/>
+          </th>
       </tr>
       <tr tal:repeat="user users">
           <tal:block define="currentUser python:view.isCurrentUser(user)">
@@ -66,5 +69,3 @@
 <div tal:replace="structure provider:ftw.poodletable.bottom" />
 
 </div>
-
-
