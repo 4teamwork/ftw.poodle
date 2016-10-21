@@ -4,7 +4,8 @@ Changelog
 1.5.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add checkbox to enable stealth voting.
+  [raphael-s]
 
 
 1.5.0 (2015-05-06)

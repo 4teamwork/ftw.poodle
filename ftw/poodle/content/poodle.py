@@ -39,6 +39,15 @@ PoodleSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
                 label=_(u'ftwpoodle_label_dates', default=u'Dates')),
             columns=("date", "duration")),
 
+        atapi.BooleanField(
+            name="stealth_voting",
+            widget=atapi.BooleanWidget(
+                label=_(u'stealth_voting', default=u'Enable stealth voting'),
+            ),
+            default=True,
+            required=False
+        ),
+
         ))
 
 

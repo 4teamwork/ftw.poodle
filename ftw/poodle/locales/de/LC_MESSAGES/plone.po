@@ -30,3 +30,4 @@ msgstr "Offen"
 #: ../profiles/default/workflows/poodle_workflow/definition.xml
 msgid "Open poodle"
 msgstr "Wieder eröffnen"
+

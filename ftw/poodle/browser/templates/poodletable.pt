@@ -49,14 +49,16 @@
               </tal:block>
           </tal:block>
       </tr>
-      <tr>
-            <td i18n:translate="ftwpoodle_results">
-                Results
-            </td>
-            <td tal:replace="structure python:view.poodleResults(data=poodledata)">
-                poodle results
-            </td>
-      </tr>
+      <tal:if condition="python:view.show_results()">
+        <tr>
+              <td i18n:translate="ftwpoodle_results">
+                  Results
+              </td>
+              <td tal:replace="structure python:view.poodleResults(data=poodledata)">
+                  poodle results
+              </td>
+        </tr>
+      </tal:if>
   </table>
   <div class="inputs" tal:condition="view/show_inputs">
       <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />
