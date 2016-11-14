@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-05-06 07:54+0000\n"
+"POT-Creation-Date: 2016-10-21 07:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -14,6 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "Preferred-Encodings: utf-8 latin1\n"
 
+#: ./ftw/poodle/configure.zcml:30
 msgid "A product to make polls to find out when to have a meeting"
 msgstr "Un prodotto per eseguire sondaggi sulle possibili date di un incontro"
 
@@ -21,17 +22,25 @@ msgstr "Un prodotto per eseguire sondaggi sulle possibili date di un incontro"
 msgid "Meeting poll"
 msgstr "Sondaggio per incontro"
 
+#: ./ftw/poodle/upgrades/configure.zcml:14
+msgid "Remove poodle.js from jsregistry"
+msgstr ""
+
 #: ./ftw/poodle/browser/submit_data.py:30
 msgid "You taked part to the poll"
 msgstr "Hai preso parte al sondaggio"
 
+#: ./ftw/poodle/configure.zcml:30
+msgid "ftw.poodle"
+msgstr ""
+
 #. Default: "Date"
-#: ./ftw/poodle/content/poodle.py:31
+#: ./ftw/poodle/content/poodle.py:30
 msgid "ftwpoodle_desc_date"
 msgstr "Data"
 
 #. Default: "Time / Duration"
-#: ./ftw/poodle/content/poodle.py:36
+#: ./ftw/poodle/content/poodle.py:35
 msgid "ftwpoodle_desc_duration"
 msgstr "Orario / Durata"
 
@@ -41,12 +50,12 @@ msgid "ftwpoodle_edit_votes"
 msgstr "Modifica preferenze"
 
 #. Default: "Provide a date in a format like MM-DD-AAAA"
-#: ./ftw/poodle/content/poodle.py:33
+#: ./ftw/poodle/content/poodle.py:32
 msgid "ftwpoodle_help_date"
 msgstr "Fornisci una data in un formato quale GG-MM-AAAA"
 
 #. Default: "Dates"
-#: ./ftw/poodle/content/poodle.py:40
+#: ./ftw/poodle/content/poodle.py:39
 msgid "ftwpoodle_label_dates"
 msgstr "Date"
 
@@ -61,7 +70,7 @@ msgid "ftwpoodle_mail_subject"
 msgstr "L'utente ${username} ha conpilato il sondaggio"
 
 #. Default: "Results"
-#: ./ftw/poodle/browser/templates/poodletable.pt:50
+#: ./ftw/poodle/browser/templates/poodletable.pt:54
 msgid "ftwpoodle_results"
 msgstr "Risultati"
 
@@ -80,6 +89,11 @@ msgstr "nessuna data"
 msgid "poodle_mailtemplate_body"
 msgstr "L'utente ${user_name} ha compilato il sondaggio all'indirizzo ${document_url} sul sito ${portal_title} all'indirizzo ${portal_url}"
 
+#. Default: "Enable stealth voting"
+#: ./ftw/poodle/content/poodle.py:45
+msgid "stealth_voting"
+msgstr "Voto a scomparsa"
+
 #. Default: "Survey is deactivated"
 #: ./ftw/poodle/browser/poodle.py:23
 msgid "survey_deactivated"
@@ -89,5 +103,4 @@ msgstr "Sondaggio disattivato"
 #: ./ftw/poodle/browser/templates/voted.pt:2
 msgid "text_voted"
 msgstr "La tua preferenza è stata salvata"
-
 

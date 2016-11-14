@@ -9,16 +9,17 @@
                      users view/get_sorted_users;
                      dates context/getDates;
                      member here/@@plone_portal_state/member">
-      <tr>
+      <tr class="poodle-dates">
           <th></th>
           <th tal:repeat="date dates">
               <span tal:replace="date/date" /><br />
               <span tal:replace="date/duration"/>
           </th>
       </tr>
-      <tr tal:repeat="user users">
+      <tr tal:repeat="user users" class="poodle-user">
           <tal:block define="currentUser python:view.isCurrentUser(user)">
-              <td tal:attributes="style python:currentUser and 'opacity:1' or 'opacity:0.5'" tal:content="python:view.getUserFullname(user)"/>
+              <td tal:attributes="style python:currentUser and 'opacity:1' or 'opacity:0.5'" tal:content="python:view.getUserFullname(user)"
+              class="user"/>
               <tal:block repeat="choice python:context.getDatesHash()">
                   <td tal:define="index repeat/choice/index;
                                   date_id python:poodledata['ids'][index];
@@ -49,14 +50,16 @@
               </tal:block>
           </tal:block>
       </tr>
-      <tr>
-            <td i18n:translate="ftwpoodle_results">
-                Results
-            </td>
-            <td tal:replace="structure python:view.poodleResults(data=poodledata)">
-                poodle results
-            </td>
-      </tr>
+      <tal:if condition="python:view.show_results()">
+        <tr class="poodle-results">
+              <td i18n:translate="ftwpoodle_results">
+                  Results
+              </td>
+              <td tal:replace="structure python:view.poodleResults(data=poodledata)">
+                  poodle results
+              </td>
+        </tr>
+      </tal:if>
   </table>
   <div class="inputs" tal:condition="view/show_inputs">
       <input type="text" name="uid" tal:attributes="value string:${context/UID}" style="display:none" />

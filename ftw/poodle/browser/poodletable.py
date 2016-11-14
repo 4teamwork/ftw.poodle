@@ -5,6 +5,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
+from plone.api import user
 
 
 class PoodleTableView(BrowserView):
@@ -43,6 +44,14 @@ class PoodleTableView(BrowserView):
         # also add is poodle active check
         return user.id == userid and self.is_active()
 
+    def show_results(self):
+        # check if user is owner/has permission to view all the poodle data
+        # if stealth voting is disabled this will just return true
+        if not self.context.stealth_voting:
+            return True
+        return 'Owner' in user.get_roles(user=user.get_current(),
+                                         obj=self.context)
+
     def getUserFullname(self, userid):
         """returns fullname of a given user
         """
@@ -56,11 +65,14 @@ class PoodleTableView(BrowserView):
         return fullname
 
     def get_sorted_users(self):
-        normalizer = queryUtility(IIDNormalizer)
-        poodledata = self.context.getPoodleData()
-        userids = poodledata['users'].keys()
-        userids.sort(
-            key=lambda id_: normalizer.normalize(self.getUserFullname(id_)))
+        if self.show_results():
+            normalizer = queryUtility(IIDNormalizer)
+            poodledata = self.context.getPoodleData()
+            userids = poodledata['users'].keys()
+            userids.sort(
+                key=lambda id_: normalizer.normalize(self.getUserFullname(id_)))
+        else:
+            userids = [user.get_current().id]
         return userids
 
     def getCssClass(self, data):

@@ -6,6 +6,8 @@ maintainer = 'Mathias Leimgruber'
 
 tests_require = [
     'plone.app.testing',
+    'ftw.builder',
+    'ftw.testbrowser',
     'ftw.testing',
     ]
 
@@ -41,13 +43,14 @@ setup(name='ftw.poodle',
       zip_safe=False,
 
       install_requires=[
-        'setuptools',
-        'Products.DataGridField>=1.9.0',
         'Products.AutocompleteWidget',
-        'plone.principalsource',
-        'ftw.notification.email',
+        'Products.DataGridField>=1.9.0',
         'ftw.notification.base',
+        'ftw.notification.email',
         'ftw.upgrade',
+        'plone.api',
+        'plone.principalsource',
+        'setuptools',
         ],
 
       tests_require=tests_require,

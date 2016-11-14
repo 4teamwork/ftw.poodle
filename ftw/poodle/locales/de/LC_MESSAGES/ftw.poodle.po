@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-05-06 07:54+0000\n"
+"POT-Creation-Date: 2016-10-21 07:50+0000\n"
 "PO-Revision-Date: 2012-08-10 14:30+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,6 +11,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "Preferred-Encodings: utf-8 latin1\n"
 
+#: ./ftw/poodle/configure.zcml:30
 msgid "A product to make polls to find out when to have a meeting"
 msgstr "Ein Produkt für Sitzungsumfragen."
 
@@ -18,17 +19,25 @@ msgstr "Ein Produkt für Sitzungsumfragen."
 msgid "Meeting poll"
 msgstr "Sitzungsumfrage"
 
+#: ./ftw/poodle/upgrades/configure.zcml:14
+msgid "Remove poodle.js from jsregistry"
+msgstr ""
+
 #: ./ftw/poodle/browser/submit_data.py:30
 msgid "You taked part to the poll"
 msgstr "Sie haben an der Umfrage teilgenommen."
 
+#: ./ftw/poodle/configure.zcml:30
+msgid "ftw.poodle"
+msgstr ""
+
 #. Default: "Date"
-#: ./ftw/poodle/content/poodle.py:31
+#: ./ftw/poodle/content/poodle.py:30
 msgid "ftwpoodle_desc_date"
 msgstr "Format"
 
 #. Default: "Time / Duration"
-#: ./ftw/poodle/content/poodle.py:36
+#: ./ftw/poodle/content/poodle.py:35
 msgid "ftwpoodle_desc_duration"
 msgstr "Zeit / Dauer (HH:MM-HH:MM)"
 
@@ -38,12 +47,12 @@ msgid "ftwpoodle_edit_votes"
 msgstr "Umfrage bearbeiten"
 
 #. Default: "Provide a date in a format like MM-DD-AAAA"
-#: ./ftw/poodle/content/poodle.py:33
+#: ./ftw/poodle/content/poodle.py:32
 msgid "ftwpoodle_help_date"
 msgstr "Datumsformat: TT.MM.YYYY (z.B. 22.10.2015)"
 
 #. Default: "Dates"
-#: ./ftw/poodle/content/poodle.py:40
+#: ./ftw/poodle/content/poodle.py:39
 msgid "ftwpoodle_label_dates"
 msgstr "Datum"
 
@@ -58,7 +67,7 @@ msgid "ftwpoodle_mail_subject"
 msgstr "Der Benutzer ${username} hat ihre Sitzungsumfrage ausgefüllt"
 
 #. Default: "Results"
-#: ./ftw/poodle/browser/templates/poodletable.pt:50
+#: ./ftw/poodle/browser/templates/poodletable.pt:54
 msgid "ftwpoodle_results"
 msgstr "Resultat"
 
@@ -77,6 +86,11 @@ msgstr "Noch keine Terminvorschläge definiert"
 msgid "poodle_mailtemplate_body"
 msgstr "Der Benutzer ${user_name} hat an der Umfrage ${document_url} auf ${portal_title} teilgenommen"
 
+#. Default: "Enable stealth voting"
+#: ./ftw/poodle/content/poodle.py:45
+msgid "stealth_voting"
+msgstr "Verdeckte Abstimmung"
+
 #. Default: "Survey is deactivated"
 #: ./ftw/poodle/browser/poodle.py:23
 msgid "survey_deactivated"
@@ -86,3 +100,4 @@ msgstr "Diese Umfrage ist deaktiviert."
 #: ./ftw/poodle/browser/templates/voted.pt:2
 msgid "text_voted"
 msgstr "Ihre Eingabe wurde erfolgreich gespeichert. Klicken Sie auf \"Umfrage bearbeiten\", um Ihre Eingabe zu ändern."
+
